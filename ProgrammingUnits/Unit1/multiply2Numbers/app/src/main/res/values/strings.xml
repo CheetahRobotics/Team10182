@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FirstProject</string>
+
+    <string name="action_settings">yo</string>
+    <string name="edit_message">yo</string>
+    <string name="button_send">Click me</string>
+    <string name="hello_world">Enter 2 numbers, click button.</string>
+</resources>
