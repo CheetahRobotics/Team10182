@@ -15,7 +15,7 @@ http://www.usfirst.org/sites/default/files/uploadedFiles/Robotics_Programs/FTC/T
 #### The tech:
 
 Short High-level overview (ignore page 14, we will not be using AppInventor):   
-file:///home/bwoodley/Downloads/FTC_NextGenGuide.pdf
+https://drive.google.com/file/d/0B0Itc9Y4nPjvWWdOb1lJTllLWkU/view?usp=sharing
 
 Good set of videos about the android-based technology:   
 https://www.youtube.com/playlist?list=PLEuGrYl8iBm6enzgGb6JV8p26FUsMumsp   
