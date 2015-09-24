@@ -25,3 +25,6 @@ http://ftcforum.usfirst.org/showthread.php?4143-Education-in-Java-Android&p=1326
 
 Android - build your first app:   
 http://developer.android.com/training/basics/firstapp/index.html
+
+JavaDoc for FTC App (the robot controller):   
+https://cdn.rawgit.com/ftctechnh/ftc_app/master/doc/javadoc/index.html
