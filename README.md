@@ -33,7 +33,7 @@ https://cdn.rawgit.com/ftctechnh/ftc_app/master/doc/javadoc/index.html
 The entire thing as one big PDF:   
 http://www3.usfirst.org/uploadedFiles/Robotics_Programs/FTC/Game_Info/2015/PushBot-Build-Guide.pdf
 
-Broken-up in smaller pieces:
+Broken-up in smaller pieces:   
 I. Getting Started:   
 https://drive.google.com/file/d/0B0Itc9Y4nPjvX2NGeGVQQkVKdXM/view?usp=sharing
  
