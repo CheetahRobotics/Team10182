@@ -37,10 +37,10 @@ Broken-up in smaller pieces:
 I. Getting Started:   
 https://drive.google.com/file/d/0B0Itc9Y4nPjvX2NGeGVQQkVKdXM/view?usp=sharing
  
-II. Building the Robot:
+II. Building the Robot:   
 https://drive.google.com/file/d/0B0Itc9Y4nPjvR2hyRGp5eWRaV3c/view?usp=sharing
 
-III. Programming the Robot:
+III. Programming the Robot:   
 https://drive.google.com/file/d/0B0Itc9Y4nPjvNHRSQmc5U3NMdGs/view?usp=sharing
 
 IV. Op Modes and Electronics:   
