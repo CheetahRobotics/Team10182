@@ -11,3 +11,13 @@ There should be a directory on your C drive already: c:\code\FTC. If there is no
 
 (*) To open a command prompt on Windows, hold down the Windows key and press *R*. Type *cmd* in the little box that pops up.
 (**) Open explorer by holding down the Windows key and pressing *E*.
+
+line 1   
+line 1   
+line 1   
+line 1   
+
+line 2
+
+line 2
+
