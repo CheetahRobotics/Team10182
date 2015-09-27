@@ -25,8 +25,8 @@ Then issue the following commands to git:
     git remote add origin https://github.com/rwoodley/Team10182
     git pull origin master
     
-Then if you list the directory contents (type *dir*) you'll see the code has been down-loaded.
+Then if you list the directory contents (type `dir`) you'll see the code has been down-loaded.
 
-(*) To open a command prompt on Windows, hold down the Windows key and press *R*. Type *cmd* in the little box that pops up.
-(**) Open explorer by holding down the Windows key and pressing *E*.
+(*) To open a command prompt on Windows, hold down the Windows key and press **R**. Type *cmd* in the little box that pops up.
+(**) Open explorer by holding down the Windows key and pressing **E**.
 
