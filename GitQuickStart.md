@@ -10,7 +10,7 @@ You can tell if it is installed by opening a command prompt (`*) and typing 'git
 
 ####Step 2: Create directory where your code will live.
 
-There should be a directory on your C drive already: c:\code\FTC\Tean10182. If there is not one, then create it, with Windows explorer for instance. (`*`*)
+There should be a directory on your C drive already: c:\code\FTC\Tean10182. If there is not one, then create it, with Windows explorer for instance. (`**)
 
 ####Step 3: Download code from Git.
 
@@ -28,5 +28,5 @@ Then issue the following commands to git:
 Then if you list the directory contents (type `dir`) you'll see the code has been down-loaded.
 
 (`*) To open a command prompt on Windows, hold down the Windows key and press **R**. Type *cmd* in the little box that pops up.
-(`*`*) Open explorer by holding down the Windows key and pressing **E**.
+(`**) Open explorer by holding down the Windows key and pressing **E**.
 
