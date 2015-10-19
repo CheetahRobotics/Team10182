@@ -8,7 +8,7 @@ Git should already be installed on your laptop. If not, you can install it from:
 
 You can tell if it is installed by opening a command prompt (\*) and typing 'git'. If it says ``'git' is not recognized as an internal or external command, operable program or batch file.``, then git is NOT installed.
 
-####Step 2: Create directory where your code will live.
+####Step 2: Create a directory where your code will live.
 
 There should be a directory on your C drive already: c:\code\FTC\Tean10182. If there is not one, then create it, with Windows explorer for instance. (\*\*)
 

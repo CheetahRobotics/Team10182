@@ -18,7 +18,7 @@ Short High-level overview (ignore page 14, we will not be using AppInventor):
 https://drive.google.com/file/d/0B0Itc9Y4nPjvWWdOb1lJTllLWkU/view?usp=sharing
 
 Good set of videos about the android-based technology:   
-https://www.youtube.com/playlist?list=PLEuGrYl8iBm6enzgGb6JV8p26FUsMumsp   
+https://www.youtube.com/watch?v=qK_UutoT-NI&list=PLEuGrYl8iBm4chAuk3kdycWjeKNvvghJU
 
 Java tutorials:   
 http://ftcforum.usfirst.org/showthread.php?4143-Education-in-Java-Android&p=13264&viewfull=1#post13264
