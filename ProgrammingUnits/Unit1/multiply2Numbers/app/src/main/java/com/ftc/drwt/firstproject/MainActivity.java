@@ -37,16 +37,40 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    /** Called when the user touches the button */
-    public void sendMessage(View view) {
+
+    public Helper getNumbers(View view) {
+        EditText firstNumberTextBox = (EditText) findViewById(R.id.firstNumber);
+        EditText secondNumberTextBox = (EditText) findViewById(R.id.secondNumber);
+        EditText thirdNumberTextBox = (EditText) findViewById(R.id.thirdNumber);
+        Helper helper = new Helper();
+        helper.n1 = Double.parseDouble(firstNumberTextBox.getText().toString());
+        helper.n2 = Double.parseDouble(secondNumberTextBox.getText().toString());
+        helper.n3 = Double.parseDouble(thirdNumberTextBox.getText().toString());
+        return helper;
+    }
+
+    public void addNumber(View view) {
+        Helper helper = getNumbers(view);
+
+        TextView myAwesomeTextView = (TextView) findViewById(R.id.someId);
+        myAwesomeTextView.setText(Double.toString(helper.n1 + helper.n2 + helper.n3));
+
+    }
+    public void multiplyNumber(View view) {
 //        double result = Math.sqrt(12.0);
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.someId);
-        EditText firstNumberTextBox  = (EditText)findViewById(R.id.firstNumber);
-        EditText secondNumberTextBox  = (EditText)findViewById(R.id.secondNumber);
+        TextView myAwesomeTextView = (TextView) findViewById(R.id.someId);
+        EditText firstNumberTextBox = (EditText) findViewById(R.id.firstNumber);
+        EditText secondNumberTextBox = (EditText) findViewById(R.id.secondNumber);
+        EditText thirdNumberTextBox = (EditText) findViewById(R.id.thirdNumber);
 
         double n1 = Double.parseDouble(firstNumberTextBox.getText().toString());
         double n2 = Double.parseDouble(secondNumberTextBox.getText().toString());
+        double n3 = Double.parseDouble(thirdNumberTextBox.getText().toString());
 
-        myAwesomeTextView.setText(Double.toString(n1 * n2));
+
+        myAwesomeTextView.setText(Double.toString(n1 * n2 * n3));
+
     }
+
+
 }
