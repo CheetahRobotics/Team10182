@@ -1,12 +1,12 @@
 ### OpenCV-AndroidStudioBuild
 
-First I downloaded version 3.0 of OpenCV downloaded from http://opencv.org/downloads.html. 
+First I downloaded version 3.0 of OpenCV from http://opencv.org/downloads.html. 
 
 Using the code in the sdk/java directory of that download, I *roughly* followed the instructions here: http://stackoverflow.com/a/27421494, (up thru step 3), and then built the .aar file. 
 
 You can load this project directly into Android Studio and build the .aar.
 
-### How you use Open CV with Android:
+### How you use Open CV with your Android app:
 
 The .aar file is very small. The main OpenCV code is a separate download from Google Play. You will be prompted to down-load this file the first time you run your app on the phone.   
 
@@ -16,14 +16,14 @@ The .aar file is very small. The main OpenCV code is a separate download from Go
 
 3. Add compile line to dependencies section to build.gradle.
 
-       compile(name: ‘openCVLibrary249’, ext: 'aar’)
+       compile(name: â€˜openCVLibrary249â€™, ext: 'aarâ€™)
 
 4. Add repositories section to build.gradle.
 
     repositories {
         mavenCentral()
         flatDir {
-            dirs 'libs’
+            dirs 'libsâ€™
         }
     }
 
