@@ -1,32 +1,57 @@
 package drwtcp.ftc.com.cv;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
+import org.opencv.core.DMatch;
+import org.opencv.core.KeyPoint;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfDMatch;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfInt;
+import org.opencv.core.MatOfKeyPoint;
+import org.opencv.core.MatOfPoint2f;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
+import org.opencv.features2d.DescriptorExtractor;
+import org.opencv.features2d.DescriptorMatcher;
+import org.opencv.features2d.FeatureDetector;
+import org.opencv.features2d.Features2d;
 import org.opencv.imgproc.Imgproc;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
     private static final String  TAG                 = "OCVSample::Activity";
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
+    String _toastMsg = "";
 
     public static final int      VIEW_MODE_RGBA      = 0;
     public static final int      VIEW_MODE_HIST      = 1;
@@ -36,6 +61,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public static final int      VIEW_MODE_ZOOM      = 5;
     public static final int      VIEW_MODE_PIXELIZE  = 6;
     public static final int      VIEW_MODE_POSTERIZE = 7;
+    public static final int VIEW_MODE_FIND_KEYPOINTS = 8;
+    public static final int VIEW_MODE_FIND_MATCHES = 9;
 
     private MenuItem             mItemPreviewRGBA;
     private MenuItem             mItemPreviewHist;
@@ -45,6 +72,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private MenuItem             mItemPreviewZoom;
     private MenuItem             mItemPreviewPixelize;
     private MenuItem             mItemPreviewPosterize;
+    private MenuItem             mItemPreviewKeyPoints;
+    private MenuItem             mItemPreviewFindMatches;
     private CameraBridgeViewBase mOpenCvCameraView;
 
     private Size                 mSize0;
@@ -64,6 +93,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private Mat                  mSepiaKernel;
 
     public static int           viewMode = VIEW_MODE_RGBA;
+
+    Mat _descriptors;
+    MatOfKeyPoint _keypoints;
+    FeatureDetector _detector;
+    DescriptorExtractor descriptorExtractor;
+    DescriptorMatcher _matcher;
+    Mat _img1;
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -137,6 +173,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         mItemPreviewZoom  = menu.add("Zoom");
         mItemPreviewPixelize  = menu.add("Pixelize");
         mItemPreviewPosterize = menu.add("Posterize");
+        mItemPreviewKeyPoints = menu.add("KeyPoints");
+        mItemPreviewFindMatches = menu.add("FindMatches");
         return true;
     }
 
@@ -159,6 +197,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             viewMode = VIEW_MODE_PIXELIZE;
         else if (item == mItemPreviewPosterize)
             viewMode = VIEW_MODE_POSTERIZE;
+        else if (item == mItemPreviewKeyPoints)
+            viewMode = VIEW_MODE_FIND_KEYPOINTS;
+        else if (item == mItemPreviewFindMatches)
+            viewMode = VIEW_MODE_FIND_MATCHES;
         return true;
     }
 
@@ -308,12 +350,201 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 rgbaInnerWindow = rgba.submat(top, top + height, left, left + width);
                 Imgproc.Canny(rgbaInnerWindow, mIntermediateMat, 80, 90);
                 rgbaInnerWindow.setTo(new Scalar(0, 0, 0, 255), mIntermediateMat);
-                Core.convertScaleAbs(rgbaInnerWindow, mIntermediateMat, 1./16, 0);
+                Core.convertScaleAbs(rgbaInnerWindow, mIntermediateMat, 1. / 16, 0);
                 Core.convertScaleAbs(mIntermediateMat, rgbaInnerWindow, 16, 0);
                 rgbaInnerWindow.release();
                 break;
+
+            case MainActivity.VIEW_MODE_FIND_KEYPOINTS:
+                Mat gray1 = inputFrame.gray();
+
+                _descriptors = new Mat();
+                _keypoints = new MatOfKeyPoint();
+                _detector = FeatureDetector.create(FeatureDetector.ORB);
+                descriptorExtractor = DescriptorExtractor.create(DescriptorExtractor.ORB);
+                _matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_HAMMINGLUT);
+
+                _detector.detect(gray1, _keypoints, _descriptors);
+                descriptorExtractor.compute(gray1, _keypoints, _descriptors);
+
+                _img1 = gray1.clone();
+
+                Mat outputImage = new Mat();
+                Features2d.drawKeypoints(gray1, _keypoints, outputImage);
+                Log.i(TAG, "Found keypoints");
+                saveImg(outputImage);
+                viewMode = VIEW_MODE_RGBA;
+                showToast("Found keypoints.");
+                return outputImage;
+            case MainActivity.VIEW_MODE_FIND_MATCHES:
+                Log.i(TAG, "Start match");
+                Mat gray2 = inputFrame.gray();
+                Mat descriptors2 = new Mat();
+                MatOfKeyPoint keypoints2 = new MatOfKeyPoint();
+
+                if (_detector == null) {
+                    showToast("Detector is null. You must re-train.");
+                    break;
+                }
+
+                _detector.detect(gray2, keypoints2);
+                descriptorExtractor.compute(gray2, keypoints2, descriptors2);
+
+                MatOfDMatch  matches = new MatOfDMatch();
+                _matcher.match(_descriptors, descriptors2, matches);
+                Log.i(TAG, "Found Match");
+
+                List<DMatch> matches_list = matches.toList();
+                MatOfDMatch good_matches = new MatOfDMatch();
+                double max_dist = 0; double min_dist = 100;
+
+                //-- Quick calculation of max and min distances between keypoints
+                for( int i = 0; i < _descriptors.rows(); i++ )
+                {
+                    double dist = matches_list.get(i).distance;
+                    if (dist < min_dist)
+                        min_dist = dist;
+                    if (dist > max_dist )
+                        max_dist = dist;
+                }
+
+                //-- Draw only "good" matches (i.e. whose distance is less than 3*min_dist )
+                for( int i = 0; i < _descriptors.rows(); i++ )
+                {
+                    if( matches_list.get(i).distance < 3*min_dist ){
+                        MatOfDMatch temp = new MatOfDMatch();
+                        temp.fromArray(matches.toArray()[i]);
+                        good_matches.push_back(temp);
+                    }
+                }
+
+                //feature and connection colors
+                Scalar RED = new Scalar(255,0,0);
+                Scalar GREEN = new Scalar(0,255,0);
+                //output image
+                Mat outputImg = new Mat();
+
+                Log.i(TAG, "Found matches");
+                Features2d.drawMatches(_img1, _keypoints, gray2, keypoints2, matches, outputImg);
+                Log.i(TAG, "Saving");
+                //saveImg(outputImg);
+                Log.i(TAG, "Saved");
+
+                LinkedList<Point> objList = new LinkedList<Point>();
+                LinkedList<Point> sceneList = new LinkedList<Point>();
+                List<DMatch> good_matches_list = good_matches.toList();
+                Log.i(TAG, "Found this many matches: " + good_matches_list.size());
+
+                List<KeyPoint> keypoints2_List = keypoints2.toList();
+                List<KeyPoint> keypoints_List = _keypoints.toList();
+
+                for(int i = 0; i<good_matches_list.size(); i++)
+                {
+                    objList.addLast(keypoints_List.get(good_matches_list.get(i).queryIdx).pt);
+                    sceneList.addLast(keypoints2_List.get(good_matches_list.get(i).trainIdx).pt);
+                }
+
+                MatOfPoint2f obj = new MatOfPoint2f();
+                obj.fromList(objList);
+
+                MatOfPoint2f scene = new MatOfPoint2f();
+                scene.fromList(sceneList);
+
+                Mat hg = Calib3d.findHomography(obj, scene);
+
+                Mat obj_corners = new Mat(4,1,CvType.CV_32FC2);
+                Mat scene_corners = new Mat(4,1,CvType.CV_32FC2);
+
+                obj_corners.put(0, 0, new double[]{0, 0});
+                obj_corners.put(1, 0, new double[]{_img1.cols(), 0});
+                obj_corners.put(2, 0, new double[]{_img1.cols(), _img1.rows()});
+                obj_corners.put(3, 0, new double[]{0, _img1.rows()});
+                //obj_corners:input
+                Core.perspectiveTransform(obj_corners, scene_corners, hg);
+                int adj = _img1.cols();
+                Imgproc.line(outputImg, adjustPoint(adj, scene_corners.get(0, 0)), adjustPoint(adj, scene_corners.get(1, 0)), new Scalar(0, 255, 0), 4);
+                Imgproc.line(outputImg, adjustPoint(adj, scene_corners.get(1, 0)), adjustPoint(adj, scene_corners.get(2, 0)), new Scalar(0, 255, 0), 4);
+                Imgproc.line(outputImg, adjustPoint(adj, scene_corners.get(2, 0)), adjustPoint(adj, scene_corners.get(3, 0)), new Scalar(0, 255, 0), 4);
+                Imgproc.line(outputImg, adjustPoint(adj, scene_corners.get(3, 0)), adjustPoint(adj, scene_corners.get(0, 0)), new Scalar(0, 255, 0), 4);
+
+                Imgproc.line(outputImg, adjustPoint(adj, new double[]{100.0, 100.0}), adjustPoint(adj, new double[]{100.0, 200.0}), new Scalar(255, 0, 0), 4);
+                Imgproc.line(outputImg, adjustPoint(adj, new double[]{100.0, 200.0}), adjustPoint(adj, new double[]{200.0, 200.0}), new Scalar(255, 0, 0), 4);
+                Imgproc.line(outputImg, adjustPoint(adj, new double[]{200.0, 200.0}), adjustPoint(adj, new double[]{200.0, 100.0}), new Scalar(255, 0, 0), 4);
+                Imgproc.line(outputImg, adjustPoint(adj, new double[]{200.0, 100.0}), adjustPoint(adj, new double[]{100.0, 100.0}), new Scalar(255, 0, 0), 4);
+
+
+                viewMode = VIEW_MODE_RGBA;
+                saveImg(outputImg);
+                showToast("Done matching.");
         }
 
         return rgba;
+    }
+    private Point adjustPoint(int adj, double[] pt) {
+        pt[0] += adj;
+        return new Point(pt);
+    }
+    private void showToast(String msg) {
+        _toastMsg = msg;
+        MainActivity.this.runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, _toastMsg, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+    private static void saveImg(Mat outputImage) {
+        File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+        if (pictureFile == null){
+            Log.d(TAG, "Error creating media file, check storage permissions: ");
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            Bitmap m_bmp = Bitmap.createBitmap(outputImage.width(), outputImage.height(),
+                    Bitmap.Config.ARGB_8888);
+            Utils.matToBitmap(outputImage, m_bmp);
+            m_bmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+            fos.close();
+            Log.d(TAG, "Saved image as: " + pictureFile.getName());
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d(TAG, "Error accessing file: " + e.getMessage());
+        }
+    }
+    private static File getOutputMediaFile(int type){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "MyCameraApp");
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("MyCameraApp", "failed to create directory");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE){
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "IMG_"+ timeStamp + ".jpg");
+        } else if(type == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "VID_"+ timeStamp + ".mp4");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
     }
 }
