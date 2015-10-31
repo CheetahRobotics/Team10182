@@ -26,19 +26,23 @@ public class MainActivity extends Activity {
 
         @Override
         protected void onDraw(Canvas canvas) {
-            // TODO Auto-generated method stub
+            // setup canvas:
             super.onDraw(canvas);
-            int x = getWidth();
-            int y = getHeight();
-            int radius;
-            radius = 100;
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.WHITE);
+            paint.setColor(Color.BLACK);
             canvas.drawPaint(paint);
-            // Use Color.parseColor to define HTML colors
-            paint.setColor(Color.parseColor("#CD5C5C"));
-            canvas.drawCircle(x / 2, y / 2, radius, paint);
+
+            // declare variables:
+            int radius, x, y;
+
+            // set variables and draw:
+            radius = 100;
+            x = getWidth()/2;
+            y = getHeight()/2;
+            paint.setColor(Color.BLUE);
+            canvas.drawCircle(x, y, radius, paint);
+
         }
     }
     @Override
