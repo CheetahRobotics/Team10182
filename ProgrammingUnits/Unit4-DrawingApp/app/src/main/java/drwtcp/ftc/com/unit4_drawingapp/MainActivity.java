@@ -42,14 +42,7 @@ public class MainActivity extends Activity {
             x = getWidth()/2;
             y = getHeight()/2;
             paint.setColor(Color.BLUE);
-            for (int a = 0; a < 100; a++) {
-                x = y+ 20;
-                   ;addOnAttachStateChangeListener(6); x= x+20;
-                Log.i("test", "a is " + a);
-                Log.i("test", "x is " + x);
-                Log.i("test", "y is " + y);
-                canvas.drawCircle(x,y, radius, paint);
-            }
+            canvas.drawCircle(x, y, radius, paint);
         }
     }
     @Override
