@@ -52,6 +52,10 @@ public class BobsView extends ImageView implements Runnable {
         // Invalidate view at about 60fps
         postDelayed(this, 16);
     }
+    public int onUserTouch(int x, int y) {
+        Log.i("MainActivity", "Touch coordinates: " + String.valueOf(x) + "x" + String.valueOf(y));
+        return 0;
+    }
     public void run() {
         // Request a redraw of this view
         // onDraw(Canvas) will be called
