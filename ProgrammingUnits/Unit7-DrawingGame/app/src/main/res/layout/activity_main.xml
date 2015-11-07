@@ -16,4 +16,15 @@
 
         </drwtcp.ftc.com.unit7_drawinggame.BobsView>
 
+    <TextView
+        android:id="@+id/numMatches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:text="points go here."
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+
+
 </RelativeLayout>

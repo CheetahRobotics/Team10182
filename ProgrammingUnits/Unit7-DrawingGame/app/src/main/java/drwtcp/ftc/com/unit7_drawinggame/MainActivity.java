@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //                            String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
                     Log.i("MainActivity", "Touch coordinates: " +
                             String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
+                    ((BobsView) v).onUserTouch((int) event.getX(), (int) event.getY());
                 }
                 return true;
             }
