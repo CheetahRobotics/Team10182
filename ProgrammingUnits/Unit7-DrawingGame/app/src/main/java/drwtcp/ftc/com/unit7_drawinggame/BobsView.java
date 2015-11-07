@@ -28,8 +28,13 @@ public class BobsView extends ImageView implements Runnable {
     protected void onDraw(Canvas canvas) {
         if (_firstTime) {
             _balls.add(new Ball(getWidth(), getHeight(), 40, "Quaffle", 4, Color.RED, 1));
-            _balls.add(new Ball(getWidth(), getHeight(), 40, "Quaffle", 4, Color.RED, 1));
+            _balls.add(new Ball(getWidth(), getHeight(), 20, "Quaffle", 4, Color.RED, 1));
             _balls.add(new Ball(getWidth(), getHeight(), 10, "Golden Snitch", 20, Color.YELLOW, 5));
+            _balls.add(new Ball(getWidth(), getHeight(), 50, "kool guy7", 6, Color.GRAY, 2));
+            _balls.add(new Ball(getWidth(), getHeight(), 15, "kool dude8", 10, Color.GREEN, 3));
+            _balls.add(new Ball(getWidth(), getHeight(), 20, "jrcok", 10, Color.BLUE, 1));
+            _balls.add(new Ball(getWidth(), getHeight(), 12, "kool teacher5", 8, Color.MAGENTA, 2));
+            _balls.add(new Ball(getWidth(), getHeight(), 20, "kool dog1", 6, Color.YELLOW, 5));
             _firstTime = false;
         }
         super.onDraw(canvas);
