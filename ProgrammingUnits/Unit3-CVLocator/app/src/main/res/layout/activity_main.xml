@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <org.opencv.android.JavaCameraView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/image_manipulations_activity_surface_view" />
+
+    <TextView
+        android:id="@+id/numMatches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekbars"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:text="matches"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/ransacThreshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekbars"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:text="threshold"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:id="@+id/seekbars"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
+
+        <SeekBar
+            android:id="@+id/ransacSeekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:progress="3" >
+        </SeekBar>
+
+    </LinearLayout>
+
+</RelativeLayout>
