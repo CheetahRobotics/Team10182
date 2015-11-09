@@ -1,6 +1,6 @@
 This app uses the ORB Feature Detection Algorithm from Open CV.
 
-To start, point the camera at an object you'd like to track. Then hit 'Train'. The object should be on a solid background so that no extranuous feature points are detected.
+To start, point the camera at an object you'd like to track. Then hit 'Train'. The object should be on a solid background so that no extraneous feature points are detected.
 
 Then try moving the camera around and watch the app try to locate your object on the screen.
 
