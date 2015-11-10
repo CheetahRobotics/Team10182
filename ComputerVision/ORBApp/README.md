@@ -1,4 +1,6 @@
-This app uses the ORB Feature Detection Algorithm from Open CV.
+This android app uses the ORB Feature Detection Algorithm from Open CV.
+
+When you first run it, it will prompt you to download opencv from Google Play. This is painless and necessary.
 
 To start, point the camera at an object you'd like to track. Then hit 'Train'. The object should be on a solid background so that no extraneous feature points are detected.
 
@@ -11,4 +13,7 @@ There are 3 modes which are accessible from the '...' menu in the upper right:
 
 This app uses both 'cross check' and an arbitrary maximum distance to filter matches.
 
-
+To Dos:   
+- The homography doesn't work well if the target image is less than about 25% of the screen.   
+- As mentioned above the maximum distance used to filter matches is abitrary.   
+- 
