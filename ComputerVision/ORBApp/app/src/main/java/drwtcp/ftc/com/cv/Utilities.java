@@ -23,9 +23,10 @@ public class Utilities {
     private static final String  TAG                 = "ORBDetector::Utilities";
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
+
     public static String writeToFile(String fileNameRoot, String data) {
         try {
-            File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "ORBApp");
+            File mediaStorageDir = getStorageDirectory();
             File outputFile = File.createTempFile(fileNameRoot, ".yml", mediaStorageDir);
             FileOutputStream stream = new FileOutputStream(outputFile);
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(stream);
@@ -62,22 +63,7 @@ public class Utilities {
         }
     }
     private static File getOutputMediaFile(int type){
-        // To be safe, you should check that the SDCard is mounted
-        // using Environment.getExternalStorageState() before doing this.
-
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), "ORBApp");
-        // This location works best if you want the created images to be shared
-        // between applications and persist after your app has been uninstalled.
-
-        // Create the storage directory if it does not exist
-        if (! mediaStorageDir.exists()){
-            if (! mediaStorageDir.mkdirs()){
-                Log.d("MyCameraApp", "failed to create directory");
-                return null;
-            }
-        }
-
+        File mediaStorageDir = getStorageDirectory();
         // Create a media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
@@ -92,5 +78,23 @@ public class Utilities {
         }
 
         return mediaFile;
+    }
+    public static File getStorageDirectory() {
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "ORBApp");
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("ORBApp", "failed to create directory");
+                return null;
+            }
+        }
+        return mediaStorageDir;
     }
 }
