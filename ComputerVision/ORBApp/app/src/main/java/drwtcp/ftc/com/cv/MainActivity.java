@@ -61,10 +61,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
     public static int           viewMode = VIEW_MODE_RGBA;
 
-    SeekBar _seekBar;
+    SeekBar _seekBarRansac;
+    SeekBar _seekBarMinMax;
     TextView _minDistanceTextView;
     TextView _numMatchesTextView;
     TextView _ransacThresholdTextView;
+    TextView _maxMinTextView;
 
     DescriptorExtractor descriptorExtractor;
     DescriptorMatcher _matcher;
@@ -81,6 +83,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
     String _numMatches;
     int _minDistance;
     int _ransacThreshold = 3;
+    int _maxMin = 50;
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -114,11 +117,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.image_manipulations_activity_surface_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
-        _seekBar = (SeekBar) findViewById(R.id.ransacSeekBar);
+        _seekBarRansac = (SeekBar) findViewById(R.id.ransacSeekBar);
+        _seekBarMinMax = (SeekBar) findViewById(R.id.maxMinSeekBar);
         _ransacThresholdTextView = (TextView) findViewById(R.id.ransacThreshold);
+        _maxMinTextView = (TextView) findViewById(R.id.maxMinValue);
         _numMatchesTextView = (TextView) findViewById(R.id.numMatches);
         _minDistanceTextView = (TextView) findViewById(R.id.minValue);
-        _seekBar.setOnSeekBarChangeListener(this);
+        _seekBarRansac.setOnSeekBarChangeListener(this);
+        _seekBarMinMax.setOnSeekBarChangeListener(this);
     }
 
     @Override
@@ -285,7 +291,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         //-- Draw only "good" matches (i.e. whose distance is less than 3*min_dist )
         List<DMatch> good_matches_list = new ArrayList<>();
         for (int i = 0; i < filtered_list.size(); i++) {
-            if (filtered_list.get(i).distance < 60) {
+            if (filtered_list.get(i).distance < _maxMin) {
                 good_matches_list.add(filtered_list.get(i));
             }
         }
@@ -407,15 +413,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
                 _numMatchesTextView.setText(String.valueOf(_numMatches));
                 _minDistanceTextView.setText(String.valueOf(_minDistance));
                 _ransacThresholdTextView.setText(String.valueOf(_ransacThreshold));
-
+                _maxMinTextView.setText(String.valueOf(_maxMin));
             }
         });
     }
     //method for when the progress bar is changed
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-        _ransacThreshold = progress;
-//        Log.i(TAG, "ransace t = " + _ransacThreshold);
+        if (seekBar.getId() == R.id.maxMinSeekBar)
+            _maxMin = progress;
+        else
+            _ransacThreshold = progress;
     }
     //method for when the progress bar is first touched
     public void onStartTrackingTouch(SeekBar seekBar) {

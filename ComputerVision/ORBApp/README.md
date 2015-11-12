@@ -13,8 +13,11 @@ There are 3 modes which are accessible from the '...' menu in the upper right:
 
 This app uses both 'cross check' and an arbitrary maximum distance to filter matches.
 
+There are 2 Seek Bars in the app:
+- The first one controls the max distance beyond which a match will be excluded.
+- The second one controls the Ransac threshold. It is only used for Homography. (Drawing the box).
+
 To Dos:   
 - The homography doesn't work well if the target image is less than about 25% of the screen.   
-- As mentioned above the maximum distance used to filter matches is abitrary.   
 
 
