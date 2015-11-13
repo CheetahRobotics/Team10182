@@ -51,7 +51,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
     public static final int SHOW_KEYPOINTS = 11;
 
     private MenuItem             mItemPreviewRGBA;
-    private MenuItem mItemTrainDetector;
     private MenuItem mItemShowMatches;
     private MenuItem             mItemShowBox;
     private MenuItem             mItemShowKeypoints;
@@ -59,7 +58,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
     private Mat                  mIntermediateMat;
 
-    public static int           viewMode = VIEW_MODE_RGBA;
+    public static int _viewMode = VIEW_MODE_RGBA;
 
     SeekBar _seekBarRansac;
     SeekBar _seekBarMinMax;
@@ -77,6 +76,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
     Mat _descriptors2;
     MatOfKeyPoint _keypoints2;
+
+    int _lastViewMode = VIEW_MODE_RGBA;
+    boolean _takePicture = false;
 
     // GUI Controls
     Mat _img1;
@@ -169,17 +171,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(TAG, "called onOptionsItemSelected; selected item: " + item);
         if (item == mItemPreviewRGBA)
-            viewMode = VIEW_MODE_RGBA;
-        else if (item == mItemTrainDetector)
-            viewMode = TRAIN;
+            _viewMode = VIEW_MODE_RGBA;
         else if (item == mItemShowMatches)
-            viewMode = SHOW_MATCHES;
+            _viewMode = SHOW_MATCHES;
         else if (item == mItemShowBox)
-            viewMode = SHOW_BOX;
+            _viewMode = SHOW_BOX;
         else if (item == mItemShowKeypoints)
-            viewMode = SHOW_KEYPOINTS;
+            _viewMode = SHOW_KEYPOINTS;
         else if (item.getItemId() == R.id.action_train)
-            viewMode = TRAIN;
+            _viewMode = TRAIN;
+        else if (item.getItemId() == R.id.action_screen_shot)
+            _takePicture = true;
         return true;
     }
 
@@ -210,12 +212,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         int width = cols * 3 / 4;
         int height = rows * 3 / 4;
 
-        switch (MainActivity.viewMode) {
+        switch (MainActivity._viewMode) {
             case MainActivity.VIEW_MODE_RGBA:
                 break;
 
             case MainActivity.TRAIN:
-                viewMode = SHOW_MATCHES;
+                _viewMode = SHOW_MATCHES;
                 return trainORBDetector(inputFrame);
             case MainActivity.SHOW_MATCHES:
             case MainActivity.SHOW_BOX:
@@ -224,13 +226,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
                     Mat gray2 = inputFrame.gray();
                     List<DMatch> good_matches = findMatches(inputFrame);
                     if (good_matches == null) return gray2;
-                    if (MainActivity.viewMode == MainActivity.SHOW_BOX)
+                    if (MainActivity._viewMode == MainActivity.SHOW_BOX)
                         return drawBox(gray2, _keypoints2, good_matches);
-                    if (MainActivity.viewMode == MainActivity.SHOW_MATCHES)
+                    if (MainActivity._viewMode == MainActivity.SHOW_MATCHES)
                         return drawMatches(gray2, _keypoints2, good_matches, (double) gray2.height(), (double) gray2.width());
                     else {
                         Mat outputImage = new Mat();
                         Features2d.drawKeypoints(gray2, _keypoints2, outputImage);
+                        takeScreenShot(outputImage);
                         return outputImage;
                     }
                 }
@@ -244,7 +247,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
         return rgba;
     }
-
+    private void takeScreenShot(Mat image) {
+        if (_takePicture) {
+            _takePicture = false;
+            Utilities.saveImg(image);
+            showToast("Screen Shot saved to device.");
+        }
+    }
     private List<DMatch> findMatches(CvCameraViewFrame inputFrame) {
 //        Log.i(TAG, "Start match");
         Mat gray2 = inputFrame.gray();
@@ -320,6 +329,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         Mat resizedImg = new Mat();
         Imgproc.resize(outputImg, resizedImg, new Size(cols, rows));
 //        Imgproc.resize(outputImg, resizedImg, new Size(), cols/outputImg.width(), rows/outputImg.height(), Imgproc.INTER_NEAREST);
+        takeScreenShot(resizedImg);
+
         return resizedImg;
     }
     private Mat drawBox(Mat gray2, MatOfKeyPoint _keypoints2, List<DMatch> good_matches_list) {
@@ -361,6 +372,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         Imgproc.line(outputImage, adjustPoint(adj, scene_corners.get(3, 0)), adjustPoint(adj, scene_corners.get(0, 0)), new Scalar(0, 255, 0), 4);
 
         Log.i(TAG, "Done matching");
+        takeScreenShot(outputImage);
         return outputImage;
     }
     private Mat trainORBDetector(CvCameraViewFrame inputFrame) {
