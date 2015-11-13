@@ -15,7 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/numMatches"
         android:layout_margin="5dp"
-        android:text="All/X-Check/MinMax"
+        android:text="All/XCheck/MinMax:"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="10sp" />
 
@@ -37,7 +37,7 @@
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/minValue"
         android:layout_margin="5dp"
-        android:text="Min Distance"
+        android:text="Min Distance:"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="10sp" />
 
@@ -111,7 +111,7 @@
                 android:layout_height="40dip"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="5dp"
-                android:text="Ransace Threshold"
+                android:text="RANSAC Threshold"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="10sp" />
 

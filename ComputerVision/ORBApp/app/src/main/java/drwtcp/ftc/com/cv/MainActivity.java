@@ -267,14 +267,28 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         _detector.detect(gray2, _keypoints2);
         descriptorExtractor.compute(gray2, _keypoints2, _descriptors2);
 
-        MatOfDMatch matches12 = new MatOfDMatch();
-        _matcher.match(_descriptors, _descriptors2, matches12);
-        List<DMatch> matches12_list = matches12.toList();
+//        MatOfDMatch matches12 = new MatOfDMatch();
+//        _matcher.match(_descriptors, _descriptors2, matches12);
+//        List<DMatch> matches12_list = matches12.toList();
+        List<MatOfDMatch> knnmatches12 = new ArrayList<>();
+        _matcher.knnMatch(_descriptors, _descriptors2, knnmatches12, 15);
+        List<DMatch> matches12_list = new ArrayList<>();
+        for (MatOfDMatch mat : knnmatches12) {
+            matches12_list.addAll(mat.toList());
+        }
 
         // Cross-check. (see http://answers.opencv.org/question/15/how-to-get-good-matches-from-the-orb-feature-detection-algorithm/)
-        MatOfDMatch matches21 = new MatOfDMatch();
-        _matcher.match( _descriptors2, _descriptors, matches21 );
-        List<DMatch> matches21_list = matches21.toList();
+//        MatOfDMatch matches21 = new MatOfDMatch();
+//        _matcher.match( _descriptors2, _descriptors, matches21 );
+//        List<DMatch> matches21_list = matches21.toList();
+        List<MatOfDMatch> knnmatches21 = new ArrayList<>();
+        _matcher.knnMatch(_descriptors2, _descriptors, knnmatches21, 15);
+        List<DMatch> matches21_list = new ArrayList<>();
+        for (MatOfDMatch mat : knnmatches21) {
+            matches21_list.addAll(mat.toList());
+        }
+
+
         List<DMatch> filtered_list = new ArrayList<>();
         for(int i = 0; i < matches12_list.size(); i++ )
         {
@@ -287,6 +301,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
         double max_dist = 0;
         double min_dist = 100;
+
+//        filtered_list = matches12_list;
 
         //-- Quick calculation of max and min distances between keypoints
         for (int i = 0; i < filtered_list.size(); i++) {
@@ -380,7 +396,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
         _descriptors = new Mat();
         _keypoints = new MatOfKeyPoint();
-        _detector = FeatureDetector.create(FeatureDetector.ORB);
+        _detector = FeatureDetector.create(FeatureDetector.BRISK);
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "ORBApp");
         String fileName = mediaStorageDir.getPath() + "/orb_params2.yml";
