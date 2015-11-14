@@ -11,6 +11,27 @@
         android:title="Train"
         android:showAsAction="always" />
 
+    <item android:id="@+id/model_selection"
+        android:title="Model: ORB"
+        android:orderInCategory="100"
+        android:showAsAction="always">
+        <menu>
+            <group
+                android:checkableBehavior="single"
+                >
+                <item android:id="@+id/ORB"
+                    android:title="ORB"
+                    android:orderInCategory="100"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/BRISK"
+                    android:title="BRISK"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
+            </group>
+        </menu>
+    </item>
 
     <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
         <!--android:orderInCategory="100" android:showAsAction="never" />-->

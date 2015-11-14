@@ -87,6 +87,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
     int _ransacThreshold = 3;
     int _maxMin = 50;
 
+    MenuItem _modelMenu;
+    int _featureDetectorID = FeatureDetector.ORB;
+    int _descriptorExtractorID = DescriptorExtractor.ORB;
+
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -182,6 +186,11 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             _viewMode = TRAIN;
         else if (item.getItemId() == R.id.action_screen_shot)
             _takePicture = true;
+        else {
+            int id = item.getItemId();
+            setModel(id);
+            item.setChecked(true);
+        }
         return true;
     }
 
@@ -218,7 +227,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
             case MainActivity.TRAIN:
                 _viewMode = SHOW_MATCHES;
-                return trainORBDetector(inputFrame);
+                return trainFeatureDetector(inputFrame);
             case MainActivity.SHOW_MATCHES:
             case MainActivity.SHOW_BOX:
             case MainActivity.SHOW_KEYPOINTS:
@@ -391,12 +400,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         takeScreenShot(outputImage);
         return outputImage;
     }
-    private Mat trainORBDetector(CvCameraViewFrame inputFrame) {
+    private Mat trainFeatureDetector(CvCameraViewFrame inputFrame) {
         Mat gray1 = inputFrame.gray();
 
         _descriptors = new Mat();
         _keypoints = new MatOfKeyPoint();
-        _detector = FeatureDetector.create(FeatureDetector.BRISK);
+        _detector = FeatureDetector.create(_featureDetectorID);
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "ORBApp");
         String fileName = mediaStorageDir.getPath() + "/orb_params2.yml";
@@ -407,7 +416,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         String tempFileName = Utilities.writeToFile("tempFile", "%YAML:1.0\nscaleFactor: 1.1\nnLevels: 8\nfirstLevel: 0\nedgeThreshold: 31\npatchSize: 31\n");
         _detector.read(tempFileName);
 
-        descriptorExtractor = DescriptorExtractor.create(DescriptorExtractor.ORB);
+        descriptorExtractor = DescriptorExtractor.create(_descriptorExtractorID);
         fileName = mediaStorageDir.getPath() + "/extractor_params2.yml";
         descriptorExtractor.write(fileName);
         fileName = mediaStorageDir.getPath() + "/extractor_params2.xml";
@@ -424,7 +433,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         Features2d.drawKeypoints(gray1, _keypoints, outputImage);
         Log.i(TAG, "Found keypoints: " + _keypoints.toList().size());
         Utilities.saveImg(outputImage);
-        showToast("Found keypoints.");
+        showToast("Trained " +  _modelMenu.getTitle());
         fileName = mediaStorageDir.getPath() + "/orb_params.yml";
         _detector.write(fileName);
         return outputImage;
@@ -469,5 +478,30 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
             }
         });
+    }
+    public boolean onPrepareOptionsMenu(Menu menu) {
+//        _modeMenuItem = menu.findItem(R.id.action_settings);
+        _modelMenu = menu.findItem(R.id.model_selection);
+        MenuItem item = menu.findItem(R.id.ORB);
+        item.setChecked(true);
+        return super.onPrepareOptionsMenu(menu);
+    }
+    private void setModel(int id) {
+        if (id == R.id.ORB) {
+            _featureDetectorID = FeatureDetector.ORB;
+            _descriptorExtractorID = DescriptorExtractor.ORB;
+            _modelMenu.setTitle("Model: ORB");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
+        if (id == R.id.BRISK) {
+            _featureDetectorID = FeatureDetector.BRISK;
+            _descriptorExtractorID = DescriptorExtractor.BRISK;
+            _modelMenu.setTitle("Model: BRISK");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
     }
 }
