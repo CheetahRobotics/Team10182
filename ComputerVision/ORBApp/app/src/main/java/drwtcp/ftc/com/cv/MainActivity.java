@@ -87,6 +87,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
     int _ransacThreshold = 3;
     int _maxMin = 50;
 
+    Menu _menu;
     MenuItem _modelMenu;
     int _featureDetectorID = FeatureDetector.ORB;
     int _descriptorExtractorID = DescriptorExtractor.ORB;
@@ -186,10 +187,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             _viewMode = TRAIN;
         else if (item.getItemId() == R.id.action_screen_shot)
             _takePicture = true;
-        else {
+        else if (item.getItemId() == R.id.ORB || item.getItemId() == R.id.BRISK) {
             int id = item.getItemId();
             setModel(id);
             item.setChecked(true);
+        }
+        else {
+            item.setChecked(!item.isChecked());
         }
         return true;
     }
@@ -276,42 +280,58 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         _detector.detect(gray2, _keypoints2);
         descriptorExtractor.compute(gray2, _keypoints2, _descriptors2);
 
-//        MatOfDMatch matches12 = new MatOfDMatch();
-//        _matcher.match(_descriptors, _descriptors2, matches12);
-//        List<DMatch> matches12_list = matches12.toList();
-        List<MatOfDMatch> knnmatches12 = new ArrayList<>();
-        _matcher.knnMatch(_descriptors, _descriptors2, knnmatches12, 15);
-        List<DMatch> matches12_list = new ArrayList<>();
-        for (MatOfDMatch mat : knnmatches12) {
-            matches12_list.addAll(mat.toList());
+        MenuItem knnCheckBox = _menu.findItem(R.id.KNN);
+        MenuItem crossCheckCheckBox = _menu.findItem(R.id.CrossCheck);
+
+        List<DMatch> matches12_list;
+        if (knnCheckBox.isChecked()) {
+            List<MatOfDMatch> knnmatches12 = new ArrayList<>();
+            _matcher.knnMatch(_descriptors, _descriptors2, knnmatches12, 15);
+            matches12_list = new ArrayList<>();
+            for (MatOfDMatch mat : knnmatches12) {
+                matches12_list.addAll(mat.toList());
+            }
+        }
+        else {
+            MatOfDMatch matches12 = new MatOfDMatch();
+            _matcher.match(_descriptors, _descriptors2, matches12);
+            matches12_list = matches12.toList();
         }
 
-        // Cross-check. (see http://answers.opencv.org/question/15/how-to-get-good-matches-from-the-orb-feature-detection-algorithm/)
-//        MatOfDMatch matches21 = new MatOfDMatch();
-//        _matcher.match( _descriptors2, _descriptors, matches21 );
-//        List<DMatch> matches21_list = matches21.toList();
-        List<MatOfDMatch> knnmatches21 = new ArrayList<>();
-        _matcher.knnMatch(_descriptors2, _descriptors, knnmatches21, 15);
-        List<DMatch> matches21_list = new ArrayList<>();
-        for (MatOfDMatch mat : knnmatches21) {
-            matches21_list.addAll(mat.toList());
+        List<DMatch> filtered_list;
+        if (crossCheckCheckBox.isChecked()) {
+            // Cross-check. (see http://answers.opencv.org/question/15/how-to-get-good-matches-from-the-orb-feature-detection-algorithm/)
+            filtered_list = new ArrayList<>();
+            List<DMatch> matches21_list;
+            if (knnCheckBox.isChecked()) {
+                List<MatOfDMatch> knnmatches21 = new ArrayList<>();
+                _matcher.knnMatch(_descriptors2, _descriptors, knnmatches21, 15);
+                matches21_list = new ArrayList<>();
+                for (MatOfDMatch mat : knnmatches21) {
+                    matches21_list.addAll(mat.toList());
+                }
+            }
+            else {
+                MatOfDMatch matches21 = new MatOfDMatch();
+                _matcher.match( _descriptors2, _descriptors, matches21 );
+                matches21_list = matches21.toList();
+            }
+            for(int i = 0; i < matches12_list.size(); i++ )
+            {
+                DMatch forward = matches12_list.get(i);
+                if (forward.trainIdx > matches21_list.size() - 1) continue;
+                DMatch backward = matches21_list.get(forward.trainIdx);
+                if( backward.trainIdx == forward.queryIdx )
+                    filtered_list.add( forward );
+            }
         }
-
-
-        List<DMatch> filtered_list = new ArrayList<>();
-        for(int i = 0; i < matches12_list.size(); i++ )
-        {
-            DMatch forward = matches12_list.get(i);
-            if (forward.trainIdx > matches21_list.size() - 1) continue;
-            DMatch backward = matches21_list.get(forward.trainIdx);
-            if( backward.trainIdx == forward.queryIdx )
-                filtered_list.add( forward );
+        else {
+            filtered_list = matches12_list;
         }
 
         double max_dist = 0;
         double min_dist = 100;
 
-//        filtered_list = matches12_list;
 
         //-- Quick calculation of max and min distances between keypoints
         for (int i = 0; i < filtered_list.size(); i++) {
@@ -481,6 +501,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
     }
     public boolean onPrepareOptionsMenu(Menu menu) {
 //        _modeMenuItem = menu.findItem(R.id.action_settings);
+        _menu = menu;
         _modelMenu = menu.findItem(R.id.model_selection);
         MenuItem item = menu.findItem(R.id.ORB);
         item.setChecked(true);

@@ -32,6 +32,29 @@
             </group>
         </menu>
     </item>
+    <item android:id="@+id/match_style"
+        android:title="Match Style"
+        android:orderInCategory="100"
+        android:showAsAction="always">
+        <menu>
+            <group
+                android:checkableBehavior="all"
+                >
+                <item android:id="@+id/KNN"
+                    android:title="KNN"
+                    android:checked="false"
+                    android:orderInCategory="100"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/CrossCheck"
+                    android:title="Cross Check"
+                    android:checked="false"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
+            </group>
+        </menu>
+    </item>
 
     <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
         <!--android:orderInCategory="100" android:showAsAction="never" />-->
