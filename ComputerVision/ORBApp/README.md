@@ -17,9 +17,9 @@ You can choose one of 3 algorithms:
 3. BRISK Detector, BRIEF Descriptor Extractor.
 
 There are several matching modes you can experiment with.   
-1. KNN: K-nearest neighbor matcher. Finds the 15 nearest matches for each feature.
-2. Ratio Check: Finds the 2 nearest neighbors and rejects any feature where the 2 nearest matches are too similar.
-3. Cross-check: Filters matches to those which agree backwards and forwards.   
+1. KNN: K-nearest neighbor matcher. Finds the 15 nearest matches for each feature.   
+2. Ratio Check: Finds the 2 nearest neighbors and rejects any feature where the 2 nearest matches are too similar.     
+3. Cross-check: Filters matches to those which agree backwards and forwards.      
 
 Ratio Check, Cross-Check filter matches, reduce the total count. You can also filter on 'distance' which is really a quality measure, using the slider.   
 
