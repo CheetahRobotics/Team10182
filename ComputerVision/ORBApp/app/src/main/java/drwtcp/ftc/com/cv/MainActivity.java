@@ -98,6 +98,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS:
                 {
+                    System.loadLibrary("nonfree");
                     Log.i(TAG, "OpenCV loaded successfully");
                     mOpenCvCameraView.enableView();
                 } break;
@@ -187,13 +188,15 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             _viewMode = TRAIN;
         else if (item.getItemId() == R.id.action_screen_shot)
             _takePicture = true;
-        else if (item.getItemId() == R.id.ORB || item.getItemId() == R.id.BRISK) {
+        else if (item.getItemId() == R.id.ORB || item.getItemId() == R.id.BRISK || item.getItemId() == R.id.ORBFREAK) {
             int id = item.getItemId();
             setModel(id);
             item.setChecked(true);
         }
         else {
             item.setChecked(!item.isChecked());
+            if (item.getItemId() == R.id.Ratio && item.isChecked())
+                _menu.findItem(R.id.KNN).setChecked(true);  // KNN must be checked if running ratio test.
         }
         return true;
     }
@@ -282,14 +285,24 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
 
         MenuItem knnCheckBox = _menu.findItem(R.id.KNN);
         MenuItem crossCheckCheckBox = _menu.findItem(R.id.CrossCheck);
-
         List<DMatch> matches12_list;
+        boolean runRatioTest = _menu.findItem(R.id.Ratio).isChecked();
+        int nNearestNeighbors = runRatioTest ? 2 : 15;
         if (knnCheckBox.isChecked()) {
             List<MatOfDMatch> knnmatches12 = new ArrayList<>();
-            _matcher.knnMatch(_descriptors, _descriptors2, knnmatches12, 15);
+            _matcher.knnMatch(_descriptors, _descriptors2, knnmatches12, nNearestNeighbors);
             matches12_list = new ArrayList<>();
-            for (MatOfDMatch mat : knnmatches12) {
-                matches12_list.addAll(mat.toList());
+            if (runRatioTest) {
+                for (MatOfDMatch mat : knnmatches12) {
+                    List<DMatch> tempList = mat.toList();
+                    if (tempList.get(0).distance < .75 * tempList.get(1).distance)
+                        matches12_list.add(tempList.get(0));
+                }
+            }
+            else {
+                for (MatOfDMatch mat : knnmatches12) {
+                    matches12_list.addAll(mat.toList());
+                }
             }
         }
         else {
@@ -305,10 +318,22 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             List<DMatch> matches21_list;
             if (knnCheckBox.isChecked()) {
                 List<MatOfDMatch> knnmatches21 = new ArrayList<>();
-                _matcher.knnMatch(_descriptors2, _descriptors, knnmatches21, 15);
+                _matcher.knnMatch(_descriptors2, _descriptors, knnmatches21, nNearestNeighbors);
                 matches21_list = new ArrayList<>();
-                for (MatOfDMatch mat : knnmatches21) {
-                    matches21_list.addAll(mat.toList());
+//                for (MatOfDMatch mat : knnmatches21) {
+//                    matches21_list.addAll(mat.toList());
+//                }
+                if (runRatioTest) {
+                    for (MatOfDMatch mat : knnmatches21) {
+                        List<DMatch> tempList = mat.toList();
+                        if (tempList.get(0).distance < .75 * tempList.get(1).distance)
+                            matches21_list.add(tempList.get(0));
+                    }
+                }
+                else {
+                    for (MatOfDMatch mat : knnmatches21) {
+                        matches21_list.addAll(mat.toList());
+                    }
                 }
             }
             else {
@@ -520,6 +545,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             _featureDetectorID = FeatureDetector.BRISK;
             _descriptorExtractorID = DescriptorExtractor.BRISK;
             _modelMenu.setTitle("Model: BRISK");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
+        if (id == R.id.ORBFREAK) {
+            _featureDetectorID = FeatureDetector.ORB;
+            _descriptorExtractorID = DescriptorExtractor.FREAK;
+            _modelMenu.setTitle("Model: ORB/FREAK");
             _detector = null;   // force user to retrain.
             _viewMode = VIEW_MODE_RGBA;
             showToast("Model updated, please press 'Train'.");

@@ -20,12 +20,17 @@
                 android:checkableBehavior="single"
                 >
                 <item android:id="@+id/ORB"
-                    android:title="ORB"
+                    android:title="ORB/ORB"
+                    android:orderInCategory="100"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/ORBFREAK"
+                    android:title="ORB/FREAK"
                     android:orderInCategory="100"
                     android:showAsAction="never" />
 
                 <item android:id="@+id/BRISK"
-                    android:title="BRISK"
+                    android:title="BRISK/BRISK"
                     android:orderInCategory="200"
                     android:showAsAction="never" />
 
@@ -42,6 +47,12 @@
                 >
                 <item android:id="@+id/KNN"
                     android:title="KNN"
+                    android:checked="false"
+                    android:orderInCategory="100"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/Ratio"
+                    android:title="Ratio Test"
                     android:checked="false"
                     android:orderInCategory="100"
                     android:showAsAction="never" />

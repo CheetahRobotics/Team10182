@@ -83,7 +83,7 @@
             android:layout_height="40dip"
             android:layout_toLeftOf="@+id/maxMinValue"
             android:layout_toRightOf="@+id/maxMniLabel"
-            android:max="100"
+            android:max="200"
             android:progress="30" >
         </SeekBar>
 
