@@ -34,6 +34,26 @@
                     android:orderInCategory="200"
                     android:showAsAction="never" />
 
+                <item android:id="@+id/SIFT"
+                    android:title="SIFT/SIFT"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/SURF"
+                    android:title="SURF/SURF"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/SURFBRIEF"
+                    android:title="SURF/BRIEF"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/STAR"
+                    android:title="STAR/BRIEF"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
             </group>
         </menu>
     </item>

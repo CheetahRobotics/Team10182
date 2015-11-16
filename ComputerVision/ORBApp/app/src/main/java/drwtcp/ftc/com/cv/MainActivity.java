@@ -188,7 +188,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             _viewMode = TRAIN;
         else if (item.getItemId() == R.id.action_screen_shot)
             _takePicture = true;
-        else if (item.getItemId() == R.id.ORB || item.getItemId() == R.id.BRISK || item.getItemId() == R.id.ORBFREAK) {
+        else if (item.getItemId() == R.id.ORB || item.getItemId() == R.id.BRISK || item.getItemId() == R.id.ORBFREAK
+                || item.getItemId() == R.id.SIFT || item.getItemId() == R.id.SURF || item.getItemId() == R.id.STAR|| item.getItemId() == R.id.SURFBRIEF) {
             int id = item.getItemId();
             setModel(id);
             item.setChecked(true);
@@ -467,7 +468,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
         fileName = mediaStorageDir.getPath() + "/extractor_params2.xml";
         descriptorExtractor.write(fileName);
 
-        _matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_HAMMINGLUT);
+        if (_featureDetectorID == DescriptorExtractor.SIFT || _featureDetectorID == DescriptorExtractor.SURF)
+            _matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_SL2);
+        else
+            _matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_HAMMINGLUT);
 
         _detector.detect(gray1, _keypoints, _descriptors);
         descriptorExtractor.compute(gray1, _keypoints, _descriptors);
@@ -553,6 +557,38 @@ public class MainActivity extends Activity implements CvCameraViewListener2, See
             _featureDetectorID = FeatureDetector.ORB;
             _descriptorExtractorID = DescriptorExtractor.FREAK;
             _modelMenu.setTitle("Model: ORB/FREAK");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
+        if (id == R.id.SIFT) {
+            _featureDetectorID = FeatureDetector.SIFT;
+            _descriptorExtractorID = DescriptorExtractor.SIFT;
+            _modelMenu.setTitle("Model: SIFT");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
+        if (id == R.id.SURF) {
+            _featureDetectorID = FeatureDetector.SURF;
+            _descriptorExtractorID = DescriptorExtractor.SURF;
+            _modelMenu.setTitle("Model: SURF");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
+        if (id == R.id.STAR) {
+            _featureDetectorID = FeatureDetector.STAR;
+            _descriptorExtractorID = DescriptorExtractor.BRIEF;
+            _modelMenu.setTitle("Model: STAR/BRIEF");
+            _detector = null;   // force user to retrain.
+            _viewMode = VIEW_MODE_RGBA;
+            showToast("Model updated, please press 'Train'.");
+        }
+        if (id == R.id.SURFBRIEF) {
+            _featureDetectorID = FeatureDetector.SURF;
+            _descriptorExtractorID = DescriptorExtractor.BRIEF;
+            _modelMenu.setTitle("Model: SURF/BRIEF");
             _detector = null;   // force user to retrain.
             _viewMode = VIEW_MODE_RGBA;
             showToast("Model updated, please press 'Train'.");
