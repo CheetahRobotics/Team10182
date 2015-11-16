@@ -1,4 +1,4 @@
-This android app uses the ORB Feature Detection Algorithm from Open CV.
+This android app uses various Feature Detection Algorithms from Open CV. It is called 'Orb App' but it also has a BRISK/BRIEF implementation.
 
 When you first run it, it will prompt you to download opencv from Google Play. This is painless and necessary.
 
@@ -11,7 +11,17 @@ There are 3 modes which are accessible from the '...' menu in the upper right:
 2. Box mode. This uses findHomography() routine to draw a box around the object. Not perfect if the object is too small. Designed for planar objects.   
 3. Draw key points. Just shows you the detected key points.   
 
-This app uses both 'cross check' and an arbitrary maximum distance to filter matches.
+You can choose one of 3 algorithms:   
+1. ORB Detector, ORB Descriptor Extractor.   
+2. ORB Detector, FREAK Descriptor Extractor.   
+3. BRISK Detector, BRIEF Descriptor Extractor.
+
+There are several matching modes you can experiment with.   
+1. KNN: K-nearest neighbor matcher. Finds the 15 nearest matches for each feature.   
+2. Ratio Check: Finds the 2 nearest neighbors and rejects any feature where the 2 nearest matches are too similar.     
+3. Cross-check: Filters matches to those which agree backwards and forwards.      
+
+Ratio Check, Cross-Check filter matches, reduce the total count. You can also filter on 'distance' which is really a quality measure, using the slider.   
 
 There are 2 Seek Bars in the app:
 - The first one controls the max distance beyond which a match will be excluded.
