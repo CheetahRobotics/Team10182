@@ -46,6 +46,16 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     private Scalar               CONTOUR_COLOR;
     String _toastMsg = "";
 
+    private int _colStartPink = 4;
+    private int _rowStartPink = 4;
+    private int _colEndPink = 68;
+    private int _rowEndPink = 68;
+
+    private int _colStartBlue = 4;
+    private int _rowStartBlue = 104;
+    private int _colEndBlue = 68;
+    private int _rowEndBlue = 168;
+
     private CameraBridgeViewBase mOpenCvCameraView;
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
@@ -145,7 +155,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
         drawRectangleAroundContours(contours,  new Scalar(255, 0, 0));
         
-        Mat colorLabelPink = mRgba.submat(4, 68, 4, 68);
+        Mat colorLabelPink = mRgba.submat(_rowStartPink, _rowEndPink, _colStartPink, _colEndPink);
         colorLabelPink.setTo(mBlobColorRgbaPink);
         Mat spectrumLabelPink = mRgba.submat(4, 4 + mSpectrumPink.rows(), 70, 70 + mSpectrumPink.cols());
         mSpectrumPink.copyTo(spectrumLabelPink);
@@ -155,7 +165,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
         drawRectangleAroundContours(contours,  new Scalar(0, 0, 255));
 
-        Mat colorLabelBlue = mRgba.submat(104, 168, 4, 68);
+        Mat colorLabelBlue = mRgba.submat(_rowStartBlue, _rowEndBlue, _colStartBlue, _colEndBlue);
         colorLabelBlue.setTo(mBlobColorRgbaBlue);
         Mat spectrumLabelBlue = mRgba.submat(104, 104 + mSpectrumBlue.rows(), 70, 70 + mSpectrumBlue.cols());
         mSpectrumBlue.copyTo(spectrumLabelBlue);
@@ -210,6 +220,20 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         int y = (int) event.getY() - yOffset;
 
         Log.i(TAG, "Touch image coordinates: (" + x + ", " + y + ")");
+
+        if (y >= _rowStartPink && y <= _rowEndPink &&
+                x >= _colStartPink && y <= _colEndPink)
+        {
+            showToast("Calibrating Pink");
+        }
+        if (y >= _rowStartBlue && y <= _rowEndBlue &&
+                x >= _colStartBlue && y <= _colEndBlue)
+        {
+            showToast("Calibrating Blue");
+        }
+
+
+
 
         if ((x < 0) || (y < 0) || (x > cols) || (y > rows)) return false;
 
