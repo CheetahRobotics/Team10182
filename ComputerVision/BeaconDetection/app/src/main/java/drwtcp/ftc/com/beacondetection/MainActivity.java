@@ -136,17 +136,33 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     }
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+        List<MatOfPoint> contours;
+
         mRgba = inputFrame.rgba();
 
         mDetectorPink.process(mRgba);
-        List<MatOfPoint> contours = mDetectorPink.getContours();
+        contours = mDetectorPink.getContours();
         Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
+        drawRectangleAroundContours(contours,  new Scalar(255, 0, 0));
         
         Mat colorLabelPink = mRgba.submat(4, 68, 4, 68);
         colorLabelPink.setTo(mBlobColorRgbaPink);
         Mat spectrumLabelPink = mRgba.submat(4, 4 + mSpectrumPink.rows(), 70, 70 + mSpectrumPink.cols());
         mSpectrumPink.copyTo(spectrumLabelPink);
 
+        mDetectorBlue.process(mRgba);
+        contours = mDetectorBlue.getContours();
+        Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
+        drawRectangleAroundContours(contours,  new Scalar(0, 0, 255));
+
+        Mat colorLabelBlue = mRgba.submat(104, 168, 4, 68);
+        colorLabelBlue.setTo(mBlobColorRgbaBlue);
+        Mat spectrumLabelBlue = mRgba.submat(104, 104 + mSpectrumBlue.rows(), 70, 70 + mSpectrumBlue.cols());
+        mSpectrumBlue.copyTo(spectrumLabelBlue);
+
+        return mRgba;
+    }
+    private void drawRectangleAroundContours(List<MatOfPoint> contours, Scalar color) {
         //For each contour found
         MatOfPoint2f         approxCurve = new MatOfPoint2f();
         for (int i=0; i<contours.size(); i++)
@@ -164,18 +180,9 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
             Rect rect = Imgproc.boundingRect(points);
 
             // draw enclosing rectangle (all same color, but you could use variable i to make them unique)
-            Imgproc.rectangle(mRgba, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 255));
+            Imgproc.rectangle(mRgba, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), color);
         }
-        mDetectorBlue.process(mRgba);
-        contours = mDetectorBlue.getContours();
-        Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
 
-        Mat colorLabelBlue = mRgba.submat(104, 168, 4, 68);
-        colorLabelBlue.setTo(mBlobColorRgbaBlue);
-        Mat spectrumLabelBlue = mRgba.submat(104, 104 + mSpectrumBlue.rows(), 70, 70 + mSpectrumBlue.cols());
-        mSpectrumBlue.copyTo(spectrumLabelBlue);
-
-        return mRgba;
     }
 
     private Scalar convertScalarHsv2Rgba(Scalar hsvColor) {
