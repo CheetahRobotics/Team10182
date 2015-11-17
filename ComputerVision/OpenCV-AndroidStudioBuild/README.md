@@ -28,3 +28,17 @@ The .aar file is very small. The main OpenCV code is a separate download from Go
     }
 
 5. Add camera permissions to AndroidManifest.xml.
+
+### Using non-free modules.
+
+Some algorithms in OpenCV are patented, i.e. are not free. (Examples: SIFT, SURF, FREAK). They are not available by default in the Android package.  The simplest way to use them is as follows:   
+
+1. This page shows how to rebuild the code using JNI and it is a painful mess: https://sites.google.com/site/wghsite/technical-notes/sift_surf_opencv_android. However, you can simply download the already built .so files from that site. At this link specifically: https://sites.google.com/site/wghsite/technical-notes/sift_surf_opencv_android/sift_surf_opencv_android_package.zip?attredirects=0.  The 2 files you need to pull out of that zip file are: *libnonfree.so* and *libopencv_java.so*.   
+
+2. Create these directories under app/arc/main: jniLibs/armeabi and jniLibs/armeabi-v7a. Put the 2 .so files in each directory.   
+
+3. Add the following line to your MainActivity.java in onManagerConnected in the SUCCESS case:   
+
+    System.loadLibrary("nonfree");
+    
+    
