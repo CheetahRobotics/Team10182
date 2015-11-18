@@ -48,19 +48,22 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     String _toastMsg = "";
 
     private int _colStartPink = 4;
-    private int _rowStartPink = 4;
+    private int _rowStartPink = 44;
     private int _colEndPink = 68;
-    private int _rowEndPink = 68;
+    private int _rowEndPink = 108;
 
     private int _colStartBlue = 4;
-    private int _rowStartBlue = 104;
+    private int _rowStartBlue = 144;
     private int _colEndBlue = 68;
-    private int _rowEndBlue = 168;
+    private int _rowEndBlue = 208;
+
+    private int _spectrumRows = 60;
+    private int _spectrumCols = 200;
 
     private boolean _calibratingPink = false;
     private boolean _calibratingBlue = false;
-    
     private CameraBridgeViewBase mOpenCvCameraView;
+
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -70,6 +73,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
                 {
                     Log.i(TAG, "OpenCV loaded successfully");
                     mOpenCvCameraView.enableView();
+                    mOpenCvCameraView.enableFpsMeter();
                     mOpenCvCameraView.setOnTouchListener(MainActivity.this);
                 } break;
                 default:
@@ -126,7 +130,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     }
 
     public void onCameraViewStarted(int width, int height) {
-        SPECTRUM_SIZE = new Size(200, 64);
+        SPECTRUM_SIZE = new Size(_spectrumCols, _spectrumRows);
         CONTOUR_COLOR = new Scalar(0,255,0,255);
         mDetectorPink = new ColorBlobDetector();
         mDetectorBlue = new ColorBlobDetector();
@@ -166,7 +170,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         
         Mat colorLabelPink = mRgba.submat(_rowStartPink, _rowEndPink, _colStartPink, _colEndPink);
         colorLabelPink.setTo(mBlobColorRgbaPink);
-        Mat spectrumLabelPink = mRgba.submat(4, 4 + mSpectrumPink.rows(), 70, 70 + mSpectrumPink.cols());
+        Mat spectrumLabelPink = mRgba.submat(_rowStartPink, _rowStartPink + mSpectrumPink.rows(), _colEndPink + 4, _colEndPink + 4 + mSpectrumPink.cols());
         mSpectrumPink.copyTo(spectrumLabelPink);
 
         mDetectorBlue.process(mRgba);
@@ -176,7 +180,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
 
         Mat colorLabelBlue = mRgba.submat(_rowStartBlue, _rowEndBlue, _colStartBlue, _colEndBlue);
         colorLabelBlue.setTo(mBlobColorRgbaBlue);
-        Mat spectrumLabelBlue = mRgba.submat(104, 104 + mSpectrumBlue.rows(), 70, 70 + mSpectrumBlue.cols());
+        Mat spectrumLabelBlue = mRgba.submat(_rowStartBlue, _rowStartBlue + mSpectrumBlue.rows(), _colEndBlue + 4, _colEndBlue + 4 + mSpectrumBlue.cols());
         mSpectrumBlue.copyTo(spectrumLabelBlue);
 
         return mRgba;
