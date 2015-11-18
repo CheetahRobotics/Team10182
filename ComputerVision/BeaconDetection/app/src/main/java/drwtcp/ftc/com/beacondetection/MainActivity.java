@@ -22,6 +22,7 @@ import org.opencv.imgproc.Imgproc;
 import android.app.Activity;
 import android.gesture.OrientedBoundingBox;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -56,6 +57,9 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     private int _colEndBlue = 68;
     private int _rowEndBlue = 168;
 
+    private boolean _calibratingPink = false;
+    private boolean _calibratingBlue = false;
+    
     private CameraBridgeViewBase mOpenCvCameraView;
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
@@ -86,7 +90,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         Log.i(TAG, "called onCreate");
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
 
@@ -128,17 +132,20 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         mDetectorBlue = new ColorBlobDetector();
         mSpectrumPink = new Mat();
         mSpectrumBlue = new Mat();
-        mBlobColorRgbaPink = new Scalar(152.0, 61.0, 81.0, 255.0);
-        mBlobColorRgbaBlue = new Scalar(14.0, 52.0, 76.0, 255.0);
-
+        setPinkColor(new Scalar(152.0, 61.0, 81.0, 255.0));
+        setBlueColor(new Scalar(14.0, 52.0, 76.0, 255.0));
+    }
+    private void setPinkColor(Scalar color) {
+        mBlobColorRgbaPink = color;
         Scalar mBlobColorHsv = convertScalarRgba2Hsv(mBlobColorRgbaPink);
         mDetectorPink.setHsvColor(mBlobColorHsv);
         Imgproc.resize(mDetectorPink.getSpectrum(), mSpectrumPink, SPECTRUM_SIZE);
-
-        mBlobColorHsv = convertScalarRgba2Hsv(mBlobColorRgbaBlue);
+    }
+    private void setBlueColor(Scalar color) {
+        mBlobColorRgbaBlue = color;
+        Scalar mBlobColorHsv = convertScalarRgba2Hsv(mBlobColorRgbaBlue);
         mDetectorBlue.setHsvColor(mBlobColorHsv);
         Imgproc.resize(mDetectorBlue.getSpectrum(), mSpectrumBlue, SPECTRUM_SIZE);
-
     }
 
     public void onCameraViewStopped() {
@@ -146,6 +153,8 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     }
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+        DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
+        int densityDpi = dm.densityDpi;
         List<MatOfPoint> contours;
 
         mRgba = inputFrame.rgba();
@@ -210,6 +219,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         return new Scalar(pointMatHsv.get(0, 0));
     }
     public boolean onTouch(View v, MotionEvent event) {
+
         int cols = mRgba.cols();
         int rows = mRgba.rows();
 
@@ -219,23 +229,28 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         int x = (int) event.getX() - xOffset;
         int y = (int) event.getY() - yOffset;
 
-        Log.i(TAG, "Touch image coordinates: (" + x + ", " + y + ")");
+        Log.i(TAG, "Touch image coordinates: (" + x + ", " + y + ") (" + event.getX() + ", " + event.getY() + ") (" + mOpenCvCameraView.getWidth() + ", " + mOpenCvCameraView.getHeight() + ") (" + mRgba.cols() + ", " + mRgba.rows() + ")");
+        if ((x < 0) || (y < 0) || (x > cols) || (y > rows)) return false;
 
         if (y >= _rowStartPink && y <= _rowEndPink &&
-                x >= _colStartPink && y <= _colEndPink)
+                x >= _colStartPink && x <= _colEndPink)
         {
-            showToast("Calibrating Pink");
+            showToast("Calibrating Pink - ON");
+            _calibratingBlue = false;
+            _calibratingPink = true;
+            return false;
         }
         if (y >= _rowStartBlue && y <= _rowEndBlue &&
-                x >= _colStartBlue && y <= _colEndBlue)
+                x >= _colStartBlue && x <= _colEndBlue)
         {
-            showToast("Calibrating Blue");
+            showToast("Calibrating Blue - ON");
+            _calibratingBlue = true;
+            _calibratingPink = false;
+            return false;
         }
 
-
-
-
-        if ((x < 0) || (y < 0) || (x > cols) || (y > rows)) return false;
+        if (!_calibratingPink && !_calibratingBlue)
+            return false;
 
         Rect touchedRect = new Rect();
 
@@ -258,8 +273,17 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
 
         Scalar mBlobColorRgba = convertScalarHsv2Rgba(mBlobColorHsv);
 
-        String msg = "Touched rgba color: (" + mBlobColorRgba.val[0] + ", " + mBlobColorRgba.val[1] +
+        String prefix = _calibratingBlue ? "Set 'blue' to be: " : "Set 'pink' to be: ";
+        String msg = prefix + " rgba color: (" + mBlobColorRgba.val[0] + ", " + mBlobColorRgba.val[1] +
                 ", " + mBlobColorRgba.val[2] + ", " + mBlobColorRgba.val[3] + ")";
+
+        if (_calibratingPink)
+            setPinkColor(mBlobColorRgba);
+        else
+            setBlueColor(mBlobColorRgba);
+        _calibratingBlue = false;
+        _calibratingPink = false;
+
         Log.i(TAG, msg);
         showToast(msg);
         return false; // don't need subsequent touch events
