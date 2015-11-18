@@ -166,7 +166,7 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         mDetectorPink.process(mRgba);
         contours = mDetectorPink.getContours();
         Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
-        drawRectangleAroundContours(contours,  new Scalar(255, 0, 0));
+        Point redCenter = drawRectangleAroundContours(contours,  new Scalar(255, 0, 0));
         
         Mat colorLabelPink = mRgba.submat(_rowStartPink, _rowEndPink, _colStartPink, _colEndPink);
         colorLabelPink.setTo(mBlobColorRgbaPink);
@@ -176,18 +176,23 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         mDetectorBlue.process(mRgba);
         contours = mDetectorBlue.getContours();
         Imgproc.drawContours(mRgba, contours, -1, CONTOUR_COLOR);
-        drawRectangleAroundContours(contours,  new Scalar(0, 0, 255));
+        Point blueCenter = drawRectangleAroundContours(contours,  new Scalar(0, 0, 255));
 
         Mat colorLabelBlue = mRgba.submat(_rowStartBlue, _rowEndBlue, _colStartBlue, _colEndBlue);
         colorLabelBlue.setTo(mBlobColorRgbaBlue);
         Mat spectrumLabelBlue = mRgba.submat(_rowStartBlue, _rowStartBlue + mSpectrumBlue.rows(), _colEndBlue + 4, _colEndBlue + 4 + mSpectrumBlue.cols());
         mSpectrumBlue.copyTo(spectrumLabelBlue);
 
+        Point center = new Point((redCenter.x + blueCenter.x)/2.0, (redCenter.y + blueCenter.y)/2.0);
+        Imgproc.circle(mRgba, center, 10, new Scalar(255,255,255), 10);
         return mRgba;
     }
-    private void drawRectangleAroundContours(List<MatOfPoint> contours, Scalar color) {
+    private Point drawRectangleAroundContours(List<MatOfPoint> contours, Scalar color) {
         //For each contour found
         MatOfPoint2f         approxCurve = new MatOfPoint2f();
+
+        double maxArea = 0;
+        Rect maxRect = null;
         for (int i=0; i<contours.size(); i++)
         {
             //Convert contours(i) from MatOfPoint to MatOfPoint2f
@@ -201,11 +206,19 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
 
             // Get bounding rect of contour
             Rect rect = Imgproc.boundingRect(points);
+            if (rect.area() > maxArea) {
+                maxArea = rect.area();
+                maxRect = rect;
+            }
 
             // draw enclosing rectangle (all same color, but you could use variable i to make them unique)
             Imgproc.rectangle(mRgba, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), color);
+            Imgproc.rectangle(mRgba, new Point(rect.x-1, rect.y-1), new Point(rect.x+1 + rect.width, rect.y+1 + rect.height), color);
+            Imgproc.rectangle(mRgba, new Point(rect.x-2, rect.y-2), new Point(rect.x+2 + rect.width, rect.y+2 + rect.height), color);
         }
-
+        if (maxRect == null)
+            return new Point(0.0,0.0);
+        return new Point(maxRect.x + maxRect.width/2.0, maxRect.y + maxRect.height/2.0);
     }
 
     private Scalar convertScalarHsv2Rgba(Scalar hsvColor) {
