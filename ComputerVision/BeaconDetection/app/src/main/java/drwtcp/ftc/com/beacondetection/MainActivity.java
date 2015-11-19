@@ -1,6 +1,12 @@
 package drwtcp.ftc.com.beacondetection;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.List;
+import java.util.Scanner;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
@@ -57,13 +63,15 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     private int _colEndBlue = 68;
     private int _rowEndBlue = 208;
 
-    private int _spectrumRows = 60;
+    private int _spectrumRows = 64;
     private int _spectrumCols = 200;
 
     private boolean _calibratingPink = false;
     private boolean _calibratingBlue = false;
     private CameraBridgeViewBase mOpenCvCameraView;
 
+    String         _configPath = "/sdcard/FIRST/calibration.txt";
+    String _configFileVersion = "Version1";     // One word! no spaces. Using Scanner to read....
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -136,20 +144,24 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
         mDetectorBlue = new ColorBlobDetector();
         mSpectrumPink = new Mat();
         mSpectrumBlue = new Mat();
-        setPinkColor(new Scalar(152.0, 61.0, 81.0, 255.0));
-        setBlueColor(new Scalar(14.0, 52.0, 76.0, 255.0));
+        if (!readConfig(_configPath)) {
+            setPinkColor(new Scalar(152.0, 61.0, 81.0, 255.0), true);
+            setBlueColor(new Scalar(14.0, 52.0, 76.0, 255.0), true);
+        }
     }
-    private void setPinkColor(Scalar color) {
+    private void setPinkColor(Scalar color, boolean persist) {
         mBlobColorRgbaPink = color;
         Scalar mBlobColorHsv = convertScalarRgba2Hsv(mBlobColorRgbaPink);
         mDetectorPink.setHsvColor(mBlobColorHsv);
         Imgproc.resize(mDetectorPink.getSpectrum(), mSpectrumPink, SPECTRUM_SIZE);
+        if (persist) saveConfig(_configPath);
     }
-    private void setBlueColor(Scalar color) {
+    private void setBlueColor(Scalar color, boolean persist) {
         mBlobColorRgbaBlue = color;
         Scalar mBlobColorHsv = convertScalarRgba2Hsv(mBlobColorRgbaBlue);
         mDetectorBlue.setHsvColor(mBlobColorHsv);
         Imgproc.resize(mDetectorBlue.getSpectrum(), mSpectrumBlue, SPECTRUM_SIZE);
+        if (persist) saveConfig(_configPath);
     }
 
     public void onCameraViewStopped() {
@@ -295,9 +307,9 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
                 ", " + mBlobColorRgba.val[2] + ", " + mBlobColorRgba.val[3] + ")";
 
         if (_calibratingPink)
-            setPinkColor(mBlobColorRgba);
+            setPinkColor(mBlobColorRgba, true);
         else
-            setBlueColor(mBlobColorRgba);
+            setBlueColor(mBlobColorRgba, true);
         _calibratingBlue = false;
         _calibratingPink = false;
 
@@ -315,5 +327,48 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
 
             }
         });
+    }
+    private void saveConfig(String filePath) {
+        try
+        {
+            if (mDetectorPink == null || mDetectorBlue == null) return;
+            Scalar pinkHsv = mDetectorPink.getHsvColor();
+            Scalar blueHsv = mDetectorBlue.getHsvColor();
+            if (pinkHsv == null || blueHsv == null) return;
+
+            File file = new File(filePath);
+            FileOutputStream fileoutput = new FileOutputStream(file);
+            PrintStream ps = new PrintStream(fileoutput);
+            ps.println(_configFileVersion);
+            ps.println(mBlobColorRgbaPink.val[0]);
+            ps.println(mBlobColorRgbaPink.val[1]);
+            ps.println(mBlobColorRgbaPink.val[2]);
+            ps.println(mBlobColorRgbaBlue.val[0]);
+            ps.println(mBlobColorRgbaBlue.val[1]);
+            ps.println(mBlobColorRgbaBlue.val[2]);
+
+            ps.close();
+            fileoutput.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private boolean readConfig(String filePath) {
+        try
+        {
+            if (mDetectorPink == null || mDetectorBlue == null) return false;
+
+            Scanner in = new Scanner(new FileReader(filePath));
+            String version = in.next();
+            if (!version.equals(_configFileVersion)) return false;
+            setPinkColor(new Scalar(Double.parseDouble(in.next()), Double.parseDouble(in.next()), Double.parseDouble(in.next())), false);
+            setBlueColor(new Scalar(Double.parseDouble(in.next()), Double.parseDouble(in.next()), Double.parseDouble(in.next())), false);
+            in.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

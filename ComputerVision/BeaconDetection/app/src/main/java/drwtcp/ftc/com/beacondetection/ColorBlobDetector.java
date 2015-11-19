@@ -29,11 +29,16 @@ public class ColorBlobDetector {
     Mat mDilatedMask = new Mat();
     Mat mHierarchy = new Mat();
 
+    private Scalar _hsvColor;
+
     public void setColorRadius(Scalar radius) {
         mColorRadius = radius;
     }
-
+    public Scalar getHsvColor() {
+        return _hsvColor;
+    }
     public void setHsvColor(Scalar hsvColor) {
+        _hsvColor = hsvColor;
         double minH = (hsvColor.val[0] >= mColorRadius.val[0]) ? hsvColor.val[0]-mColorRadius.val[0] : 0;
         double maxH = (hsvColor.val[0]+mColorRadius.val[0] <= 255) ? hsvColor.val[0]+mColorRadius.val[0] : 255;
 
