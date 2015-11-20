@@ -10,7 +10,8 @@ Video explanation (skip to 2:42):
 https://www.youtube.com/watch?v=b49Q3kqrSv0
 
 Rules:   
-http://www.usfirst.org/sites/default/files/uploadedFiles/Robotics_Programs/FTC/Team_Resources/Game-Manual-Part-2.pdf
+http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-I.pdf
+http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-II.pdf
 
 #### The tech:
 
