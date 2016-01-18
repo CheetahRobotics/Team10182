@@ -1,3 +1,7 @@
+To Do:   
+1. Sorage directory currently says 'ORBApp'. Fix this.
+2. On Samsung, screen shots are saved in /mnt/shell/emulated/0/Pictures
+
 This android app uses various Feature Detection Algorithms from Open CV.
 
 When you first run it, it will prompt you to download opencv from Google Play. This is painless and necessary.
