@@ -144,13 +144,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 //        }
 
         // Section 2:
-        for (int i = 100; i < 400; i++) {
-            for (int j = 100; j < 400; j++) {
-                double[] rgb = mRgba.get(i, j);
-                rgb[0] = 0;
-                mRgba.put(i, j, rgb);//sets the pixel to yellow
-            }
-        }
+//        for (int i = 100; i < 400; i++) {
+//            for (int j = 100; j < 400; j++) {
+//                double[] rgb = mRgba.get(i, j);
+//                rgb[0] = 0;
+//                mRgba.put(i, j, rgb);//sets the pixel to yellow
+//            }
+//        }
 
         // Section 3:
 //        return inputFrame.gray();
