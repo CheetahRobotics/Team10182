@@ -134,11 +134,31 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         List<MatOfPoint> contours;
 
         mRgba = inputFrame.rgba();
-//        Mat rgbaInnerWindow = mRgba.submat(top, top + height, left, left + width);
-        Mat mIntermediateMat = new Mat();
-        Imgproc.Canny(mRgba, mIntermediateMat, 80, 90);
-        Imgproc.cvtColor(mIntermediateMat, mRgba, Imgproc.COLOR_GRAY2BGRA, 4);
-//        rgbaInnerWindow.release();
+
+        // Section 1:
+//        for (int i = 10; i < 20; i++) {
+//            for (int j = 10; j < 20; j++) {
+//                double[] rgb = mRgba.get(i, j);
+//                mRgba.put(i, j, new double[]{255, 255, 0, 1});//sets the pixel to yellow
+//            }
+//        }
+
+        // Section 2:
+        for (int i = 100; i < 400; i++) {
+            for (int j = 100; j < 400; j++) {
+                double[] rgb = mRgba.get(i, j);
+                rgb[0] = 0;
+                mRgba.put(i, j, rgb);//sets the pixel to yellow
+            }
+        }
+
+        // Section 3:
+//        return inputFrame.gray();
+
+        // Section 4:
+//        Mat mIntermediateMat = new Mat();
+//        Imgproc.Canny(mRgba, mIntermediateMat, 80, 90);
+//        Imgproc.cvtColor(mIntermediateMat, mRgba, Imgproc.COLOR_GRAY2BGRA, 4);
 
         return mRgba;
     }
