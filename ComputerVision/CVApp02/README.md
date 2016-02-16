@@ -29,8 +29,11 @@ Code example:
 http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html
 
 Other interesting image transforms:
-GaussianBlur
-MedianBlur
-smoothing
-Masks
-Bitwise operations
+GaussianBlur   
+MedianBlur   
+smoothing   
+Masks    
+Bitwise operations   
+Histogram Equalization   
+Filters: LaPlace, Sobel, Scharr, Canny   
+
