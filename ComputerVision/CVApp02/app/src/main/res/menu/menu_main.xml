@@ -28,6 +28,18 @@
                     android:title="THRESH_BINARY_INV"
                     android:orderInCategory="200"
                     android:showAsAction="never" />
+    <item android:id="@+id/Thresh_TRUNC"
+            android:title="THRESH_TRUNC"
+            android:orderInCategory="200"
+            android:showAsAction="never" />
+                <item android:id="@+id/Thresh_TOZERO"
+                    android:title="THRESH_TOZERO"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+                <item android:id="@+id/Thresh_TOZERO_INV"
+                    android:title="THRESH_TOZERO_INV"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
 
 
             </group>

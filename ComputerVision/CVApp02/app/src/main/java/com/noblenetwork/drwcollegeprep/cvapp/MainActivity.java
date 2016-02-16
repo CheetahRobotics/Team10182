@@ -133,6 +133,15 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (item.getTitle().equals("THRESH_BINARY_INV"))
             this.mThreshold = Imgproc.THRESH_BINARY_INV;
 
+        if (item.getTitle().equals("THRESH_TRUNC"))
+            this.mThreshold = Imgproc.THRESH_TRUNC;
+
+        if (item.getTitle().equals("THRESH_TOZERO"))
+            this.mThreshold = Imgproc.THRESH_TOZERO;
+
+        if (item.getTitle().equals("THRESH_TOZERO_INV"))
+            this.mThreshold = Imgproc.THRESH_TOZERO_INV;
+
         return true;
     }
 
@@ -181,10 +190,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         }
 
         if (this.mGrayMode) {
-            return mGray;
-//            Mat result = new Mat();
-//            Imgproc.threshold(mGray, result, 128, 255, mThreshold);
-//            return result;
+            //return mGray;
+            Mat result = new Mat();
+            Imgproc.threshold(mGray, result, 128, 255, mThreshold);
+            return result;
+            //a bit = 8 bit if all 8 bits are set to one 255 is the
+            //if the pixle is >
         }
         else
             return mRgba;
