@@ -1,12 +1,19 @@
-Experiment with RGB Picker:
+In this unit we learn about thresholding.
 
-http://www.cssportal.com/css3-rgba-generator/
+The sample app (CVApp02) doesn't do much out of the box. Play around with the options.
 
-Learn about hex codes:
+Useful Links:
 
-http://www.rgbtohex.net/
+http://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Global_Thresholding_Adaptive_Thresholding_Otsus_Binarization_Segmentations.php
 
-Understand the various commented blocks.
+OpenCV docs:
 
-How to remove the yellow channel?
+http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html#cv2.threshold
 
+Sample Data to use:
+
+http://www.learnopencv.com/opencv-threshold-python-cpp/
+
+More advanced methods:
+
+http://docs.opencv.org/3.1.0/d7/d4d/tutorial_py_thresholding.html#gsc.tab=0
