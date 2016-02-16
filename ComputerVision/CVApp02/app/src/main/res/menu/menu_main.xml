@@ -17,14 +17,15 @@
         android:showAsAction="always">
         <menu>
             <group
+                android:checkableBehavior="single"
                 >
-                <item android:id="@+id/GreyScale"
-                    android:title="Greyscale"
+                <item android:id="@+id/ThreshBinary"
+                    android:title="THRESH_BINARY"
                     android:orderInCategory="100"
                     android:showAsAction="never" />
 
-                <item android:id="@+id/Threshold"
-                    android:title="Threshold"
+                <item android:id="@+id/ThreshBinaryInv"
+                    android:title="THRESH_BINARY_INV"
                     android:orderInCategory="200"
                     android:showAsAction="never" />
 

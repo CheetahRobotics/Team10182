@@ -52,6 +52,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity implements CvCameraViewListener2 {
     private static final String  TAG              = "MainActivity";
 
+    private int                  mThreshold = Imgproc.THRESH_BINARY;
     private boolean              mFreezeFrameOn = false;
     private boolean              mGrayMode = false;
     private CvCameraViewFrame    freezeFrame;
@@ -126,6 +127,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             this.mGrayMode = false;
             item.setTitle("Grayscale");
         }
+
+        if (item.getTitle().equals("THRESH_BINARY"))
+            this.mThreshold = Imgproc.THRESH_BINARY;
+        if (item.getTitle().equals("THRESH_BINARY_INV"))
+            this.mThreshold = Imgproc.THRESH_BINARY_INV;
+
         return true;
     }
 
@@ -174,9 +181,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         }
 
         if (this.mGrayMode) {
-            Mat result = new Mat();
-            Imgproc.threshold(mGray, result, 128, 255, Imgproc.THRESH_BINARY);
-            return result;
+            return mGray;
+//            Mat result = new Mat();
+//            Imgproc.threshold(mGray, result, 128, 255, mThreshold);
+//            return result;
         }
         else
             return mRgba;
