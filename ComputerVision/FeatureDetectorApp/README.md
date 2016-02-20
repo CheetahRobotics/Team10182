@@ -1,3 +1,7 @@
+To Do:   
+1. Sorage directory currently says 'ORBApp'. Fix this.
+2. On Samsung, screen shots are saved in /mnt/shell/emulated/0/Pictures
+
 This android app uses various Feature Detection Algorithms from Open CV.
 
 When you first run it, it will prompt you to download opencv from Google Play. This is painless and necessary.
@@ -11,7 +15,7 @@ There are 3 modes which are accessible from the '...' menu in the upper right:
 2. Box mode. This uses findHomography() routine to draw a box around the object. Not perfect if the object is too small. Designed for planar objects.   
 3. Draw key points. Just shows you the detected key points.   
 
-You can choose one of several algorithms:
+You can choose one of several algorithms:   
 1. ORB Detector, ORB Descriptor Extractor.   
 2. ORB Detector, FREAK Descriptor Extractor.   
 3. BRISK Detector, BRIEF Descriptor Extractor.

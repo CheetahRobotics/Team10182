@@ -1,0 +1,51 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_loadImage"
+        android:title="Freeze Frame"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/action_grayscale"
+        android:title="Grayscale"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/option_selection"
+        android:title="Options"
+        android:orderInCategory="100"
+        android:showAsAction="always">
+        <menu>
+            <group
+                android:checkableBehavior="single"
+                >
+                <item android:id="@+id/ThreshBinary"
+                    android:title="THRESH_BINARY"
+                    android:orderInCategory="100"
+                    android:showAsAction="never" />
+
+                <item android:id="@+id/ThreshBinaryInv"
+                    android:title="THRESH_BINARY_INV"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+    <item android:id="@+id/Thresh_TRUNC"
+            android:title="THRESH_TRUNC"
+            android:orderInCategory="200"
+            android:showAsAction="never" />
+                <item android:id="@+id/Thresh_TOZERO"
+                    android:title="THRESH_TOZERO"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+                <item android:id="@+id/Thresh_TOZERO_INV"
+                    android:title="THRESH_TOZERO_INV"
+                    android:orderInCategory="200"
+                    android:showAsAction="never" />
+
+
+            </group>
+        </menu>
+    </item>
+
+    <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
+    <!--android:orderInCategory="100" android:showAsAction="never" />-->
+</menu>
