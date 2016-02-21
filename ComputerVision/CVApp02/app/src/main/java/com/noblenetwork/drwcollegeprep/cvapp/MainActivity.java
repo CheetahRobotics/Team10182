@@ -23,6 +23,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     TextView                     mThresholdTextView;
     SeekBar                      mSeekBar;
+    private boolean              mTakeScreenShot;
     private int                  mThreshold = Imgproc.THRESH_BINARY;
     private boolean              mFreezeFrameOn = false;
     private boolean              mGrayMode = false;
@@ -70,7 +71,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         mOpenCvCameraView.setCvCameraViewListener(this);
         mSeekBar = (SeekBar) findViewById(R.id.thresholdSeekBar);
         mThresholdTextView = (TextView) findViewById(R.id.thresholdTextView);
-        //        mSeekBar.setOnSeekBarChangeListener(this);
         Mat result;
     }
 
@@ -79,13 +79,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         Log.i(TAG, "called onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-    public void onProgressChanged(SeekBar seekBar, int progress,
-                                  boolean fromUser) {
-//        if (seekBar.getId() == R.id.maxMinSeekBar)
-//            _maxMin = progress;
-//        else
-//            _ransacThreshold = progress;
     }
 
     @Override
@@ -111,6 +104,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             item.setTitle("Grayscale");
         }
 
+        if (item.getTitle().equals("NO_THRESHOLD"))
+            this.mThreshold = -1;
         if (item.getTitle().equals("THRESH_BINARY"))
             this.mThreshold = Imgproc.THRESH_BINARY;
         if (item.getTitle().equals("THRESH_BINARY_INV"))
@@ -124,6 +119,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         if (item.getTitle().equals("THRESH_TOZERO_INV"))
             this.mThreshold = Imgproc.THRESH_TOZERO_INV;
+
+        if (item.getTitle().equals("Screen Shot"))
+            this.mTakeScreenShot = true;
 
         return true;
     }
@@ -188,15 +186,27 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         });
 
         if (this.mGrayMode) {
-            //return mGray;
-            Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
-            return mResultMat;
-            //a bit = 8 bit if all 8 bits are set to one 255 is the
-            //if the pixle is >
+            if (mThreshold < 0) {
+                takeScreenShot(mGray);
+                return mGray;
+            }
+            else {
+                Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
+                takeScreenShot(mResultMat);
+                return mResultMat;
+            }
         }
-        else
+        else {
+            takeScreenShot(mRgba);
             return mRgba;
-
+        }
+    }
+    private void takeScreenShot(Mat image) {
+        if (this.mTakeScreenShot) {
+            this.mTakeScreenShot = false;
+            Utilities.saveImg(image, this);
+            showToast("Screen Shot saved to device.");
+        }
     }
 
     private void showToast(String msg) {
