@@ -2,60 +2,32 @@ package com.noblenetwork.drwcollegeprep.cvapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.List;
-import java.util.Scanner;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
-import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
-import org.opencv.core.MatOfPoint2f;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
-import org.opencv.core.Size;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.imgproc.Imgproc;
 
-import android.app.Activity;
-import android.gesture.OrientedBoundingBox;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-
 public class MainActivity extends Activity implements CvCameraViewListener2 {
     private static final String  TAG              = "MainActivity";
 
+    TextView                     mThresholdTextView;
+    SeekBar                      mSeekBar;
     private int                  mThreshold = Imgproc.THRESH_BINARY;
     private boolean              mFreezeFrameOn = false;
     private boolean              mGrayMode = false;
     private CvCameraViewFrame    freezeFrame;
+    private Mat mResultMat;
     private Mat                  mRgba;
     private Mat                  mGray;
     String _toastMsg = "";
@@ -96,6 +68,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.my_surface_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
+        mSeekBar = (SeekBar) findViewById(R.id.thresholdSeekBar);
+        mThresholdTextView = (TextView) findViewById(R.id.thresholdTextView);
+        //        mSeekBar.setOnSeekBarChangeListener(this);
+        Mat result;
     }
 
     @Override
@@ -103,6 +79,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         Log.i(TAG, "called onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+    public void onProgressChanged(SeekBar seekBar, int progress,
+                                  boolean fromUser) {
+//        if (seekBar.getId() == R.id.maxMinSeekBar)
+//            _maxMin = progress;
+//        else
+//            _ransacThreshold = progress;
     }
 
     @Override
@@ -173,9 +156,16 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     }
 
     public void onCameraViewStarted(int width, int height) {
+        mResultMat = new Mat();
     }
 
     public void onCameraViewStopped() {
+        // Explicitly deallocate Mats
+        if (mResultMat != null)
+            mResultMat.release();
+
+        mResultMat = null;
+ 
         if (mRgba != null)
             mRgba.release();
         if (mGray != null)
@@ -189,16 +179,24 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             mGray = inputFrame.gray();
         }
 
+        MainActivity.this.runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                mThresholdTextView.setText(String.valueOf(mSeekBar.getProgress()));
+            }
+        });
+
         if (this.mGrayMode) {
             //return mGray;
-            Mat result = new Mat();
-            Imgproc.threshold(mGray, result, 128, 255, mThreshold);
-            return result;
+            Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
+            return mResultMat;
             //a bit = 8 bit if all 8 bits are set to one 255 is the
             //if the pixle is >
         }
         else
             return mRgba;
+
     }
 
     private void showToast(String msg) {
