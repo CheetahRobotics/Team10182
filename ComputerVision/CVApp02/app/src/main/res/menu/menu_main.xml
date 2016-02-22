@@ -1,54 +1,95 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item android:id="@+id/action_screen_shot"
-        android:title="Screen Shot"
-        android:showAsAction="always" />
-
-    <item android:id="@+id/action_freezeFrame"
-        android:title="Freeze Frame"
-        android:showAsAction="always" />
-
-    <item android:id="@+id/action_grayscale"
-        android:title="Grayscale"
-        android:showAsAction="always" />
-
-    <item android:id="@+id/option_selection"
-        android:title="Options"
+    <item
+        android:id="@+id/actions_menu"
         android:orderInCategory="100"
-        android:showAsAction="always">
+        android:showAsAction="always"
+        android:title="Actions">
         <menu>
-            <group
-                android:checkableBehavior="single"
-                >
-                <item android:id="@+id/NoThreshhold"
-                    android:title="NO_THRESHOLD"
-                    android:orderInCategory="100"
-                    android:showAsAction="never" />
+            <item
+                android:id="@+id/action_screen_shot"
+                android:title="Take Screen Shot" />
 
-                <item android:id="@+id/ThreshBinary"
-                    android:title="THRESH_BINARY"
-                    android:orderInCategory="100"
-                    android:showAsAction="never" />
+            <item
+                android:id="@+id/action_freezeFrame"
+                android:title="Freeze Frame" />
 
-                <item android:id="@+id/ThreshBinaryInv"
-                    android:title="THRESH_BINARY_INV"
+            <item
+                android:id="@+id/action_snap_mask"
+                android:title="Use As Mask" />
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/picture_mode_menu"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Mode">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/GreyscaleMode"
+                    android:title="Greyscale" />
+                <item
+                    android:id="@+id/ColorMode"
+                    android:title="Color" />
+                <item
+                    android:id="@+id/MaskMode"
+                    android:title="Mask" />
+                <item
+                    android:id="@+id/ApplyMaskMode"
+                    android:title="Apply Mask" />
+                <item
+                    android:id="@+id/ApplyRealTimeMaskMode"
+                    android:title="Apply Real-Time Mask" />
+            </group>
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/threshold_dropdown_menu"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Thresholding">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/NoThreshhold"
+                    android:orderInCategory="100"
+                    android:showAsAction="never"
+                    android:title="NO_THRESHOLD" />
+
+                <item
+                    android:id="@+id/ThreshBinary"
+                    android:orderInCategory="100"
+                    android:showAsAction="never"
+                    android:title="THRESH_BINARY" />
+
+                <item
+                    android:id="@+id/ThreshBinaryInv"
                     android:orderInCategory="200"
-                    android:showAsAction="never" />
-    <item android:id="@+id/Thresh_TRUNC"
-            android:title="THRESH_TRUNC"
-            android:orderInCategory="200"
-            android:showAsAction="never" />
-                <item android:id="@+id/Thresh_TOZERO"
-                    android:title="THRESH_TOZERO"
+                    android:showAsAction="never"
+                    android:title="THRESH_BINARY_INV" />
+                <item
+                    android:id="@+id/Thresh_TRUNC"
                     android:orderInCategory="200"
-                    android:showAsAction="never" />
-                <item android:id="@+id/Thresh_TOZERO_INV"
-                    android:title="THRESH_TOZERO_INV"
+                    android:showAsAction="never"
+                    android:title="THRESH_TRUNC" />
+                <item
+                    android:id="@+id/Thresh_TOZERO"
                     android:orderInCategory="200"
-                    android:showAsAction="never" />
+                    android:showAsAction="never"
+                    android:title="THRESH_TOZERO" />
+                <item
+                    android:id="@+id/Thresh_TOZERO_INV"
+                    android:orderInCategory="200"
+                    android:showAsAction="never"
+                    android:title="THRESH_TOZERO_INV" />
 
 
             </group>

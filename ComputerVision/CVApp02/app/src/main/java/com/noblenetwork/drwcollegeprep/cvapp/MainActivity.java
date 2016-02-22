@@ -16,9 +16,11 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
+import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
+    public enum PictureMode { Grey, Color, Mask, ApplyMask, ApplyMaskRealTime };
     private static final String  TAG              = "MainActivity";
 
     TextView                     mThresholdTextView;
@@ -26,9 +28,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private boolean              mTakeScreenShot;
     private int                  mThreshold = Imgproc.THRESH_BINARY;
     private boolean              mFreezeFrameOn = false;
-    private boolean              mGrayMode = false;
+    private PictureMode mMode = PictureMode.Color;
     private CvCameraViewFrame    freezeFrame;
     private Mat mResultMat;
+    private Mat mIntermediateMat;
     private Mat                  mRgba;
     private Mat                  mGray;
     String _toastMsg = "";
@@ -95,13 +98,20 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             item.setTitle("Freeze Frame");
         }
 
-        if (item.getTitle().equals("Grayscale")) {
-            this.mGrayMode = true;
-            item.setTitle("Make Color");
+        if (item.getItemId() == R.id.GreyscaleMode) {
+            this.mMode = PictureMode.Grey;
         }
-        else if (item.getTitle().equals("Make Color")) {
-            this.mGrayMode = false;
-            item.setTitle("Grayscale");
+        if (item.getItemId() == R.id.ColorMode) {
+            this.mMode = PictureMode.Color;
+        }
+        if (item.getItemId() == R.id.MaskMode) {
+            this.mMode = PictureMode.Mask;
+        }
+        if (item.getItemId() == R.id.ApplyMaskMode) {
+            this.mMode = PictureMode.ApplyMask;
+        }
+        if (item.getItemId() == R.id.ApplyRealTimeMaskMode) {
+            this.mMode = PictureMode.ApplyMaskRealTime;
         }
 
         if (item.getTitle().equals("NO_THRESHOLD"))
@@ -120,8 +130,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (item.getTitle().equals("THRESH_TOZERO_INV"))
             this.mThreshold = Imgproc.THRESH_TOZERO_INV;
 
-        if (item.getTitle().equals("Screen Shot"))
+        if (item.getItemId() == R.id.action_screen_shot)
             this.mTakeScreenShot = true;
+        item.setChecked(true);
 
         return true;
     }
@@ -155,6 +166,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     public void onCameraViewStarted(int width, int height) {
         mResultMat = new Mat();
+        mIntermediateMat = new Mat();
     }
 
     public void onCameraViewStopped() {
@@ -163,6 +175,11 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             mResultMat.release();
 
         mResultMat = null;
+
+        if (mIntermediateMat != null)
+            mIntermediateMat.release();
+
+        mIntermediateMat = null;
  
         if (mRgba != null)
             mRgba.release();
@@ -185,20 +202,34 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             }
         });
 
-        if (this.mGrayMode) {
-            if (mThreshold < 0) {
-                takeScreenShot(mGray);
-                return mGray;
-            }
-            else {
-                Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
-                takeScreenShot(mResultMat);
+        switch (this.mMode) {
+            case Grey:
+                if (mThreshold < 0) {
+                    takeScreenShot(mGray);
+                    return mGray;
+                }
+                else {
+                    Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
+                    takeScreenShot(mResultMat);
+                    return mResultMat;
+                }
+            case Color:
+                takeScreenShot(mRgba);
+                return mRgba;
+            case Mask:
+                takeScreenShot(mRgba);
                 return mResultMat;
-            }
-        }
-        else {
-            takeScreenShot(mRgba);
-            return mRgba;
+            case ApplyMaskRealTime:
+                Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
+                // fall thru to next step....
+            case ApplyMask:
+                Scalar zero = new Scalar(0);
+                mIntermediateMat.setTo(zero);
+                mRgba.copyTo(mIntermediateMat, mResultMat);
+                takeScreenShot(mIntermediateMat);
+                return mIntermediateMat;
+            default:
+                return mRgba;
         }
     }
     private void takeScreenShot(Mat image) {
