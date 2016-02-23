@@ -14,6 +14,12 @@ http://www.learnopencv.com/opencv-threshold-python-cpp/
 More advanced thresholding methods:   
 http://docs.opencv.org/3.1.0/d7/d4d/tutorial_py_thresholding.html#gsc.tab=0   
 
+# Boolean Logic:   
+Worksheet:   
+https://www.dropbox.com/s/sordm509v69yr3o/BooleanWorksheet.xlsx?dl=0   
+
+Wikipedia article on masks:   
+https://en.wikipedia.org/wiki/Mask_(computing)   
 
 # Appendix: Links for Bob:   
 
