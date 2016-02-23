@@ -17,6 +17,7 @@ import org.opencv.core.Mat;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
@@ -31,6 +32,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private PictureMode mMode = PictureMode.Color;
     private CvCameraViewFrame    freezeFrame;
     private Mat mResultMat;
+    private Mat mPostProcessMat;
     private Mat mIntermediateMat;
     private Mat                  mRgba;
     private Mat                  mGray;
@@ -167,6 +169,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public void onCameraViewStarted(int width, int height) {
         mResultMat = new Mat();
         mIntermediateMat = new Mat();
+        mPostProcessMat = new Mat();
     }
 
     public void onCameraViewStopped() {
@@ -178,9 +181,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         if (mIntermediateMat != null)
             mIntermediateMat.release();
-
         mIntermediateMat = null;
- 
+
+        if (mPostProcessMat != null)
+            mPostProcessMat.release();
+        mPostProcessMat = null;
+
         if (mRgba != null)
             mRgba.release();
         if (mGray != null)
@@ -205,20 +211,15 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         switch (this.mMode) {
             case Grey:
                 if (mThreshold < 0) {
-                    takeScreenShot(mGray);
-                    return mGray;
-                }
-                else {
+                    return postProcess(mGray);
+                } else {
                     Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
-                    takeScreenShot(mResultMat);
-                    return mResultMat;
+                    return postProcess(mResultMat);
                 }
             case Color:
-                takeScreenShot(mRgba);
-                return mRgba;
+                return postProcess(mRgba);
             case Mask:
-                takeScreenShot(mRgba);
-                return mResultMat;
+                return postProcess(mResultMat);
             case ApplyMaskRealTime:
                 Imgproc.threshold(mGray, mResultMat, mSeekBar.getProgress(), 255, mThreshold);
                 // fall thru to next step....
@@ -226,18 +227,32 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 Scalar zero = new Scalar(0);
                 mIntermediateMat.setTo(zero);
                 mRgba.copyTo(mIntermediateMat, mResultMat);
-                takeScreenShot(mIntermediateMat);
-                return mIntermediateMat;
+                return postProcess(mIntermediateMat);
             default:
                 return mRgba;
         }
     }
-    private void takeScreenShot(Mat image) {
+    private Mat postProcess(Mat inputMat) {
+
+        Mat outputMat = inputMat;
+
+        // blur function.
+//        Imgproc.medianBlur(inputMat, outputMat, 11);
+//        Imgproc.GaussianBlur(inputMat, outputMat, new Size(7,7), 0, 0);
+
+        // these only work on grayscale
+//        Imgproc.Canny(inputMat, outputMat, 50, 50);
+//        Imgproc.equalizeHist(inputMat, outputMat);
+
+        return takeScreenShot(outputMat);
+    }
+    private Mat takeScreenShot(Mat image) {
         if (this.mTakeScreenShot) {
             this.mTakeScreenShot = false;
             Utilities.saveImg(image, this);
             showToast("Screen Shot saved to device.");
         }
+        return image;
     }
 
     private void showToast(String msg) {
