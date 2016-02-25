@@ -13,13 +13,11 @@ mkdir code
 cd code
 pwd
 ```
-
 4. Clone the repository:
 ```
 git clone https://github.com/rwoodley/Team10182.git
 ```
-
-5. This repository has several different projects. Lets say you want to work on CVApp02. You would open Android Studio and open the CVApp02 directory.
+5. Open the project you want in Android Studio. This repository has several different projects. Lets say you want to work on CVApp02. You would open Android Studio and open the CVApp02 directory.   
 It would be located in c:\code\Team10182\ComputerVision\CVApp02.
 
 Good luck!
