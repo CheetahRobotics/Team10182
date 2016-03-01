@@ -1,0 +1,51 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/actions_menu"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Actions">
+        <menu>
+            <item
+                android:id="@+id/action_screen_shot"
+                android:title="Take Screen Shot" />
+
+            <item
+                android:id="@+id/action_freezeFrame"
+                android:title="Freeze Frame" />
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/picture_mode_menu"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Mode">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/GreyscaleMode"
+                    android:title="Greyscale" />
+                <item
+                    android:id="@+id/ColorMode"
+                    android:title="Color" />
+                <item
+                    android:id="@+id/MaskMode"
+                    android:title="Mask" />
+                <item
+                    android:id="@+id/ApplyMaskMode"
+                    android:title="Apply Mask" />
+                <item
+                    android:id="@+id/ApplyRealTimeMaskMode"
+                    android:title="Apply Real-Time Mask" />
+            </group>
+        </menu>
+    </item>
+
+    <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"-->
+    <!--android:orderInCategory="100" android:showAsAction="never" />-->
+</menu>
