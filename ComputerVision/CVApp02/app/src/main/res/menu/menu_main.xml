@@ -25,6 +25,41 @@
     </item>
 
     <item
+        android:id="@+id/post_process_menus"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="post p ">
+        <menu>
+            <item
+                android:id="@+id/no_post_process"
+                android:title="Do nothing" />
+
+            <item
+                android:id="@+id/median_blur"
+                android:title="Median Blur" />
+
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/post_p_menus"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="post p ">
+        <menu>
+            <item
+                android:id="@+id/no_post_process_yet"
+                android:title="Do nothing" />
+
+            <item
+                android:id="@+id/Gaussian_Blur"
+                android:title="Gaussian Blur" />
+
+
+        </menu>
+    </item>
+    <item
         android:id="@+id/picture_mode_menu"
         android:orderInCategory="100"
         android:showAsAction="always"

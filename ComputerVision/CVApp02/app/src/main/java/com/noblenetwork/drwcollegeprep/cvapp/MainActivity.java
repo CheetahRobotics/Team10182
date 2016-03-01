@@ -1,6 +1,7 @@
 package com.noblenetwork.drwcollegeprep.cvapp;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +31,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private int                  mThreshold = Imgproc.THRESH_BINARY;
     private boolean              mFreezeFrameOn = false;
     private PictureMode mMode = PictureMode.Color;
+    private int mpostprocessingmode = 0;
     private CvCameraViewFrame    freezeFrame;
     private Mat mResultMat;
     private Mat mPostProcessMat;
@@ -116,6 +118,15 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             this.mMode = PictureMode.ApplyMaskRealTime;
         }
 
+        if (item.getItemId() == R.id.no_post_process) {
+            mpostprocessingmode = 0;
+        }
+
+
+        if (item.getItemId() == R.id.no_post_process_yet ) {
+            mpostprocessingmode = 0;
+        }
+
         if (item.getTitle().equals("NO_THRESHOLD"))
             this.mThreshold = -1;
         if (item.getTitle().equals("THRESH_BINARY"))
@@ -136,8 +147,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             this.mTakeScreenShot = true;
         item.setChecked(true);
 
+
         return true;
     }
+
 
     @Override
     public void onPause()
@@ -237,12 +250,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         Mat outputMat = inputMat;
 
         // blur function.
-//        Imgproc.medianBlur(inputMat, outputMat, 11);
-//        Imgproc.GaussianBlur(inputMat, outputMat, new Size(7,7), 0, 0);
+        Imgproc.medianBlur(inputMat, outputMat, 11);
+        Imgproc.GaussianBlur(inputMat, outputMat, new Size(7,7), 0, 0);
 
         // these only work on grayscale
-//        Imgproc.Canny(inputMat, outputMat, 50, 50);
-//        Imgproc.equalizeHist(inputMat, outputMat);
+        Imgproc.Canny(inputMat, outputMat, 50, 50);
+        Imgproc.equalizeHist(inputMat, outputMat);
 
         return takeScreenShot(outputMat);
     }
