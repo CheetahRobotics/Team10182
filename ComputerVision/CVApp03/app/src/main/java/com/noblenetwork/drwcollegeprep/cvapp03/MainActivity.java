@@ -37,6 +37,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private Mat mResultMat;
     private Mat mPostProcessMat;
     private Mat mIntermediateMat;
+    private Mat mDilatedMat;
     private Mat mHierarchy ;
 
     private Mat mHSVMat;
@@ -159,6 +160,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         mResultMat = new Mat();
         mIntermediateMat = new Mat();
         mPostProcessMat = new Mat();
+        mDilatedMat = new Mat();
     }
 
     public void onCameraViewStopped() {
@@ -171,6 +173,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (mIntermediateMat != null)
             mIntermediateMat.release();
         mIntermediateMat = null;
+
+        if (mDilatedMat != null)
+            mDilatedMat.release();
+        mDilatedMat = null;
 
         if (mHSVMat != null)
             mHSVMat.release();
@@ -222,8 +228,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 //                Core.inRange(mHSVMat, lower, upper, mResultMat);
 //
 //                mIntermediateMat.setTo(zero);
-//                //Imgproc.dilate(mResultMat, mIntermediateMat, new Mat());
-//                mRgba.copyTo(mIntermediateMat, mResultMat);
+//                Imgproc.dilate(mResultMat, mDilatedMat, new Mat());
+//                mRgba.copyTo(mIntermediateMat, mDilatedMat);
 //
 //                List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
 //
