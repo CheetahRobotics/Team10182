@@ -12,15 +12,23 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
+import org.opencv.core.MatOfPoint;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
     public enum PictureMode { Grey, Color, Mask, ApplyMask, ApplyMaskRealTime };
     private static final String  TAG              = "MainActivity";
+
+    private List<MatOfPoint> mContours = new ArrayList<MatOfPoint>();
 
     private boolean              mTakeScreenShot;
     private boolean              mFreezeFrameOn = false;
@@ -29,6 +37,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private Mat mResultMat;
     private Mat mPostProcessMat;
     private Mat mIntermediateMat;
+    private Mat mHierarchy ;
+
+    private Mat mHSVMat;
     private Mat                  mRgba;
     private Mat                  mGray;
     String _toastMsg = "";
@@ -108,9 +119,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (item.getItemId() == R.id.ApplyMaskMode) {
             this.mMode = PictureMode.ApplyMask;
         }
-        if (item.getItemId() == R.id.ApplyRealTimeMaskMode) {
-            this.mMode = PictureMode.ApplyMaskRealTime;
-        }
 
         item.setChecked(true);
 
@@ -145,6 +153,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     }
 
     public void onCameraViewStarted(int width, int height) {
+        mHSVMat=new Mat();
+        mHierarchy = new Mat();
+
         mResultMat = new Mat();
         mIntermediateMat = new Mat();
         mPostProcessMat = new Mat();
@@ -160,6 +171,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (mIntermediateMat != null)
             mIntermediateMat.release();
         mIntermediateMat = null;
+
+        if (mHSVMat != null)
+            mHSVMat.release();
+        mHSVMat = null;
 
         if (mPostProcessMat != null)
             mPostProcessMat.release();
@@ -178,11 +193,66 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             mGray = inputFrame.gray();
         }
 
+        Scalar zero = new Scalar(0);
+        Scalar lower = new Scalar(165-30,40,58);
+        Scalar upper = new Scalar(165+30,255,255);
         switch (this.mMode) {
             case Grey:
                 return postProcess(mGray);
             case Color:
-                return postProcess(mRgba);
+                return mRgba;
+            case Mask:
+                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_BGR2HSV);
+                Core.inRange(mHSVMat, lower, upper, mResultMat);
+                return postProcess(mResultMat);
+
+                // See http://docs.opencv.org/2.4/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html
+//                Imgproc.dilate(mResultMat, mIntermediateMat, new Mat());
+//                return postProcess(mIntermediateMat);
+            case ApplyMask:
+                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_BGR2HSV);
+                Core.inRange(mHSVMat, lower, upper, mResultMat);
+
+                mIntermediateMat.setTo(zero);
+                mRgba.copyTo(mIntermediateMat, mResultMat);
+
+                return postProcess(mIntermediateMat);
+//            case Contours:
+//                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_BGR2HSV);
+//                Core.inRange(mHSVMat, lower, upper, mResultMat);
+//
+//                mIntermediateMat.setTo(zero);
+//                //Imgproc.dilate(mResultMat, mIntermediateMat, new Mat());
+//                mRgba.copyTo(mIntermediateMat, mResultMat);
+//
+//                List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+//
+//                Imgproc.findContours(mResultMat, contours, mHierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+//                // Find max contour area
+//                double maxArea = 0;
+//                Iterator<MatOfPoint> each = contours.iterator();
+//                while (each.hasNext()) {
+//                    MatOfPoint wrapper = each.next();
+//                    double area = Imgproc.contourArea(wrapper);
+//                    if (area > maxArea)
+//                        maxArea = area;
+//                }
+//
+//                // Filter contours by area and resize to fit the original image size
+//                mContours.clear();
+//                each = contours.iterator();
+//                double minContourArea = 0.1;
+//                while (each.hasNext()) {
+//                    MatOfPoint contour = each.next();
+//                    if (Imgproc.contourArea(contour) > minContourArea*maxArea) {
+//                        Core.multiply(contour, new Scalar(4,4), contour);
+//                        mContours.add(contour);
+//                    }
+//                }
+//                Scalar CONTOUR_COLOR = new Scalar(0,255,0,255);
+//                Imgproc.drawContours(mIntermediateMat, contours, -1, CONTOUR_COLOR);
+//
+//                return postProcess(mIntermediateMat);
             default:
                 return mRgba;
         }

@@ -39,9 +39,6 @@
                 <item
                     android:id="@+id/ApplyMaskMode"
                     android:title="Apply Mask" />
-                <item
-                    android:id="@+id/ApplyRealTimeMaskMode"
-                    android:title="Apply Real-Time Mask" />
             </group>
         </menu>
     </item>
