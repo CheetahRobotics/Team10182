@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private Mat mPostProcessMat;
     private Mat mIntermediateMat;
     private Mat mHierarchy ;
+    
+    SeekBar mLowerHueSeekBar;
+    SeekBar mUpperHueSeekBar;
+    TextView mLowerHueText;
+    TextView mUpperHueText;
+
 
     private Mat mHSVMat;
     private Mat                  mRgba;
@@ -87,6 +94,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.i(TAG, "called onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        mLowerHueSeekBar = (SeekBar) findViewById(R.id.LowerHueSeekBar);
+        mUpperHueSeekBar = (SeekBar) findViewById(R.id.UpperHueSeekBar);
+        mLowerHueText = (TextView) findViewById(R.id.LowerHueValue);
+        mUpperHueText = (TextView) findViewById(R.id.UpperHueValue);
         return true;
     }
 
@@ -187,6 +198,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     }
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+        MainActivity.this.runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                mLowerHueText.setText(String.valueOf(mLowerHueSeekBar.getProgress()));
+                mUpperHueText.setText(String.valueOf(mUpperHueSeekBar.getProgress()));
+            }
+        });
 
         if (!this.mFreezeFrameOn) {
             mRgba = inputFrame.rgba();
@@ -194,15 +213,15 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         }
 
         Scalar zero = new Scalar(0);
-        Scalar lower = new Scalar(165-30,40,58);
-        Scalar upper = new Scalar(165+30,255,255);
+        Scalar lower = new Scalar(mLowerHueSeekBar.getProgress(),0, 0);
+        Scalar upper = new Scalar(mUpperHueSeekBar.getProgress(),255,255);
         switch (this.mMode) {
             case Grey:
                 return postProcess(mGray);
             case Color:
                 return mRgba;
             case Mask:
-                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_BGR2HSV);
+                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_RGB2HSV);
                 Core.inRange(mHSVMat, lower, upper, mResultMat);
                 return postProcess(mResultMat);
 
@@ -210,7 +229,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 //                Imgproc.dilate(mResultMat, mIntermediateMat, new Mat());
 //                return postProcess(mIntermediateMat);
             case ApplyMask:
-                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_BGR2HSV);
+                Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_RGB2HSV);
                 Core.inRange(mHSVMat, lower, upper, mResultMat);
 
                 mIntermediateMat.setTo(zero);
