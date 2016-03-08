@@ -45,6 +45,9 @@
                 <item
                     android:id="@+id/ContoursMaskMode"
                     android:title="Draw Contours on Mask" />
+                <item
+                    android:id="@+id/CenterPoint"
+                    android:title="Draw Center Point Only" />
             </group>
         </menu>
     </item>

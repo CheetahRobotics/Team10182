@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
-    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode };
+    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint };
     private static final String  TAG              = "MainActivity";
 
     private List<MatOfPoint> mContours = new ArrayList<MatOfPoint>();
@@ -141,6 +141,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (item.getItemId() == R.id.ContoursMaskMode) {
             this.mMode = PictureMode.ContourMaskMode;
         }
+        if (item.getItemId() == R.id.CenterPoint) {
+            this.mMode = PictureMode.CenterPoint;
+        }
 
         item.setChecked(true);
 
@@ -245,7 +248,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 Core.inRange(mHSVMat, lower, upper, mResultMat);
                 return postProcess(mResultMat);
 
-                // See http://docs.opencv.org/2.4/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html
+            // See http://docs.opencv.org/2.4/doc/tutorials/imgproc/erosion_dilatation/erosion_dilatation.html
 //                Imgproc.dilate(mResultMat, mIntermediateMat, new Mat());
 //                return postProcess(mIntermediateMat);
             case ApplyMask:
@@ -262,7 +265,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
                 return postProcess(mRgba);
 
-            case ContourMaskMode:
+            case ContourMaskMode: {
                 getContours(mRgba, lower, upper);
 
                 Imgproc.cvtColor(mRgba, mHSVMat, Imgproc.COLOR_RGB2HSV);
@@ -272,10 +275,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 mRgba.copyTo(mIntermediateMat, mResultMat);
                 Imgproc.drawContours(mIntermediateMat, mContours, -1, CONTOUR_COLOR);
 
-                Point centerPoint = drawRectangleAroundContours(mRgba, mContours,  new Scalar(0, 0, 255));
-                Imgproc.circle(mIntermediateMat, centerPoint, 10, new Scalar(255,255,100), 10);
+                Point centerPoint = drawRectangleAroundContours(mRgba, mContours, new Scalar(0, 0, 255));
+                Imgproc.circle(mIntermediateMat, centerPoint, 10, new Scalar(255, 255, 100), 10);
 
                 return postProcess(mIntermediateMat);
+            }
+            case CenterPoint:
+                getContours(mRgba, lower, upper);
+                Point centerPoint = drawRectangleAroundContours(mRgba, mContours,  new Scalar(0, 0, 255));
+                Imgproc.circle(mRgba, centerPoint, 10, new Scalar(255, 255, 100), 10);
+
+                return postProcess(mRgba);
 
             default:
                 return mRgba;
