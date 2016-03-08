@@ -29,15 +29,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
-    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint };
+    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint }
     private static final String  TAG              = "MainActivity";
 
-    private List<MatOfPoint> mContours = new ArrayList<MatOfPoint>();
+    private List<MatOfPoint> mContours = new ArrayList<>();
 
     private boolean              mTakeScreenShot;
     private boolean              mFreezeFrameOn = false;
     private PictureMode mMode = PictureMode.Color;
-    private CvCameraViewFrame    freezeFrame;
     private Mat mResultMat;
     private Mat mPostProcessMat;
     private Mat mIntermediateMat;
@@ -92,7 +91,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.my_surface_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
-        Mat result;
     }
 
     @Override
@@ -185,6 +183,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         mResultMat = new Mat();
         mIntermediateMat = new Mat();
         mPostProcessMat = new Mat();
+        mDilatedMat = new Mat();
     }
 
     public void onCameraViewStopped() {
@@ -197,6 +196,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         if (mIntermediateMat != null)
             mIntermediateMat.release();
         mIntermediateMat = null;
+
+        if (mDilatedMat != null)
+            mDilatedMat.release();
+        mDilatedMat = null;
 
         if (mHSVMat != null)
             mHSVMat.release();
@@ -335,7 +338,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         Imgproc.erode(mResultMat, mDilatedMat, new Mat());
         Imgproc.dilate(mDilatedMat, mResultMat, new Mat());
 
-        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        List<MatOfPoint> contours = new ArrayList<>();
 
         Imgproc.findContours(mResultMat, contours, mHierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
