@@ -39,6 +39,12 @@
                 <item
                     android:id="@+id/ApplyMaskMode"
                     android:title="Apply Mask" />
+                <item
+                    android:id="@+id/ContoursMode"
+                    android:title="Draw Contours" />
+                <item
+                    android:id="@+id/ContoursMaskMode"
+                    android:title="Draw Contours on Mask" />
             </group>
         </menu>
     </item>
