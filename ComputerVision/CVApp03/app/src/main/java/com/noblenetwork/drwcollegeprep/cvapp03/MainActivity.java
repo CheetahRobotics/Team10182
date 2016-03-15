@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainActivity extends Activity implements CvCameraViewListener2 {
+public class MainActivity extends Activity implements View.OnTouchListener, CvCameraViewListener2 {
     public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint, Task }
     private static final String  TAG              = "MainActivity";
 
@@ -66,6 +68,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     Log.i(TAG, "OpenCV loaded successfully");
                     mOpenCvCameraView.enableView();
                     mOpenCvCameraView.enableFpsMeter();
+                    mOpenCvCameraView.setOnTouchListener(MainActivity.this);
                 } break;
                 default:
                 {
@@ -415,4 +418,44 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             return new Point(0.0,0.0);
         return new Point(maxRect.x + maxRect.width/2.0, maxRect.y + maxRect.height/2.0);
     }
-}
+    public boolean onTouch(View v, MotionEvent event) {
+
+//        int cols = mRgba.cols();
+//        int rows = mRgba.rows();
+//
+//        int xOffset = (mOpenCvCameraView.getWidth() - cols) / 2;
+//        int yOffset = (mOpenCvCameraView.getHeight() - rows) / 2;
+//
+//        int x = (int) event.getX() - xOffset;
+//        int y = (int) event.getY() - yOffset;
+//
+//        Log.i(TAG, "Touch image coordinates: (" + x + ", " + y + ") (" + event.getX() + ", " + event.getY() + ") (" + mOpenCvCameraView.getWidth() + ", " + mOpenCvCameraView.getHeight() + ") (" + mRgba.cols() + ", " + mRgba.rows() + ")");
+//        if ((x < 0) || (y < 0) || (x > cols) || (y > rows)) return false;
+//
+//
+//        Rect touchedRect = new Rect();
+//
+//        touchedRect.x = (x > 4) ? x - 4 : 0;
+//        touchedRect.y = (y > 4) ? y - 4 : 0;
+//
+//        touchedRect.width = (x + 4 < cols) ? x + 4 - touchedRect.x : cols - touchedRect.x;
+//        touchedRect.height = (y + 4 < rows) ? y + 4 - touchedRect.y : rows - touchedRect.y;
+//
+//        Mat touchedRegionRgba = mRgba.submat(touchedRect);
+//
+//        Mat touchedRegionHsv = new Mat();
+//        Imgproc.cvtColor(touchedRegionRgba, touchedRegionHsv, Imgproc.COLOR_RGB2HSV_FULL);
+//
+//        // Calculate average color of touched region
+//        Scalar mBlobColorHsv = Core.sumElems(touchedRegionHsv);
+//        int pointCount = touchedRect.width * touchedRect.height;
+//        for (int i = 0; i < mBlobColorHsv.val.length; i++)
+//            mBlobColorHsv.val[i] /= pointCount;
+//
+//        String msg = " hsva color: (" + mBlobColorHsv.val[0] + ", " + mBlobColorHsv.val[1] +
+//                ", " + mBlobColorHsv.val[2] + ", " + mBlobColorHsv.val[3] + ")";
+//
+//        Log.i(TAG, msg);
+//        showToast(msg);
+        return false; // don't need subsequent touch events
+    }}
