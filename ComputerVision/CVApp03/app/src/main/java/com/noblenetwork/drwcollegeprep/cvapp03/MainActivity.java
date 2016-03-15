@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
-    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint }
+    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint, Task }
     private static final String  TAG              = "MainActivity";
 
     private List<MatOfPoint> mContours = new ArrayList<>();
@@ -141,6 +141,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         }
         if (item.getItemId() == R.id.CenterPoint) {
             this.mMode = PictureMode.CenterPoint;
+        }
+        if (item.getItemId() == R.id.Task) {
+            this.mMode = PictureMode.Task;
         }
 
         item.setChecked(true);
@@ -279,15 +282,30 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 Imgproc.drawContours(mIntermediateMat, mContours, -1, CONTOUR_COLOR);
 
                 Point centerPoint = drawRectangleAroundContours(mRgba, mContours, new Scalar(0, 0, 255));
-                Imgproc.circle(mIntermediateMat, centerPoint, 10, new Scalar(255, 255, 100), 10);
+                Imgproc.circle(mIntermediateMat, centerPoint, 20, new Scalar(255, 255, 100), 72);
 
                 return postProcess(mIntermediateMat);
             }
             case CenterPoint:
                 getContours(mRgba, lower, upper);
-                Point centerPoint = drawRectangleAroundContours(mRgba, mContours,  new Scalar(0, 0, 255));
+                Point centerPoint = drawRectangleAroundContours(mRgba, mContours, new Scalar(0, 0, 255));
                 Imgproc.circle(mRgba, centerPoint, 10, new Scalar(255, 255, 100), 10);
 
+                return postProcess(mRgba);
+
+
+            case Task:
+                Scalar lower_Red = new Scalar(0,0, 0);
+                Scalar upper_Red = new Scalar(21,255,255);
+                getContours(mRgba, lower_Red, upper_Red);
+                Point Red = drawRectangleAroundContours(mRgba, mContours, new Scalar(255, 0, 0));
+                Imgproc.circle(mRgba, Red, 0, new Scalar(255, 255, 100), 21);
+
+                Scalar lower_Yellow = new Scalar(20,0, 0);
+                Scalar upper_Yellow = new Scalar(72,255,255);
+                getContours(mRgba, lower_Yellow, upper_Yellow);
+                Point Yellow = drawRectangleAroundContours(mRgba, mContours, new Scalar(255, 255, 0));
+                Imgproc.circle(mRgba, Yellow, 20, new Scalar(255, 0, 255), 72);
                 return postProcess(mRgba);
 
             default:
