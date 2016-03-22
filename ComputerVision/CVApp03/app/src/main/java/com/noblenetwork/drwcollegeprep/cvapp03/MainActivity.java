@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,8 +30,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MainActivity extends Activity implements CvCameraViewListener2 {
-    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint }
+public class MainActivity extends Activity implements View.OnTouchListener, CvCameraViewListener2 {
+    public enum PictureMode { Grey, Color, Mask, ApplyMask, Contours, ContourMaskMode, CenterPoint, Task }
     private static final String  TAG              = "MainActivity";
 
     private List<MatOfPoint> mContours = new ArrayList<>();
@@ -66,6 +68,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     Log.i(TAG, "OpenCV loaded successfully");
                     mOpenCvCameraView.enableView();
                     mOpenCvCameraView.enableFpsMeter();
+                    mOpenCvCameraView.setOnTouchListener(MainActivity.this);
                 } break;
                 default:
                 {
@@ -141,6 +144,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         }
         if (item.getItemId() == R.id.CenterPoint) {
             this.mMode = PictureMode.CenterPoint;
+        }
+        if (item.getItemId() == R.id.Task) {
+            this.mMode = PictureMode.Task;
         }
 
         item.setChecked(true);
@@ -279,15 +285,30 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 Imgproc.drawContours(mIntermediateMat, mContours, -1, CONTOUR_COLOR);
 
                 Point centerPoint = drawRectangleAroundContours(mRgba, mContours, new Scalar(0, 0, 255));
-                Imgproc.circle(mIntermediateMat, centerPoint, 10, new Scalar(255, 255, 100), 10);
+                Imgproc.circle(mIntermediateMat, centerPoint, 20, new Scalar(255, 255, 100), 72);
 
                 return postProcess(mIntermediateMat);
             }
             case CenterPoint:
                 getContours(mRgba, lower, upper);
-                Point centerPoint = drawRectangleAroundContours(mRgba, mContours,  new Scalar(0, 0, 255));
+                Point centerPoint = drawRectangleAroundContours(mRgba, mContours, new Scalar(0, 0, 255));
                 Imgproc.circle(mRgba, centerPoint, 10, new Scalar(255, 255, 100), 10);
 
+                return postProcess(mRgba);
+
+
+            case Task:
+                Scalar lower_Red = new Scalar(0,0, 0);
+                Scalar upper_Red = new Scalar(21,255,255);
+                getContours(mRgba, lower_Red, upper_Red);
+                Point Red = drawRectangleAroundContours(mRgba, mContours, new Scalar(255, 0, 0));
+                Imgproc.circle(mRgba, Red, 0, new Scalar(255, 255, 100), 21);
+
+                Scalar lower_Yellow = new Scalar(20,0, 0);
+                Scalar upper_Yellow = new Scalar(72,255,255);
+                getContours(mRgba, lower_Yellow, upper_Yellow);
+                Point Yellow = drawRectangleAroundContours(mRgba, mContours, new Scalar(255, 255, 0));
+                Imgproc.circle(mRgba, Yellow, 20, new Scalar(255, 0, 255), 72);
                 return postProcess(mRgba);
 
             default:
@@ -397,4 +418,44 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             return new Point(0.0,0.0);
         return new Point(maxRect.x + maxRect.width/2.0, maxRect.y + maxRect.height/2.0);
     }
-}
+    public boolean onTouch(View v, MotionEvent event) {
+
+//        int cols = mRgba.cols();
+//        int rows = mRgba.rows();
+//
+//        int xOffset = (mOpenCvCameraView.getWidth() - cols) / 2;
+//        int yOffset = (mOpenCvCameraView.getHeight() - rows) / 2;
+//
+//        int x = (int) event.getX() - xOffset;
+//        int y = (int) event.getY() - yOffset;
+//
+//        Log.i(TAG, "Touch image coordinates: (" + x + ", " + y + ") (" + event.getX() + ", " + event.getY() + ") (" + mOpenCvCameraView.getWidth() + ", " + mOpenCvCameraView.getHeight() + ") (" + mRgba.cols() + ", " + mRgba.rows() + ")");
+//        if ((x < 0) || (y < 0) || (x > cols) || (y > rows)) return false;
+//
+//
+//        Rect touchedRect = new Rect();
+//
+//        touchedRect.x = (x > 4) ? x - 4 : 0;
+//        touchedRect.y = (y > 4) ? y - 4 : 0;
+//
+//        touchedRect.width = (x + 4 < cols) ? x + 4 - touchedRect.x : cols - touchedRect.x;
+//        touchedRect.height = (y + 4 < rows) ? y + 4 - touchedRect.y : rows - touchedRect.y;
+//
+//        Mat touchedRegionRgba = mRgba.submat(touchedRect);
+//
+//        Mat touchedRegionHsv = new Mat();
+//        Imgproc.cvtColor(touchedRegionRgba, touchedRegionHsv, Imgproc.COLOR_RGB2HSV_FULL);
+//
+//        // Calculate average color of touched region
+//        Scalar mBlobColorHsv = Core.sumElems(touchedRegionHsv);
+//        int pointCount = touchedRect.width * touchedRect.height;
+//        for (int i = 0; i < mBlobColorHsv.val.length; i++)
+//            mBlobColorHsv.val[i] /= pointCount;
+//
+//        String msg = " hsva color: (" + mBlobColorHsv.val[0] + ", " + mBlobColorHsv.val[1] +
+//                ", " + mBlobColorHsv.val[2] + ", " + mBlobColorHsv.val[3] + ")";
+//
+//        Log.i(TAG, msg);
+//        showToast(msg);
+        return false; // don't need subsequent touch events
+    }}

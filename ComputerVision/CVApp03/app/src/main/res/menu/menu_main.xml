@@ -48,6 +48,10 @@
                 <item
                     android:id="@+id/CenterPoint"
                     android:title="Draw Center Point Only" />
+
+                <item
+                    android:id="@+id/Task"
+                    android:title="Left/Right Task"/>
             </group>
         </menu>
     </item>
