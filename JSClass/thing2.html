@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById('tutorial');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+                ctx.font = "48px serif";
+                ctx.fillText("Hello world", 10, 50);
+
+                ctx.fillStyle = "rgba(200,0,200, 0.5)";
+                var x = 10;
+                var y = 10;
+                ctx.fillRect(x, y, 55, 50);
+
+             //Code block 1:
+                //var x = 10;
+                //var y = 10;
+                //while (x < 100) {
+                //    ctx.fillRect(x, y, 55, 50);
+                //    x = x + 10;
+                //    y = y + 10;
+                //    console.log("X = " + x + ", Y = " + y);
+                //}
+
+             //Code block 2:
+                //while (x > 0) {
+                //    ctx.fillRect(x, y, 55, 50);
+                //    x = x - 10;
+                //    y = y + 10;
+                //    console.log("X = " + x + ", Y = " + y);
+                //}
+
+
+            }
+        }
+    </script>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body onload="draw();">
+    <canvas id="tutorial" width="450" height="450"></canvas>
+</body>
+</html>
