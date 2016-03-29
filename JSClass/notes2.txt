@@ -1,0 +1,12 @@
+open thing4:
+------------
+- note how we place the squares
+- show result of thing 5. Challenge: create thing5 from thing4.
+
+open thing6:
+------------
+- it has 7 'hello worlds'
+- challenge: make 14 hello worlds.
+- uncomment line. keep hitting f5, see new numbers.
+- uncomment 2nd line. it is producing numbers between what and what?
+- challenge: have it produce numbers between 0 and 100.
