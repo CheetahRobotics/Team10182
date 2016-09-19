@@ -8,6 +8,7 @@ $22.00
 Full field with Four Beacons (am-3375)
 http://www.andymark.com/FTC17-p/am-3375.htm
 $450.00
+(other purchase options: http://www.andymark.com/category-s/616.htm )
 
 FIRST Tech Challenge Perimeter Field Kit (am-0481a)
 http://www.andymark.com/FTC-Perimeter-p/am-0481a.htm
