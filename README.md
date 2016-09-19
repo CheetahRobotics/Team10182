@@ -8,8 +8,16 @@ A new season begins!
 Video explanation:   
 https://www.youtube.com/watch?v=iQLrcQbm8cg
 
-Training Document - Read this first, it has so much information!
+One page overview:
+https://firstinspiresst01.blob.core.windows.net/ftc/velocity-vortex-one-page.pdf
+
+
+Training Document - Read this first, it has so much information about how to set up phones and laptops.
 https://github.com/ftctechnh/ftc_app/files/464313/FTC_SDK_UserMan_v2_2_rel01.pdf
+
+Rules Manuals:
+- [Part 1](https://firstinspiresst01.blob.core.windows.net/ftc/game-manual-part-1.pdf) - These are general guidelines that don't change much from year-to-year.
+- [Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/game-manual-part-2.pdf) - These are specific to Velocity Vortex.
 
 What is new this year?
 - There is a new version of the FTC code, version 2.20. Take a look at the release notes [here](https://github.com/ftctechnh/ftc_app) (scroll down). Many cool new features!
@@ -20,7 +28,7 @@ What do we need to do ASAP:
 - Register.
 - Study the new competition rules.
 - Do an inventory of what we have now and what works and what is broken (laptops, joysticks, phones, sensors, batteries). Order what we need.
-- Order the playing field and any new sensors we need
+- Order the playing field and any new sensors we need. See details on the [Hardware Page](Hardware.md)
 
 
 FAQ:
