@@ -12,6 +12,7 @@
 - Field assembly guide, other materials here: http://www.firstinspires.org/resource-library/ftc/game-and-season-info
 
 #### FIRST Tech Challenge Perimeter Field Kit (am-0481a)
+- We do not need to buy this, we have our own already. This is just for reference:
 - http://www.andymark.com/FTC-Perimeter-p/am-0481a.htm
 - $595.00
 - Low cost option here: http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2016-2017-season/low-cost-field-perimeter-build-guide.pdf
