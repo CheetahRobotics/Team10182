@@ -5,15 +5,9 @@ A new season begins!
 
 #### The 2016-17 game is called Velocity Vortex.
 
-Video explanation:   
-https://www.youtube.com/watch?v=iQLrcQbm8cg
-
-One page overview:
-https://firstinspiresst01.blob.core.windows.net/ftc/velocity-vortex-one-page.pdf
-
-
-Training Document - Read this first, it has so much information about how to set up phones and laptops.
-https://github.com/ftctechnh/ftc_app/files/464313/FTC_SDK_UserMan_v2_2_rel01.pdf
+- [Video explanation] (https://www.youtube.com/watch?v=iQLrcQbm8cg)
+- [One page overview] (https://firstinspiresst01.blob.core.windows.net/ftc/velocity-vortex-one-page.pdf)
+- [Training Document] (https://github.com/ftctechnh/ftc_app/files/464313/FTC_SDK_UserMan_v2_2_rel01.pdf). Read this first, it has so much information about how to set up phones and laptops.
 
 Rules Manuals:
 - [Part 1](https://firstinspiresst01.blob.core.windows.net/ftc/game-manual-part-1.pdf) - These are general guidelines that don't change much from year-to-year.
