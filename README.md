@@ -21,7 +21,8 @@ What is new this year?
 
 Other resources:
 - Order the playing field and any new sensors we need. See details on the [Hardware Page](Hardware.md)
-- [Pushbot Guide](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/pushbot-build-guide-tetrix-sensors-supplement.pdf)
+- [Pushbot Guide](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2016-2017-season/pushbot-build-guide.pdf) - Build instructions start on page 102.
+- [Pushbot Guide - Sensor Supplement](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/pushbot-build-guide-tetrix-sensors-supplement.pdf)
 
 FAQ:
 - I want to start looking at the Robot Controller code in Android Studio on my home PC. How do I do this?
