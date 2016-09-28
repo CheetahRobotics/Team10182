@@ -18,18 +18,16 @@ https://github.com/ftctechnh/ftc_app/files/464313/FTC_SDK_UserMan_v2_2_rel01.pdf
 Rules Manuals:
 - [Part 1](https://firstinspiresst01.blob.core.windows.net/ftc/game-manual-part-1.pdf) - These are general guidelines that don't change much from year-to-year.
 - [Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/game-manual-part-2.pdf) - These are specific to Velocity Vortex.
+- [Engineering Notebook](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf)
 
 What is new this year?
 - There is a new version of the FTC code, version 2.20. Take a look at the release notes [here](https://github.com/ftctechnh/ftc_app) (scroll down). Many cool new features!
 - There is a new version of Android Studio, version 2.1.3. Before we were using version 1.something. Should be much faster, hopefully.
 - Look at the sample op-modes in the ftc_app (see the instructions below). Looks like they have a new computer vision library called Vuforia. (We used OpenCV last year). I haven't had time to look at it, someone should study what it can do.
 
-What do we need to do ASAP:
-- Register.
-- Study the new competition rules.
-- Do an inventory of what we have now and what works and what is broken (laptops, joysticks, phones, sensors, batteries). Order what we need.
+Other resources:
 - Order the playing field and any new sensors we need. See details on the [Hardware Page](Hardware.md)
-
+- [Pushbot Guide](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/pushbot-build-guide-tetrix-sensors-supplement.pdf)
 
 FAQ:
 - I want to start looking at the Robot Controller code in Android Studio on my home PC. How do I do this?
