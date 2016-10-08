@@ -7,7 +7,9 @@ Here's how it works:
 
 1 - You download the object scanner to a phone. Any phone. You get the scanner here: https://developer.vuforia.com/downloads/tool
 
-2 - You scan an object. Follow the instructions in this video: https://www.youtube.com/watch?v=8fjpgjViSAY
+2 - You scan an object. Follow the instructions in this video: https://www.youtube.com/watch?v=8fjpgjViSAY. More details are available on Vuforia's website: http://library.vuforia.com/articles/Training/Vuforia-Object-Scanner-Users-Guide
+You need the object scanner target page, which I've uploaded [here](Letter-ObjectScanningTarget[1].pdf).
+
 
 3 - You upload the object to a web site.
 
