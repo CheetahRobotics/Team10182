@@ -39,7 +39,7 @@ FAQ:
      3. Open a CMD window and type `adb tcpip 5555`.
      4. The type `adb connect ipaddress`. ipaddress is the ipaddress you wrote down in step one.
      5. Now unplug the phone from the laptop and plug it into the robot. You can still start, stop and debug your phone from Android Studio.
-     6. You can always type `adb devices` to confirm your laptop is still connected to the phone.
+     6. You can always type `adb devices` to confirm your laptop is still connected to the phone. If you lose a connection you can alwyas reconnect using the `adb connect` command in step 4 above.
      
      
 
