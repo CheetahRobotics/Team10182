@@ -18,6 +18,7 @@ What is new this year?
 - There is a new version of the FTC code, version 2.20. Take a look at the release notes [here](https://github.com/ftctechnh/ftc_app) (scroll down). Many cool new features!
 - There is a new version of Android Studio, version 2.1.3. Before we were using version 1.something. Should be much faster, hopefully.
 - Look at the sample op-modes in the ftc_app (see the instructions below). Looks like they have a new computer vision library called Vuforia. (We used OpenCV last year). I haven't had time to look at it, someone should study what it can do.
+- Here is a good set of slides that discuss some of the important changes to the ftc_app: http://ftc.flfirst.org/images/Home_Files/Documents/2016/2016_SDK_Changes.pdf
 
 Other resources:
 - Order the playing field and any new sensors we need. See details on the [Hardware Page](Hardware.md)
