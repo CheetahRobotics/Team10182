@@ -32,7 +32,7 @@ FAQ:
      2. You need 'git' installed on your PC. You can install it here: https://git-scm.com/
      3. You need the source code for the Robot Controller on your PC. Please ignore the instructions in the above document and instead do the instructions which are [here](GitQuickStart.md).
      4. Start Android Studio and click on 'Open an existing Android Studio project' and open the directory you just created.
-- How do do wireless debugging of the Robot Controller.
+- How do do wireless debugging of the Robot Controller?   
      You usually want to debug the robot controller while it is connected to the robot. But you can't plug the phone into the laptop because it is already plugged into the robot and there is only one USB plug on the phone. But there is a solution: you can connect the laptop to the phone WIRELESSLY, over WIFI. Here is how.
      1. The phone needs to be on a local wifi network like 'NobleStudentCloud'. The open the Settings menu on the phone and click 'About phone'. Then click on 'Status'. Then scroll down to where the IP address is.
      2. Connect the phone to the laptop.
