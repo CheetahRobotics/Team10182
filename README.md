@@ -15,17 +15,17 @@ Rules Manuals:
 - [Engineering Notebook](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf)
 
 What is new this year?
-- There is a new version of the FTC code, version 2.20. Take a look at the release notes [here](https://github.com/ftctechnh/ftc_app) (scroll down). Many cool new features!
-- There is a new version of Android Studio, version 2.1.3. Before we were using version 1.something. Should be much faster, hopefully.
-- Look at the sample op-modes in the ftc_app (see the instructions below). Looks like they have a new computer vision library called Vuforia. (We used OpenCV last year). I haven't had time to look at it, someone should study what it can do.
+- There is a new version of the FTC code, version 2.20. A lot has changed. Please see this [VERY IMPORTANT VIDEO](https://www.youtube.com/watch?v=TKPscPqsz8s&index=1&list=PLKxIFjlI_T1zKVjYZ6S1FeqeqW1_pnzE2) to understand the new way we are going to program robots this year: 
+- There is a new computer vision library called Vuforia. Looks much easier to use then OpenCV and there is support for it in the ftc app. See the link below.
 - Here is a good set of slides that discuss some of the important changes to the ftc_app: http://ftc.flfirst.org/images/Home_Files/Documents/2016/2016_SDK_Changes.pdf
 
 Other resources:
-- Order the playing field and any new sensors we need. See details on the [Hardware Page](Hardware.md)
+- Details on the playing field kit can be found on the [Hardware Page](Hardware.md)
 - [Pushbot Guide](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2016-2017-season/pushbot-build-guide.pdf) - Build instructions start on page 102.
 - [Pushbot Guide - Sensor Supplement](http://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/pushbot-build-guide-tetrix-sensors-supplement.pdf)
 - [Electronics Notes](https://firstinmaryland.org/images/docs/2016Docs/FTC_Kickoff/FTC_Wiring_and_ESD_2016_v1.pdf). Good discussion of the robotics electronics subsystem.
 - [Vuforia Resources](vuforia.md). Vuforia is the computer vision software that FTC is encouraging teams to use for this season.
+- [VERY IMPORTANT VIDEO](https://www.youtube.com/watch?v=TKPscPqsz8s&index=1&list=PLKxIFjlI_T1zKVjYZ6S1FeqeqW1_pnzE2) about the ftc_app 2.2.
 
 FAQ:
 - I want to start looking at the Robot Controller code in Android Studio on my home PC. How do I do this?
