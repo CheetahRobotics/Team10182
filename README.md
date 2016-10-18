@@ -26,6 +26,8 @@ Other resources:
 - [Electronics Notes](https://firstinmaryland.org/images/docs/2016Docs/FTC_Kickoff/FTC_Wiring_and_ESD_2016_v1.pdf). Good discussion of the robotics electronics subsystem.
 - [Vuforia Resources](vuforia.md). Vuforia is the computer vision software that FTC is encouraging teams to use for this season.
 - [VERY IMPORTANT VIDEO](https://www.youtube.com/watch?v=TKPscPqsz8s&index=1&list=PLKxIFjlI_T1zKVjYZ6S1FeqeqW1_pnzE2) about the ftc_app 2.2.
+- Good presentation on Drive Trains, see videos on last page: https://docs.google.com/presentation/d/1U-OhBP-z9g160SJaBRspDTYtMyfPGiG48SaVWxvX8-o/edit#slide=id.p20
+- Overview of sensors: https://www.youtube.com/watch?v=Hm7e3ADBoRI
 
 FAQ:
 - I want to start looking at the Robot Controller code in Android Studio on my home PC. How do I do this?
