@@ -1,8 +1,5 @@
 ## Vuforia
 
-Team Fixit3491 put together a series of videos that explain how to work with Vuforia. 
-All of the info below is from those videos and needs to be validated.
-
 Here's how it works:
 
 1 - You download the object scanner to a phone. Any phone. You get the scanner here: https://developer.vuforia.com/downloads/tool
@@ -20,5 +17,5 @@ You need the object scanner target page, which I've uploaded [here](Letter-Objec
      
 4 - In this step, you download the database from the web site onto your PC and add it as a resource into Android Studio. To do this, click on the database name in Vuforia Target Manager, then click on 'Download Database'. Unzip the database and paste the files into the 'src/main/assets' directory in Android Studio. This video shows how to do all this: https://www.youtube.com/watch?v=8fjpgjViSAY
 
-5 - You write an opmode that detects the object and acts accordingly. See details in Team Fixit 341's videos 3 and 4.
+5 - You write an opmode that detects the object and acts accordingly. See details in Team Fixit 3491's videos 3 and 4.
 
