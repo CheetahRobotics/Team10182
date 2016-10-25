@@ -17,7 +17,12 @@ You need the object scanner target page, which I've uploaded [here](Letter-Objec
      
 4 - In this step, you download the database from the web site onto your PC and add it as a resource into Android Studio. To do this, click on the database name in Vuforia Target Manager, then click on 'Download Database'. Unzip the database and paste the files into the 'src/main/assets' directory in Android Studio. This video shows how to do all this: https://www.youtube.com/watch?v=8fjpgjViSAY
 
-5 - You write an opmode that detects the object and acts accordingly. See details in Team Fixit 3491's video 4: https://www.youtube.com/watch?v=2z-o9Ts8XoE
+5 - You write an opmode that detects the object and acts accordingly. See details in Team Fixit 3491's video 4: https://www.youtube.com/watch?v=2z-o9Ts8XoE. Here is the license key:
+
+
+Af8mJUL/////AAAAGamRrtduq0AYioQ8+Iqr61Uf6oyUkAu3UyV/z77f3FXEb3oRQHebg2Mb+1EEk/hWjAHiAAwNyvsn74IIHK6foNJh6jGB/YqZ7k/vKaQ8nYW3PGoKBLgT8/qVT8pJ6TcUcQ81IBgPTxJ9LT5scw989dT3tolt4Y3Jybgo9Yb5DW9tPT4xc/Qb/UkJ/WQt0Z4e/PP/l8BhUhX2JN8kpPHi+P/J3/qH/XHUhkf5rYTLf3ZMESKbovJ+ieUdMcXKLtyeKhjvlZ+WStZ27XE/eMmfQHWeK+qmKg9EusYQEVLiptwKHSIAsMfCH04xqDA8pIrwIVCuGN9M+763IDBnb7P4GabnYOiQuJtAar2rnhTcnFNF
+
+
 
 
 
