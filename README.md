@@ -43,6 +43,7 @@ FAQ:
      4. The type `adb connect ipaddress`. ipaddress is the ipaddress you wrote down in step one.
      5. Now unplug the phone from the laptop and plug it into the robot. You can still start, stop and debug your phone from Android Studio.
      6. You can always type `adb devices` to confirm your laptop is still connected to the phone. If you lose a connection you can alwyas reconnect using the `adb connect` command in step 4 above.
-     
+- The build in Android Studio is SO SLOW!   
+    Do what is suggested in this note: http://stackoverflow.com/a/35813097/2195930
      
 
