@@ -1,5 +1,7 @@
 ## Vuforia
 
+The instructions below are accurate but we won't need to go into this detail. We'll be using the Vuforia Concept which handles Vuforia much better. So this is of interest, but not necessary.
+
 Here's how it works:
 
 1 - You download the object scanner to a phone. Any phone. You get the scanner here: https://developer.vuforia.com/downloads/tool
