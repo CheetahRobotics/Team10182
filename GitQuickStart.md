@@ -7,6 +7,6 @@ Open the command prompt (Start/Run/cmd) and type these commands:
     c:
     mkdir code
     cd code
-    git clone https://github.com/ftctechnh/ftc_app.git
+    git clone https://github.com/rwoodley/ftc_app.git
 
-The ftc_code is now in c:\code\ftc_app.
+Once you have done that, the ftc_code will be in c:\code\ftc_app.
