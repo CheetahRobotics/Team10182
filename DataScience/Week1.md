@@ -14,5 +14,5 @@ This is very easy.
 
 ## Week 1.
 
-1. Download the dataset we'll be using from [here|DataSet1.csv].
+1. Download the dataset we'll be using from [here](DataSet1.csv).
 
