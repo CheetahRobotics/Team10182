@@ -14,5 +14,13 @@ This is very easy.
 
 ## Week 1.
 
-1. Download the dataset we'll be using from [here](DataSet1.csv).
+1. Download the dataset we'll be using from [here](DataSet1.csv). (right-click and select 'Save Link As'.
+
+#### Code
+
+```python
+import pandas as pd
+donations = pd.read_csv("C:/Users/bob/Dropbox/jupyter/P00000001-IL.csv", index_col=False)
+```
+
 
