@@ -35,19 +35,10 @@ donations.head(2)
 
 #### Plots
 ```python
-%matplotlib inline
+%matplotlib inline      # required before doing any plots.
+tot["contb_receipt_amt"].plot(kind="bar")
+
+avg_donations = donations.groupby("cand_nm").mean().sort_values(by="contb_receipt_amt")
+avg_donations["contb_receipt_amt"].plot(kind="bar")
 ```
 
-#### Code snippets
-```python
-import math
-def fixzip(row):
-    if math.isnan(row['contbr_zip']):
-        return 0
-    else:
-        return int(row['contbr_zip']) if row['contbr_zip'] < 100000. else int(row['contbr_zip']/1000.)
-
-donations['zip'] = donations.apply(fixzip, axis=1)
-dz60610 = donations[donations['zip']==60610]
-
-```
