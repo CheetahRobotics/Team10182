@@ -38,3 +38,16 @@ donations.head(2)
 %matplotlib inline
 ```
 
+#### Code snippets
+```python
+import math
+def fixzip(row):
+    if math.isnan(row['contbr_zip']):
+        return 0
+    else:
+        return int(row['contbr_zip']) if row['contbr_zip'] < 100000. else int(row['contbr_zip']/1000.)
+
+donations['zip'] = donations.apply(fixzip, axis=1)
+dz60610 = donations[donations['zip']==60610]
+
+```
