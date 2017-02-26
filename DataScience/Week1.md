@@ -1,6 +1,6 @@
 # Data Science with Python/Jupyter/Pandas
 
-See [resources page](Resources.md).
+(note, also see [resources page](Resources.md).)
 
 ## Installation
 
