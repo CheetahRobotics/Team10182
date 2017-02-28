@@ -11,6 +11,7 @@ Python Data Science Handbook: https://github.com/jakevdp/PythonDataScienceHandbo
 Tutorials:
 This is the tutorial we're using: http://nbviewer.jupyter.org/github/ehmatthes/intro_programming/blob/master/notebooks/index.ipynb
 Dataquest tutorials: https://www.dataquest.io/dashboard
+Good tutorial!: http://mbakker7.github.io/exploratory_computing_with_python/
 
 Python Lecutures: https://github.com/rajathkumarmp/Python-Lectures 
 
