@@ -12,6 +12,8 @@ Tutorials:
 This is the tutorial we're using: http://nbviewer.jupyter.org/github/ehmatthes/intro_programming/blob/master/notebooks/index.ipynb
 Dataquest tutorials: https://www.dataquest.io/dashboard
 
+Python Lecutures: https://github.com/rajathkumarmp/Python-Lectures 
+
 Seaborn: http://twiecki.github.io/blog/2014/11/18/python-for-data-science/
 
 Comparison with SQL: http://pandas.pydata.org/pandas-docs/stable/comparison_with_sql.html
