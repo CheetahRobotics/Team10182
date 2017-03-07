@@ -16,3 +16,6 @@ To run it:
 
 Then you can start typing in Python commands.
 
+If you want more practice learning Python, you can go to https://www.codecademy.com/learn/python and sign up for free.
+
+Here is a good list of links concerning Anaconda/Jupyter: https://github.com/rwoodley/Team10182/blob/master/DataScience/Resources.md
