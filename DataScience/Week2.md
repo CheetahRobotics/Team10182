@@ -169,6 +169,20 @@ avg_donations = donations.groupby("cand_nm").mean().sort_values(by="contb_receip
 avg_donations["contb_receipt_amt"].plot(kind="bar")
 ```
 
+#### Other
+```python
+avg_donations = donations.groupby("contbr_pt").mean().sort_values(by="contb_receipt_amt")
+avg_donations["contb_receipt_amt"].plot(kind="bar")
+
+#####
+donations.max()
+
+bigdonors = donations[donations['contb_receipt_amt'] == 10000]
+bigdonors
+
+```
+
+
 #### links
 http://benoitdherin.github.io/blackboard-scribbles/dataframes.html
 
