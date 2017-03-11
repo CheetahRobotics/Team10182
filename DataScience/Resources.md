@@ -1,3 +1,12 @@
+Some data sets:
+2016 campaign finance data: http://linnus.net/posts/2015/Oct/04/2016_US_Federal_Election_Contributors/
+US Births: https://github.com/dataquestio/solutions/blob/master/Mission9Solutions.ipynb
+https://raw.githubusercontent.com/fivethirtyeight/data/master/births/US_births_1994-2003_CDC_NCHS.csv
+
+
+
+
+
 Pandas documentation: http://pandas.pydata.org/pandas-docs/version/0.15.0/dsintro.html
 
 Pandas quick-start: http://pandas.pydata.org/pandas-docs/stable/10min.html#minutes-to-pandas
