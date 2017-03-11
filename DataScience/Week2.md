@@ -28,6 +28,12 @@ donations.head(2)
 donations.columns
 ```
 
+```python
+print 'max contribution', main.contb_receipt_amt.max()
+print 'avg contribution', main.contb_receipt_amt.mean()
+print 'amount', main[main.contbr_zip==60610].contb_receipt_amt.max()
+```
+
 #### Print out candidates
 ```python
 # this doesn't work so well, too many rows:
@@ -183,6 +189,8 @@ bigdonors = donations[donations['contb_receipt_amt'] == 10000]
 bigdonors
 
 ```
+
+#### Exercises
 
 
 #### links
