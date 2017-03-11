@@ -116,12 +116,22 @@ main.contbr_pt.value_counts()
 ```python
 by_occupation = main.pivot_table(
     values=['contb_receipt_amt'],
-    index=['contbr_occupation']
+    index=['contbr_occupation'],
+    aggfunc=np.sum
     )
 
 by_occupation
 
+```
 
+#### filter to main occupations
+```python
+occupations = main.contbr_occupation.value_counts()
+occupations[:20]
+# Stop and try the above, then:
+
+over_2mm = by_occupation[by_occupation.sum(1) > 200000]
+over_2mm
 
 ```
 
@@ -129,6 +139,9 @@ by_occupation
 
 #### Plots
 ```python
+
+over_2mm.plot(kind='barh');
+
 tot["contb_receipt_amt"].plot(kind="bar")
 
 avg_donations = donations.groupby("cand_nm").mean().sort_values(by="contb_receipt_amt")
