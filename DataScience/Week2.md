@@ -47,6 +47,83 @@ i = randint(0,num_rows)
 print donations.ix[i,:]
 ```
 
+# another way to get a random sample
+```python
+from random import sample
+
+sample_size = 3
+rows        = sample(range(0, num_rows), sample_size)
+sample = donations.ix[rows, ['contb_receipt_amt', 'contbr_nm', 'cand_nm']]
+
+sample.columns = ['Amount contributed', 'Contributor Name', 'Candidate Contributed to']
+
+sample
+```
+
+# adding party info
+```python
+
+parties = {"Bachmann, Michelle":"Republican",
+           "Cain, Herman":"Republican",
+           "Gingrich, Newt":"Republican",
+           "Huntsman, Jon":"Republican",
+           "Johnson, Gary, Earl":"Republican",
+           "McCotter, Thaddeus G":"Republican",
+           "Obama, Barack":"Democrat",
+           "Paul, Ron":"Republican",
+           "Pawlenty, Timothy":"Republican",
+           "Perry, Rick":"Republican",
+           "Roemer, Charles, E. 'Buddy' III":"Republican",
+           "Romney, Mitt":"Republican",
+           "Santorum, Rick":"Republican",
+            "Sanders, Bernard":"Republican",
+           "Stein, Jill":"Republican",
+           "Trump, Donald J.": "Republican",
+          "Clinton, Hillary Rodham": "Democrat",
+           "O'Malley, Martin Joseph": "Democrat",
+           "Cruz, Rafael Edward 'Ted'": "Republican",
+           'Carson, Benjamin S.': "Republican",
+           'Kasich, John R.': "Republican"
+          }
+
+print donations.cand_nm[800], parties[donations.cand_nm[800]]
+```
+#### test party info
+```python
+i = randint(0,num_rows)
+print i, donations.cand_nm[i], parties[donations.cand_nm[i]]
+```
+
+#### add party as new column
+```python
+donations['contbr_pt'] = donations.cand_nm.map(parties)
+
+# and count by party
+main = donations[donations.cand_nm.isin(['Trump, Donald J.', 'Clinton, Hillary Rodham'])]
+
+main.contbr_pt.value_counts()
+
+```
+
+#### Keep only donors to the 2 main candidates
+```python
+main = donations[donations.cand_nm.isin(['Trump, Donald J.', 'Clinton, Hillary Rodham'])]
+
+main.contbr_pt.value_counts()
+```
+
+#### pivot table
+```python
+by_occupation = main.pivot_table(
+    values=['contb_receipt_amt'],
+    index=['contbr_occupation']
+    )
+
+by_occupation
+
+
+
+```
 
 
 
@@ -57,4 +134,7 @@ tot["contb_receipt_amt"].plot(kind="bar")
 avg_donations = donations.groupby("cand_nm").mean().sort_values(by="contb_receipt_amt")
 avg_donations["contb_receipt_amt"].plot(kind="bar")
 ```
+
+#### links
+http://benoitdherin.github.io/blackboard-scribbles/dataframes.html
 
