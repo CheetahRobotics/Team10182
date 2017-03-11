@@ -1,5 +1,7 @@
 # Week 2.
 
+Review last week's material by watching this video: https://www.youtube.com/watch?v=fnl6N_F7TvI&feature=youtu.be
+
 1. Download the dataset we'll be using from [here](DataSet1.csv). (right-click and select 'Save Link As'.
 
 #### Setup
