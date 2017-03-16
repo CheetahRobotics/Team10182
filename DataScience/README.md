@@ -1,12 +1,19 @@
-We are learning the Python programming lanaguage. We are using it inside Jupyter Notebooks. 
+This class teaches the basics of data science in the context of Civic Hacking.
+
+Here is a video introducing the topic of Civic Hacking. It is a great example of something that happened right here in Chicago:
+https://www.youtube.com/watch?v=ZR5JMxp-ejw
+
+The tools we will be using are:
+- the Python programmign language.
+- Jupyter Notebooks.
+
+We are learning the Python programming language. We are using it inside Jupyter Notebooks. 
 
 You can get Python and Jupyter on your computer by downloading a package called Anaconda.
 
 Instructions on installing Anaconda is here: https://github.com/rwoodley/Team10182/blob/master/DataScience/Week1.md
 
-Anaconda is installed on all the laptops in Mr. Im's office. 
-
-To run it:
+To run it on Windows:
 
     Press the Windows key and hit R.
 
@@ -19,3 +26,7 @@ Then you can start typing in Python commands.
 If you want more practice learning Python, you can go to https://www.codecademy.com/learn/python and sign up for free.
 
 Here is a good list of links concerning Anaconda/Jupyter: https://github.com/rwoodley/Team10182/blob/master/DataScience/Resources.md
+
+Week 1 Curriculum: https://github.com/rwoodley/Team10182/blob/master/DataScience/Week1.md
+
+Week 2 Curriculum: https://github.com/rwoodley/Team10182/blob/master/DataScience/Week2.md
