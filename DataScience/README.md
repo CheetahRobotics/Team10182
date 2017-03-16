@@ -7,7 +7,7 @@ The tools we will be using are:
 - the Python programmign language.
 - Jupyter Notebooks.
 
-We are learning the Python programming language. We are using it inside Jupyter Notebooks. 
+We will analyze data sets by writing scripts in Python. These scripts will run inside Jupyter Notebooks. 
 
 You can get Python and Jupyter on your computer by downloading a package called Anaconda.
 
