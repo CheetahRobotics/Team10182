@@ -1,9 +1,15 @@
 Some data sets:
-2016 campaign finance data: http://linnus.net/posts/2015/Oct/04/2016_US_Federal_Election_Contributors/
-US Births: https://github.com/dataquestio/solutions/blob/master/Mission9Solutions.ipynb
-https://raw.githubusercontent.com/fivethirtyeight/data/master/births/US_births_1994-2003_CDC_NCHS.csv
+1. 2016 campaign finance data: http://linnus.net/posts/2015/Oct/04/2016_US_Federal_Election_Contributors/
+2. US Births: https://github.com/dataquestio/solutions/blob/master/Mission9Solutions.ipynb
+3. https://raw.githubusercontent.com/fivethirtyeight/data/master/births/US_births_1994-2003_CDC_NCHS.csv
+4. Earth temperature data: https://medium.com/@kasiarachuta/basic-statistics-in-pandas-dataframe-594208074f85#.ny2gnsh5n
+5. Loan prediction: https://www.analyticsvidhya.com/blog/2016/01/complete-tutorial-learn-data-science-python-scratch-2/
 
-
+Plan:
+1. Learn basic statistics, including regression.
+2. Time series: https://www.kaggle.com/jagelves/d/berkeleyearth/climate-change-earth-surface-temperature-data/continental-us-climate-change-1850-2013
+3. Geographic mapping
+4. 
 
 
 
