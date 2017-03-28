@@ -4,7 +4,7 @@ Here is a video introducing the topic of Civic Hacking. It is a great example of
 https://www.youtube.com/watch?v=ZR5JMxp-ejw
 
 The tools we will be using are:
-- the Python programmign language.
+- the Python programming language.
 - Jupyter Notebooks.
 
 We will analyze data sets by writing scripts in Python. These scripts will run inside Jupyter Notebooks. 
