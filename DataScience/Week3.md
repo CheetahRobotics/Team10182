@@ -12,7 +12,7 @@ from statsmodels.formula.api import ols
 #### Read in data
 
 ```python
-dataset = pd.read_csv("C:/Users/bob/Desktop/Workbook1.csv", index_col=False)
+dataset = pd.read_csv("C:/Users/bob/Desktop/Week3.csv", index_col=False)
 ```
 
 #### Explore data
