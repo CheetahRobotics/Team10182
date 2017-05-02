@@ -50,4 +50,10 @@ The ideal healthy food would be have low sugars, low cholestrol, low trans fat c
 - Mean, Standard Deviation, Kurtosis
 - Histograms
 - Scatterplot
+- Pivot Table
 - Regression
+
+But I've forgotten all the commands!!! Solution: Google. Example:   
+
+   pandas calculate mean example
+
