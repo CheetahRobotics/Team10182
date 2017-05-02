@@ -1,4 +1,4 @@
-
+```python
 #ds.Item.unique()
 #ds.pivot_table(values=['Calories'],index=['Item'])
 ds.groupby("Item").sum().sort_values(by="Calories")['Calories']
@@ -40,3 +40,4 @@ sns.pairplot(ds1, hue="Category")
 sns.lmplot("Calories", "Vitamin A (% Daily Value)", data=ds, hue='Category')
 
 sns.lmplot("Calories", "Sugars", data=ds, hue='Category')
+```
