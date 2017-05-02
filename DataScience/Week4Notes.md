@@ -1,12 +1,15 @@
 ```python
+
+# Starting....
 #ds.Item.unique()
 #ds.pivot_table(values=['Calories'],index=['Item'])
 ds.groupby("Item").sum().sort_values(by="Calories")['Calories']
 
-
+# Create new column
 ds['CholesterolPerCalorie'] = ds.Cholesterol/ds.Calories
 #ds.groupby("Item").sum().sort_values(by="CholesterolPerCalorie")['CholesterolPerCalorie']
 
+# Pivot table - Group by CholesterolPerCalorie
 grouped = ds[ds['CholesterolPerCalorie'] > .4].groupby("Item").mean().sort_values(by="CholesterolPerCalorie")
 grouped["CholesterolPerCalorie"].plot(kind="bar")
 # table version of same:
@@ -16,7 +19,7 @@ ds[ds['CholesterolPerCalorie'] > .4].sort_values(by="CholesterolPerCalorie").piv
     aggfunc=np.sum
     )
     
-
+# Look for relations with scatterplots
 ds.plot.scatter(x='Sugars', y='Calories')
 
 sns.swarmplot(x="Sugars", y="Calories", data=ds, hue="Category", size=10)
@@ -34,7 +37,8 @@ ds1 = ds[[u'Category', u'Item', u'Calories',       u'Total Fat (% Daily Value)',
        u'Sodium (% Daily Value)',        u'Carbohydrates (% Daily Value)', \
              u'Vitamin A (% Daily Value)', \
        u'Vitamin C (% Daily Value)',       u'Calcium (% Daily Value)', u'Iron (% Daily Value)','Sugars']]
-       
+
+# Getting Fancy
 sns.pairplot(ds1, hue="Category")
 
 sns.lmplot("Calories", "Vitamin A (% Daily Value)", data=ds, hue='Category')
