@@ -1,5 +1,5 @@
-Activity 1: McDonalds
-Download data file (here)[menu.csv]
+Activity 1: McDonalds   
+Download data file [here](menu.csv)
 
 ### Setup
 
