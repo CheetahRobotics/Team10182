@@ -32,4 +32,8 @@ plt.plot(t,signal)
 ```
 
 #### 4. What does the np prefix refer to?
-####
+
+#### 5. Adjust t until you get a complete sine wave, e.g.:
+![Sine Wave](sinewave.png)
+
+
