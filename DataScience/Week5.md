@@ -36,4 +36,25 @@ plt.plot(t,signal)
 #### 5. Adjust t until you get a complete sine wave, e.g.:
 ![Sine Wave](sinewave.png)
 
+#### 6. What is the difference between a sine wave and a cosine wave?
+
+Examine: https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif
+
+#### 7. What is amplitude and frequency? Make a sine wave with an amplitude=2 and a frequency double what we had before.
+
+#### 8. Lets convert everything to seconds:
+```python
+freq = 10 #hz - cycles per second
+amplitude = 3
+time_to_plot = 2 # second
+sample_rate = 100 # samples per second
+num_samples = sample_rate * time_to_plot
+
+t = np.linspace(0, time_to_plot, num_samples)
+signal = [amplitude * np.sin(freq * i * 2*np.pi) for i in t] # Explain the 2*pi
+plt.plot(t,signal)
+```
+
+
+
 
