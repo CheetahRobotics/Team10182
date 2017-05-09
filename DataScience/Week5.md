@@ -78,7 +78,16 @@ What is setup_graph? Where was it defined?
 Make 2 waves that cancel each other out. This is called Wave interference. This is how noise-cancellation head-phones work.
 
 
-#### 9. Wave
+#### 9. Additive Waves
+
+Square Wave:
+
+https://en.wikipedia.org/wiki/Square_wave
+
+Sawtooth Wave:
+
+https://en.wikipedia.org/wiki/Sawtooth_wave
+
 
 #### 8. Lets convert everything to seconds:
 ```python
@@ -97,12 +106,16 @@ plt.plot(t,signal)
 
 See: https://en.wikipedia.org/wiki/Hertz
 
-#### 10. Now lets make a 'pretty plot' with labels:
+Now lets make a 'pretty plot' with labels:
 
 ```python
 setup_graph(x_label='time (in seconds)', y_label='amplitude', title='time domain')
 plt.plot(t, signal)
 ```
+
+Plot a sine wave with a frequency of 4 Hz.
+
+Period = 1/Frequency
 
 
 #### 10a. First look at Fourier Transform
@@ -138,7 +151,7 @@ setup_graph(x_label='frequency (in Hz)', y_label='amplitude', title='frequency d
 plt.plot(frequencies, magnitude_only, 'r')
 ```
 
-
+Try other sounds
 
 
 
