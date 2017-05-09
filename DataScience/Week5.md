@@ -1,4 +1,15 @@
-Setup:
+
+
+#### 1. Setup:
+
+Open a CMD shell, and download latest git files:
+```
+cd c:\code\Team10182
+git pull
+```
+Files are in c:\code\Team10182\DataScience. Look at the files in the audio_files sub-directory.
+
+Then run 'jupyter notebook' and set it up:
 ```python
 %matplotlib inline
 import matplotlib.pyplot as plt
@@ -42,6 +53,33 @@ Examine: https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif
 
 #### 7. What is amplitude and frequency? Make a sine wave with an amplitude=2 and a frequency double what we had before.
 
+#### 8. Wave Convolution
+```python
+# Two subplots, the axes array is 1-d
+x = np.linspace(0, 2 * np.pi, 100)
+y1 = 5 * np.sin(x)
+y2 = 0 * np.sin(2*x)
+y3 = 3 * np.sin(3*x)
+y4 = 2 * np.sin(4*x)
+plt.plot(x,y1)
+plt.plot(x,y2)
+plt.plot(x,y3)
+plt.plot(x,y4)
+```
+Identify which lines on the plot are y1, y2, y3, and y4.
+
+```python
+setup_graph(x_label='time', y_label='amplitude', title='y1+y2+y3+y4', fig_size=(12,6))
+convoluted_wave = y1 + y2 + y3 + y4
+_ = plt.plot(x, convoluted_wave)
+```
+What is setup_graph? Where was it defined?
+
+Make 2 waves that cancel each other out. This is called Wave interference. This is how noise-cancellation head-phones work.
+
+
+#### 9. Wave
+
 #### 8. Lets convert everything to seconds:
 ```python
 freq = 10 #hz - cycles per second
@@ -54,6 +92,52 @@ t = np.linspace(0, time_to_plot, num_samples)
 signal = [amplitude * np.sin(freq * i * 2*np.pi) for i in t] # Explain the 2*pi
 plt.plot(t,signal)
 ```
+
+#### 9. What does Hz mean?
+
+See: https://en.wikipedia.org/wiki/Hertz
+
+#### 10. Now lets make a 'pretty plot' with labels:
+
+```python
+setup_graph(x_label='time (in seconds)', y_label='amplitude', title='time domain')
+plt.plot(t, signal)
+```
+
+
+#### 10a. First look at Fourier Transform
+```python
+fft_output = np.fft.rfft(signal)
+magnitude_only = [np.sqrt(i.real**2 + i.imag**2)/len(fft_output) for i in fft_output]
+frequencies = [(i*1.0/num_samples)*sample_rate for i in range(num_samples//2+1)]
+
+setup_graph(x_label='frequency (in Hz)', y_label='amplitude', title='frequency domain')
+plt.plot(frequencies, magnitude_only, 'r')
+```
+
+
+#### 11. 
+``` python
+import scipy.io.wavfile
+
+(sample_rate, input_signal) = scipy.io.wavfile.read("c:/code/Team10182/DataScience/audio_files/vowel_ah.wav")
+print sample_rate, input_signal, len(input_signal)/sample_rate, 1./sample_rate
+time_array = np.arange(0, len(input_signal)/sample_rate, 1./sample_rate)
+
+setup_graph(title='Ah vowel sound', x_label='time (in seconds)', y_label='amplitude', fig_size=(14,7))
+_ = plt.plot(time_array[0:4000], input_signal[0:4000])
+```
+
+#### 11a. Second look at Fourier Transform
+```python
+fft_output = np.fft.rfft(input_)
+magnitude_only = [np.sqrt(i.real**2 + i.imag**2)/len(fft_output) for i in fft_output]
+frequencies = [(i*1.0/num_samples)*sample_rate for i in range(num_samples//2+1)]
+
+setup_graph(x_label='frequency (in Hz)', y_label='amplitude', title='frequency domain')
+plt.plot(frequencies, magnitude_only, 'r')
+```
+
 
 
 
