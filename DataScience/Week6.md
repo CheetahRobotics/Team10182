@@ -5,3 +5,7 @@
 - print the first 20 squares
 - print the difference between the first 20 squares. do you see a pattern?
 - print the factorials up to 20!
+- print multiples of 3 up to 100
+
+then: http://nbviewer.jupyter.org/github/rajathkumarmp/Python-Lectures/blob/master/03.ipynb
+
