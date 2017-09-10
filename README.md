@@ -5,9 +5,9 @@ A new season begins!
 
 #### The 2017-18 game is called Relic Recovery.
 
-- [Video explanation] (https://www.youtube.com/watch?v=4xBHfwjfQGs)
-- [One page overview] (https://firstinspiresst01.blob.core.windows.net/ftc/first-kj-relic-recovery-onepage.pdf)
-- [Training Document, other materials] (https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
+- [Video explanation](https://www.youtube.com/watch?v=4xBHfwjfQGs)
+- [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/first-kj-relic-recovery-onepage.pdf)
+- [Training Document, other materials](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 
 Rules Manuals:
 - [Part 1](https://firstinspiresst01.blob.core.windows.net/ftc/game-ew-manual-part-1.pdf)
