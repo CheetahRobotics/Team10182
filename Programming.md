@@ -12,4 +12,5 @@ Facts about Java:
 - 5 Billion Java Cards in Use
 - 125 million TV devices run Java
 
+Resources: https://tmc.mooc.fi/mooc/courses/12
 
