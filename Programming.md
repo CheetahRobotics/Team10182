@@ -14,3 +14,4 @@ Facts about Java:
 
 Resources: https://tmc.mooc.fi/mooc/courses/12
 
+Another java course that we might try at some point: http://www.homeandlearn.co.uk/java/java.html
