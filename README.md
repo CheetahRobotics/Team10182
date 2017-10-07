@@ -17,7 +17,7 @@ Resources:
 
 Things we need to order:
 - [Relic Recover Field Kit from Andy Mark](http://www.andymark.com/FTC17-18-p/am-3600.htm). Be sure to order the version with no mats since we already have the mats.
-- We should try out the new [Rev Robotics Expansion Hub]
+- We should try out the new [Rev Robotics Expansion Hub](Rev.md)
 
 
 Notes:
