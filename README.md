@@ -18,6 +18,7 @@ Resources:
 - [No pause after autonomous mode](https://www.facebook.com/FTCTeams/videos/2070644152961169/)
 - [Game and Season Materials](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [2017 Programming/Configuration Notes](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf) - Instructions for Rev Expansion Kit. This info is also [here](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware)
+- [Video Overview of Sensors](http://modernroboticsinc.com/sensors)
 
 
 Things we need to order:
