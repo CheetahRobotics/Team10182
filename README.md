@@ -23,6 +23,16 @@ Resources:
 
 Things we need to order:
 - [Relic Recover Field Kit from Andy Mark](http://www.andymark.com/FTC17-18-p/am-3600.htm). Be sure to order the version with no mats since we already have the mats.
+
+The new Rev Robotics Expansion Hub:
+Explanatory Video: https://www.youtube.com/watch?v=7FIayseEtrk
+Expansion Hub Guide: http://www.revrobotics.com/content/docs/REV-31-1153-GS.pdf
+Step-by-Step Guide to Configuration using the new Rev Kit: https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware
+A longer step-by-step guide which shows how to wire up Rev components: https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf
+All Rev Resources: http://www.revrobotics.com/resources
+
+
+
 - We should try out the new [Rev Robotics Expansion Hub](Rev.md)
 
 
