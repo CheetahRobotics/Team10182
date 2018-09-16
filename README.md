@@ -1,7 +1,7 @@
 # Team10182
 ## DRW Trading College Prep - FTC Robotics Team
 
-A new season begins!
+A new season begins!  
 
 #### The 2017-18 game is called Relic Recovery.
 
