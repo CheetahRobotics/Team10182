@@ -1,21 +1,19 @@
 # Team10182
 ## DRW Trading College Prep - FTC Robotics Team
 
-A new season begins!  
 
-#### The 2017-18 game is called Relic Recovery.
+#### The 2018-19 game is called Rover Ruckus.
 
-- [Video explanation](https://www.youtube.com/watch?v=4xBHfwjfQGs)
-- [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/first-kj-relic-recovery-onepage.pdf)
+- [Video explanation](https://www.youtube.com/watch?v=rR4gR4l2XA8) - Skip to the 2:06 minute mark.
+- [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gonemlpg.pdf)
 - [Training Document, other materials](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 
 Resources:
-- [Rules Manual, Part 1](https://firstinspiresst01.blob.core.windows.net/ftc/game-ew-manual-part-1.pdf)
-- [Rules Manual, Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/game-manual-dw-part-2.pdf) <- Start here.
+- [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2018-2019/game-manual-part-1.pdf)
+- [Rules Manual, Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gemf2.pdf) <- Start here.
 - [Engineering Notebook](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf)
 - [Tech Forum](https://ftcforum.usfirst.org/)
 - [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
-- [No pause after autonomous mode](https://www.facebook.com/FTCTeams/videos/2070644152961169/)
 - [Game and Season Materials](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [2017 Programming/Configuration Notes](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf) - Instructions for Rev Expansion Kit. This info is also [here](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware)
 - [Video Overview of Sensors](http://modernroboticsinc.com/sensors)
