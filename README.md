@@ -6,9 +6,9 @@
 
 - [Video explanation](https://www.youtube.com/watch?v=rR4gR4l2XA8) - Skip to the 2:06 minute mark.
 - [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gonemlpg.pdf)
-- [Training Document, other materials](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 
 Resources:
+- [Resource Library](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2018-2019/game-manual-part-1.pdf)
 - [Rules Manual, Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gemf2.pdf) <- Start here.
 - [Engineering Notebook](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf)
