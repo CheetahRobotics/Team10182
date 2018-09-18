@@ -19,7 +19,7 @@ For coaches:
 
 
 #### Things we need to order:
-- [We need to register](https://ftc.pitsco.com/)
+- [We need to register](https://www.firstinspires.org/)
 - [Kit Of Parts Options](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/kit-of-parts.pdf) We will buy these when registering.
 - [Full Game Set](http://www.andymark.com/Rover-Ruckus-p/am-3890.htm)
 
