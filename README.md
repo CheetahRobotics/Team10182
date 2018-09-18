@@ -15,13 +15,21 @@ Resources:
 - [Tech Forum](https://ftcforum.usfirst.org/)
 - [2017 Programming/Configuration Notes](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf) - Instructions for Rev Expansion Kit. This info is also [here](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware).
 
-Things we need to order:
+For coaches:
+- [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
+
+
+#### Things we need to order:
 - [We need to register](https://ftc.pitsco.com/)
 - [Kit Of Parts Options](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/kit-of-parts.pdf) We will buy these when registering.
 - [Full Game Set](http://www.andymark.com/Rover-Ruckus-p/am-3890.htm)
 
-For coaches:
-- [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
+#### Programming the Bots ####
+
+As in previous years, we will divide the team into a Build Team and a Programming Team. The Build Team doesn't need to learn Java/Android Studio, etc. They will have plenty to do without getting into this and vice versa.
+
+So for the Programming Team:   
+As is other years, we will use Android Studio. Download the latest version of Android Studio, then attempt to open the [source code](https://github.com/ftctechnh/ftc_app). Follow the prompts to upgrade Gradle etc. Should all build right out of the box without any modifications required.
 
 #### Building the Bots ####
 Each bot consists of 1) a chassis including motors, 2) a set of Controllers, Sensors and cables, and 3) phones and game consoles.
