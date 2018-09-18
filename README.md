@@ -23,12 +23,29 @@ Things we need to order:
 For coaches:
 - [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
 
-We will build 2 kinds of bots this season.   
-- Bot 1. Using our existing [Tetrix Competition Set](https://www.pitsco.com/TETRIX-FTC-Competition-Set/&TXredir=1) with Modern Robotics [Controllers](https://modernroboticsinc.com/robot-electronics-bundle-2) and [Sensors](https://modernroboticsinc.com/sensors).  
-    - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-tetrix.pdf) to build a simple robot chassis using the Tetrix set.
-- Bot 2. For the first time, we will try using the new [REV Extension Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list])(http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf), with its own [electronics](http://www.revrobotics.com/rev-for-ftc/electronics/control-system/).
-    - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-rev.pdf) to build a simple robot chassis using the REV set.
-    
+#### Building the Bots ####
+Each bot consists of 1) a chassis including motors, 2) a set of Controllers, Sensors and cables, and 3) phones and game consoles.
+
+1) For the Chassis we have 2 options.
+- Option 1: Use our existing [Tetrix Competition Set](https://www.pitsco.com/TETRIX-FTC-Competition-Set/&TXredir=1).
+- Option 2: Use the new [REV Extension Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list])(http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf), 
+
+2) For the Electronics and cables we also have 2 options:
+- Option 1: Use our existing Modern Robotics [Controllers](https://modernroboticsinc.com/robot-electronics-bundle-2) and [Sensors](https://modernroboticsinc.com/sensors). 
+- Option 2: Use the new REV [electronics](http://www.revrobotics.com/rev-for-ftc/electronics/control-system/) and [sensors](http://www.revrobotics.com/ftc/electronics/sensors/) and [cables](http://www.revrobotics.com/ftc/electronics/cables/). This [video] shows how to wire up the REV electronics.
+
+
+3) We have plenty of phones and game consoles from previous seasons.
+
+Building Guides:
+- Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-tetrix.pdf) to build a simple Tetrix robot chassis using the Tetrix set with REV Electronics.
+- Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-rev.pdf) to build a simple robot chassis using the REV set and REV Electronics.
+- Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-tetrix-part2.pdf) to a more advanced Tetrix bot that is suited for Rover Ruckus.
+None of those guides use the Modern Robotics electronics, but they are allowed this season. REV seems simpler, but we may not have all the parts.
+
+
+Examples of what some teams are doing for Rover Ruckus
+- https://www.youtube.com/watch?v=pc9EoUt6jxQ
 
 
 The new Rev Robotics Expansion Hub:
