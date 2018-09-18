@@ -1,6 +1,9 @@
 # Team10182
 ## DRW Trading College Prep - FTC Robotics Team
 
+We meet at the school:
+- Thursdays from 3:30 to 5:30pm.
+- Saturdays from 10am to noon. (Starting 9/29).
 
 #### The 2018-19 game is called Rover Ruckus.
 
