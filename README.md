@@ -28,7 +28,7 @@ Each bot consists of 1) a chassis including motors, 2) a set of Controllers, Sen
 
 1) For the Chassis we have 2 options.
 - Option 1: Use our existing [Tetrix Competition Set](https://www.pitsco.com/TETRIX-FTC-Competition-Set/&TXredir=1).
-- Option 2: Use the new [REV Extension Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list](http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf) ). 
+- Option 2: Use the new [REV Starter Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list](http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf) ). Note: the kit has cables, batteries, but no sensors or controllers.
 
 2) For the Electronics and cables we also have 2 options:
 - Option 1: Use our existing Modern Robotics [Controllers](https://modernroboticsinc.com/robot-electronics-bundle-2) and [Sensors](https://modernroboticsinc.com/sensors). 
