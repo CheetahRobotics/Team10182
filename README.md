@@ -42,18 +42,14 @@ Building Guides:
 - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-tetrix-part2.pdf) to a more advanced Tetrix bot that is suited for Rover Ruckus.
 None of those guides use the Modern Robotics electronics, but they are allowed this season. REV seems simpler, but we may not have all the parts.
 
-#### Other Misc ####
-
-Examples of what some teams are doing for Rover Ruckus
-- https://www.youtube.com/watch?v=pc9EoUt6jxQ
-
+#### More on REV ####
 
 The new Rev Robotics Expansion Hub:
 - [Explanatory Video](https://www.youtube.com/watch?v=7FIayseEtrk)
-- [Expansion Hub Guide](http://www.revrobotics.com/content/docs/REV-31-1153-GS.pdf)
+- [Expansion Hub Guide](http://www.revrobotics.com/content/docs/REV-31-1153-GS.pdf). Many great details including how to connect to Modern Robotics sensors, etc.
 - [Step-by-Step Guide to Configuration using the new Rev Kit](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware)
 - [A longer step-by-step guide which shows how to wire up Rev components]( https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf)
-- [All Rev Resources](http://www.revrobotics.com/resources)
+- [All Rev Resources](http://www.revrobotics.com/resources). Includes pretty advanced drive trains.
 
 Notes:
  For teams using existing Modern Robotics I2C sensors, because the Expansion Hub uses a 3.3V logic-level while the Modern Robotics sensors use a 5V logic-level. A team will need to use a special adapter cable with a logic-level converter included that will allow their 5V Modern Robotics I2C sensors to be used with the new Expansion Hub. Teams will be able to purchase the cables and adapters through the FIRST storefront. 
