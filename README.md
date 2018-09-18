@@ -24,8 +24,11 @@ For coaches:
 - [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
 
 We will build 2 kinds of bots this season.   
-- Bot 1. Using our existing [Tetrix Competition Set](https://www.pitsco.com/TETRIX-FTC-Competition-Set/&TXredir=1) with Modern Robotics [Controllers](https://modernroboticsinc.com/robot-electronics-bundle-2) and [Sensors](https://modernroboticsinc.com/sensors).   
-- Bot 2. For the first time, we will try using the new [REV Extension Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list](http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf), with its own [electronics](http://www.revrobotics.com/rev-for-ftc/electronics/control-system/).
+- Bot 1. Using our existing [Tetrix Competition Set](https://www.pitsco.com/TETRIX-FTC-Competition-Set/&TXredir=1) with Modern Robotics [Controllers](https://modernroboticsinc.com/robot-electronics-bundle-2) and [Sensors](https://modernroboticsinc.com/sensors).  
+    - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-tetrix.pdf) to build a simple robot chassis using the Tetrix set.
+- Bot 2. For the first time, we will try using the new [REV Extension Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list])(http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf), with its own [electronics](http://www.revrobotics.com/rev-for-ftc/electronics/control-system/).
+    - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-rev.pdf) to build a simple robot chassis using the REV set.
+    
 
 
 The new Rev Robotics Expansion Hub:
