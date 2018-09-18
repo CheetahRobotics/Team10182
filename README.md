@@ -9,14 +9,13 @@
 
 Resources:
 - [Resource Library](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
-- [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2018-2019/game-manual-part-1.pdf)
-- [Rules Manual, Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gemf2.pdf) <- Start here.
-- [Engineering Notebook](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf)
-- [Tech Forum](https://ftcforum.usfirst.org/)
-- [2017 Programming/Configuration Notes](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf) - Instructions for Rev Expansion Kit. This info is also [here](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware).
+- [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/2018-2019/game-manual-part-1.pdf) <- General rules about sportsmanship, core values etc.
+- [Rules Manual, Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gemf2.pdf) <- Start here. Rules specific to the Rover Ruckus game.
+- [Engineering Notebook](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf). Teams are judged on their Engineering Notebook. We've struggled to produce this in previous years. It requires a diligent student to track the team over the course of the season.
+- [Tech Forum](https://ftcforum.usfirst.org/). For Q&A with other teams and with FTC head-quarters.
 
 For coaches:
-- [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
+- [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Tons of links re team-building, coaching, fund raising etc.
 
 
 #### Things we need to order:
@@ -51,6 +50,8 @@ Building Guides:
 None of those guides use the Modern Robotics electronics, but they are allowed this season. REV seems simpler, but we may not have all the parts.
 
 #### More on REV ####
+
+You can ignore this section until you actually start to build one of the bots listed above.   
 
 The new Rev Robotics Expansion Hub:
 - [Explanatory Video](https://www.youtube.com/watch?v=7FIayseEtrk)
