@@ -13,15 +13,20 @@ Resources:
 - [Rules Manual, Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gemf2.pdf) <- Start here.
 - [Engineering Notebook](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/engineering-notebook-guidelines.pdf)
 - [Tech Forum](https://ftcforum.usfirst.org/)
-- [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
-- [2017 Programming/Configuration Notes](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf) - Instructions for Rev Expansion Kit. This info is also [here](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware)
-- [Video Overview of Sensors](http://modernroboticsinc.com/sensors)
-
+- [2017 Programming/Configuration Notes](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf) - Instructions for Rev Expansion Kit. This info is also [here](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware).
 
 Things we need to order:
 - [We need to register](https://ftc.pitsco.com/)
 - [Kit Of Parts Options](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/kit-of-parts.pdf) We will buy these when registering.
 - [Full Game Set](http://www.andymark.com/Rover-Ruckus-p/am-3890.htm)
+
+For coaches:
+- [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Main switchboard, tons of links.
+
+We will build 2 kinds of bots this season.   
+- Bot 1. Using our existing [Tetrix Competition Set](https://www.pitsco.com/TETRIX-FTC-Competition-Set/&TXredir=1) with Modern Robotics [Controllers](https://modernroboticsinc.com/robot-electronics-bundle-2) and [Sensors](https://modernroboticsinc.com/sensors).   
+- Bot 2. For the first time, we will try using the new [REV Extension Kit](http://www.revrobotics.com/rev-45-1270/) ([parts list](http://www.revrobotics.com/content/docs/REV-45-1270-PL.pdf), with its own [electronics](http://www.revrobotics.com/rev-for-ftc/electronics/control-system/).
+
 
 The new Rev Robotics Expansion Hub:
 - [Explanatory Video](https://www.youtube.com/watch?v=7FIayseEtrk)
