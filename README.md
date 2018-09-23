@@ -20,7 +20,6 @@ Resources:
 For coaches:
 - [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Tons of links re team-building, coaching, fund raising etc.
 
-
 #### Things we need to order:
 - [We need to register](https://www.firstinspires.org/)
 - [Kit Of Parts Options](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/kit-of-parts.pdf) We will buy these when registering.
@@ -51,6 +50,9 @@ Building Guides:
 - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-rev.pdf) to build a simple robot chassis using the REV set and REV Electronics.
 - Here is a [guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/basic-bot-guide-tetrix-part2.pdf) to a more advanced Tetrix bot that is suited for Rover Ruckus.
 None of those guides use the Modern Robotics electronics, but they are allowed this season. REV seems simpler, but we may not have all the parts.
+
+Other important information for builders:
+[Robotics Wiring Guide](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/robot-wiring-guide.pdf)
 
 #### More on REV ####
 
