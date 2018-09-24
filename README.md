@@ -30,7 +30,9 @@ For coaches:
 As in previous years, we will divide the team into a Build Team and a Programming Team. The Build Team doesn't need to learn Java/Android Studio, etc. They will have plenty to do without getting into this and vice versa.
 
 So for the Programming Team:   
-As is other years, we will use Android Studio. Download the latest version of Android Studio, then attempt to open the [source code](https://github.com/ftctechnh/ftc_app). Follow the prompts to upgrade Gradle etc. Should all build right out of the box without any modifications required.
+As is other years, we will use Android Studio. Download the latest version of Android Studio, then attempt to open the [source code](https://github.com/ftctechnh/ftc_app). Follow the prompts to upgrade Gradle etc. It hould all build right out of the box without any modifications required.
+
+I've created a [separate page for programming](Programming.md).
 
 #### Building the Bots ####
 Each bot consists of 1) a chassis including motors, 2) a set of Controllers, Sensors and cables, and 3) phones and game consoles.
