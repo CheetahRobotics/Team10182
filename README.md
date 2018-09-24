@@ -19,6 +19,7 @@ Resources:
 
 For coaches:
 - [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Tons of links re team-building, coaching, fund raising etc.
+- [First Illinois Robotics](https://www.firstillinoisrobotics.org/ftc/). They organize our meets here in Illinois.
 
 #### Things we need to order:
 - [We need to register](https://www.firstinspires.org/)
