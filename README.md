@@ -67,6 +67,7 @@ The new Rev Robotics Expansion Hub:
 - [Step-by-Step Guide to Configuration using the new Rev Kit](https://github.com/ftctechnh/ftc_app/wiki/Configuring-Your-Hardware)
 - [A longer step-by-step guide which shows how to wire up Rev components]( https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/android-studio-tutorial.pdf)
 - [All Rev Resources](http://www.revrobotics.com/resources). Includes pretty advanced drive trains.
+- [Rev Electronics Tutorials](https://www.youtube.com/playlist?list=PLEuGrYl8iBm6SyJ41h1qQdl6en5YNCydi) - Videos.
 
 Notes:
  For teams using existing Modern Robotics I2C sensors, because the Expansion Hub uses a 3.3V logic-level while the Modern Robotics sensors use a 5V logic-level. A team will need to use a special adapter cable with a logic-level converter included that will allow their 5V Modern Robotics I2C sensors to be used with the new Expansion Hub. Teams will be able to purchase the cables and adapters through the FIRST storefront. 
