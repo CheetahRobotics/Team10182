@@ -23,4 +23,4 @@ These are advanced topics in no particular order. I'll organize them later.
 
 [FTC Gamepad Map](ftc_gamepad_map.jpg) - How the buttons map to the variables.
 
-[Remote Debugging](remoteDebugging.md)
+[Remote Debugging](Remote Debugging)
