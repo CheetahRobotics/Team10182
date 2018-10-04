@@ -6,7 +6,7 @@ You usually want to debug the robot controller while it is connected to the robo
  5. Now unplug the phone from the laptop and plug it into the robot. You can still start, stop and debug your phone from Android Studio.
  6. You can always type `adb devices` to confirm your laptop is still connected to the phone. If you lose a connection you can alwyas reconnect using the `adb connect` command in step 4 above.
 
-Attention! OSX users, you need to add the path to `adb` to your `PATH`. So add a line like the following to your `\.bash_profile`.   
+Attention! OSX users, you need to add the path to `adb` to your `PATH`. So add a line like the following to your "`.bash_profile`".   
 
 `export PATH="/Users/robertwoodley/Library/Android/sdk/platform-tools/:$PATH"`   
 
