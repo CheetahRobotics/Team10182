@@ -24,3 +24,6 @@ These are advanced topics in no particular order. I'll organize them later.
 [FTC Gamepad Map](ftc_gamepad_map.jpg) - How the buttons map to the variables.
 
 [Remote Debugging](RemoteDebugging.md)
+
+If the build in Android Studio is slow, you might try what is suggested in this note: http://stackoverflow.com/a/35813097/2195930, though this is a few years old and the build has gotten better.
+
