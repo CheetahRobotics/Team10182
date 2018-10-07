@@ -1,5 +1,17 @@
 This year we will do our Engineering Notebook on git. [Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists) is a cheat-sheet on how to use markdown with git. It is probably just easiest to edit this page on the github.com website.
 
+These are things judges look for in the Engineering Notebook:
+* Team growth and development is documented
+* Team leadership and organization is documented
+* Team failures and struggles are documented
+* Every Team member contributes to the Notebook
+* Every meeting has at least one Notebook entry
+* Entries include pictures, drawings, and text as applicable
+* Notebook is an accurate representation of the Team and journey
+* Notebook documents changes in the robot plan, including WHY the change was made.
+
+---
+
 # Summary Page
 
 * Team 10182
@@ -11,6 +23,9 @@ Table of Contents:
 * [One Page Summary](#summary)
 * [Engineering Section](#engineering)
   * [Design Process](#design)
+  * [Build Process](#building)
+  * [Testing Process](#testing)
+  * [Coding Process](#coding)
 * [Team](#team)
   * [Outreach Activities](#outreach)
 * [Plans/Strategy](#plans)
@@ -26,11 +41,19 @@ Table of Contents:
 <a name="engineering"></a>
 # Engineering Section
 
-This should be the largest section and should include Design process.
+This should be the largest section. This should include Design, build and testing stages of the robot. Should include code development process (not just the code).
 
 <a name="design"></a>
 ## Design Process
 
+<a name="build"></a>
+## Build Process
+
+<a name="testing"></a>
+## Testing Process
+
+<a name="coding"></a>
+## Coding Process
 
 <a name="team"></a>
 # The Team
