@@ -6,14 +6,14 @@
 
 Table of Contents:
 
-[One Page Summary](#summary)
-[Engineering Section](#engineering)
-    [Design Process](#design)
-[Team](#team)
-  [Outreach Activities](#outreach)
-[Plans/Strategy](#plans)
-    [Strategic Plan](#strategy)
-    [Sustainability Plan](#sustainability)
+* [One Page Summary](#summary)
+* [Engineering Section](#engineering)
+**    [Design Process](#design)
+* [Team](#team)
+**  [Outreach Activities](#outreach)
+* [Plans/Strategy](#plans)
+**    [Strategic Plan](#strategy)
+**    [Sustainability Plan](#sustainability)
     
 <a name="summary"></a>
 # One Page Summary
