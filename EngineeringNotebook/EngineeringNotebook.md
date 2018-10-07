@@ -8,7 +8,7 @@ These are things judges look for in the Engineering Notebook:
 * Every meeting has at least one Notebook entry
 * Entries include pictures, drawings, and text as applicable
 * Notebook is an accurate representation of the Team and journey
-* Notebook documents changes in the robot plan, including WHY the change was made.
+* Notebook documents changes in the robot plan, including WHY the change was made. 
 
 ---
 
