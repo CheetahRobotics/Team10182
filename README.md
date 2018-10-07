@@ -14,7 +14,7 @@ Resources:
 - [Resource Library](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-1.pdf) <- General rules about sportsmanship, engineering notebook, core values etc.
 - [Rules Manual, Part 2](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-2.pdf) <- Start here. Rules specific to the Rover Ruckus game.
-- [Engineering Notebookd](EngineeringNotebook/EngineeringNotebook.md) Teams are judged on their Engineering Notebook. We've struggled to produce this in previous years. This year we're going to try to do this in git.
+- [Engineering Notebook](EngineeringNotebook/EngineeringNotebook.md) Teams are judged on their Engineering Notebook. We've struggled to produce this in previous years. This year we're going to try to do this in git.
 - [Tech Forum](https://ftcforum.usfirst.org/). For Q&A with other teams and with FTC head-quarters.
 - [Field Assembly Manual](https://firstinspiresst01.blob.core.windows.net/ftc/2019/fieldsetjhupguide1.1.pdf)
 
