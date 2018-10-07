@@ -1,3 +1,5 @@
+This year we will do our Engineering Notebook on git. [Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists) is a cheat-sheet on how to use markdown with git. It is probably just easiest to edit this page on the github.com website.
+
 # Summary Page
 
 * Team 10182
