@@ -70,3 +70,5 @@ This should be the largest section. This should include Design, build and testin
 <a name="sustainability"></a>
 ## Sustainability
 
+The size of one square according to the rule book is 23.5in.-NO
+the time for the robot to travle on square is .989 of a second because the distance in one second is 23.75 so the problem came out as 23.5/23.75 which equated to (.989sec)-NO  
