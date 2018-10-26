@@ -20,6 +20,8 @@ We meet at the school:
 
 More info: https://www.firstillinoisrobotics.org/ftc/events/leagueplayfaq.html
 
+League info & rankings: https://www.firstillinoisrobotics.org/ftc/events/league-info.html?league_id=chicago-north
+
 #### Resources:
 - [Resource Library](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-1.pdf) <- General rules about sportsmanship, engineering notebook, core values etc.
