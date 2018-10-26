@@ -17,6 +17,7 @@ We meet at the school:
 |Chicago North Meet 2a|Saturday, December 1, 2018 | Wolcott School |
 |Chicago North Meet 3a|Saturday, January 12, 2019 | De Vry/Advantage |
 |Championships|Saturday, February 9, 2019 | Francis Parker |
+
 More info: https://www.firstillinoisrobotics.org/ftc/events/leagueplayfaq.html
 
 Resources:
