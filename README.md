@@ -10,6 +10,15 @@ We meet at the school:
 - [Video explanation](https://www.youtube.com/watch?v=rR4gR4l2XA8) - Skip to the 2:06 minute mark.
 - [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gonemlpg.pdf)
 
+#### Competition Schedule
+| Date | Location |
+|:---:|:---:|
+|Chicago North Meet 1a|Saturday, November 10, 2018 |
+|Chicago North Meet 1a|Saturday, December 1, 2018 |
+|Chicago North Meet 1a|Saturday, January 12, 2019 |
+|Championships|Saturday, February 9, 2019 |
+
+
 Resources:
 - [Resource Library](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-1.pdf) <- General rules about sportsmanship, engineering notebook, core values etc.
