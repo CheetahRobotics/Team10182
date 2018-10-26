@@ -12,7 +12,7 @@ We meet at the school:
 
 #### Competition Schedule
 | Match | Date | Time | Location | Address | Contact | Email |
-|:---:|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chicago North Meet 1a|Saturday, November 10, 2018 | 7:30 am - 1pm | Lake View High School | 4015 N Ashland Ave |	Mahesh Alur	| mnalur@cps.edu|
 |Chicago North Meet 2a|Saturday, December 1, 2018 | 8:00 am - 1:30pm | Wolcott School |1950 W. Hubbard St.|Kenny Bae|	Kbae@wolcottschool.org|
 |Chicago North Meet 3a|Saturday, January 12, 2019 | 8:00 am - 1:30pm | DeVry / Advantage |3300 N. Campbell Ave.| Natalie Waksmanski |	nwaksmanski@devry.edu |
