@@ -20,7 +20,7 @@ We meet at the school:
 
 More info: https://www.firstillinoisrobotics.org/ftc/events/leagueplayfaq.html
 
-Resources:
+#### Resources:
 - [Resource Library](https://www.firstinspires.org/resource-library/ftc/game-and-season-info)
 - [Rules Manual, Part 1](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-1.pdf) <- General rules about sportsmanship, engineering notebook, core values etc.
 - [Rules Manual, Part 2](https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/game-manual-part-2.pdf) <- Start here. Rules specific to the Rover Ruckus game.
@@ -28,7 +28,7 @@ Resources:
 - [Tech Forum](https://ftcforum.usfirst.org/). For Q&A with other teams and with FTC head-quarters.
 - [Field Assembly Manual](https://firstinspiresst01.blob.core.windows.net/ftc/2019/fieldsetjhupguide1.1.pdf)
 
-For coaches:
+#### For coaches:
 - [Team Management Resources](https://www.firstinspires.org/resource-library/ftc/team-management-resources) - Tons of links re team-building, coaching, fund raising etc.
 - [First Illinois Robotics](https://www.firstillinoisrobotics.org/ftc/). They organize our meets here in Illinois.
 
