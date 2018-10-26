@@ -11,11 +11,11 @@ We meet at the school:
 - [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gonemlpg.pdf)
 
 #### Competition Schedule
-| | Date | Location |
-|:---:|:---:|
+| Match | Date | Location |
+|:---:|:---:|:---:|
 |Chicago North Meet 1a|Saturday, November 10, 2018 | Lake View HS |
-|Chicago North Meet 1a|Saturday, December 1, 2018 | Wolcott School |
-|Chicago North Meet 1a|Saturday, January 12, 2019 | De Vry/Advantage |
+|Chicago North Meet 2a|Saturday, December 1, 2018 | Wolcott School |
+|Chicago North Meet 3a|Saturday, January 12, 2019 | De Vry/Advantage |
 |Championships|Saturday, February 9, 2019 | Francis Parker |
 
 
