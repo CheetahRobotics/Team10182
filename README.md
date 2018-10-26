@@ -13,11 +13,10 @@ We meet at the school:
 #### Competition Schedule
 | Match | Date | Location | Address | Contact | Email |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-|Chicago North Meet 1a|Saturday, November 10, 2018 | 7:30 am - 1pm | Lake View High School | 4015 N Ashland Ave, Chicago, 60613 |	Mahesh Alur	| mnalur@cps.edu|
-|Chicago North Meet 2a|Saturday, December 1, 2018 | 8:00 am - 1:30pm | Wolcott School |1950 W. Hubbard St., Chicago IL 60622
-|Kenny Bae|	Kbae@wolcottschool.org|
-|Chicago North Meet 3a|Saturday, January 12, 2019 | 8:00 am - 1:30pm | De Vry/Advantage |3300 N. Campbell Ave., Chicago, 60618	| Natalie Waksmanski |	nwaksmanski@devry.edu |
-|Championships|Saturday, February 9, 2019 | 8:0 am - 1:30pm | Francis Parker | 330 W Webster Ave., Chicago	Aaron | Lee	alee@fwparker.org|
+|Chicago North Meet 1a|Saturday, November 10, 2018 | 7:30 am - 1pm | Lake View High School | 4015 N Ashland Ave |	Mahesh Alur	| mnalur@cps.edu|
+|Chicago North Meet 2a|Saturday, December 1, 2018 | 8:00 am - 1:30pm | Wolcott School |1950 W. Hubbard St.|Kenny Bae|	Kbae@wolcottschool.org|
+|Chicago North Meet 3a|Saturday, January 12, 2019 | 8:00 am - 1:30pm | De Vry/Advantage |3300 N. Campbell Ave.| Natalie Waksmanski |	nwaksmanski@devry.edu |
+|Championships|Saturday, February 9, 2019 | 8:0 am - 1:30pm | Francis Parker | 330 W Webster Ave.| Aaron  Lee	alee@fwparker.org|
 
 More info: https://www.firstillinoisrobotics.org/ftc/events/leagueplayfaq.html
 
