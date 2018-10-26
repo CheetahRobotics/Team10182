@@ -11,7 +11,7 @@ We meet at the school:
 - [One page overview](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gonemlpg.pdf)
 
 #### Competition Schedule
-| Date | Location |
+| | Date | Location |
 |:---:|:---:|
 |Chicago North Meet 1a|Saturday, November 10, 2018 | Lake View HS |
 |Chicago North Meet 1a|Saturday, December 1, 2018 | Wolcott School |
