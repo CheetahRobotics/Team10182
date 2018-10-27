@@ -78,3 +78,10 @@ The robot travles 11.78 inches per rotation.
 
 We figured this out by measuring the diamater of the wheel of the robot which was 3.75.
 
+
+ States  Pos.1   Pos.2
+  1      13 in   27.5 in
+  2      13 in   27.5 in
+  3  25.625 in    16  in
+  4    33.5 in   28.5 in
+  5  85.125 in  85.125in
