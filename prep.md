@@ -22,6 +22,7 @@ Priority 4: Practice driving.
 ##### Check in and push all code!   #####
 
 Other tasks if there are spare hands:
+* We should setup the field (tiles only) for driving practice.
 * Finish the other Rev bot so it is a clone of the Brian-bot.
 * Keep working on Benny's bot.
 
