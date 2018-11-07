@@ -19,6 +19,8 @@ Priority 3: Benny: Put a bar in the front of the brian-bot so it can push blocks
 
 Priority 4: Practice driving.   
 
+Priority 5: Make a note of which phones you've been using.
+
 ##### Check in and push all code!   #####
 
 Other tasks if there are spare hands:
