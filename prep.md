@@ -3,6 +3,7 @@
 * We will use the Brian robot in the competition.
 * Autonomous phase: just run Omarion's program as-is. We'll get points for going into the crater.
 * Teleop: be sure we can get in the crater at the end. If we're able to push some minerals into the depot, so much the better.
+* Reminder: here is a quick summary of the missions: https://firstinspiresst01.blob.core.windows.net/ftc/2019/gonemlpg.pdf
 
 #### Goals for 11/8 session:
 * Make sure Omarion's autonomous mode works AS-IS. No bells and whistles. Just run as-is and end up in crater. No flag deposit this time. There is no time to work on this now. 
