@@ -11,18 +11,18 @@
 * Teleop mode. Make sure the robot can be driven with the gamepad.
 * If there is time put a plate or something on the front of the bot so it can push blocks around.
 
-Don't go to the next priority until the previous priority is complete:
-Priority 1: Omarion: Make sure Omarion's program runs. This probably includes adding a counter-weight.
-Priority 2: Nathan: Make sure the Teleop runs with the gamepad. Nathan should do this. 
-Priority 3: Benny: Put a bar in the front of the brian-bot so it can push blocks around.
-Priority 4: Practice driving.
-Check in and push all code!
+Don't go to the next priority until the previous priority is complete:   
+Priority 1: Omarion: Make sure Omarion's program runs. This probably includes adding a counter-weight.   
+Priority 2: Nathan: Make sure the Teleop runs with the gamepad. Nathan should do this.    
+Priority 3: Benny: Put a bar in the front of the brian-bot so it can push blocks around.   
+Priority 4: Practice driving.   
+Check in and push all code!   
 
 Other tasks if there are spare hands:
 * Finish the other Rev bot so it is a clone of the Brian-bot.
 * Keep working on Benny's bot.
 
-The bus leaves the school 
+The bus leaves the school at 7:45am on Saturday!!!!!
 
 #### Things to remember before Saturday:
 * Charge Batteries
