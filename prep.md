@@ -22,7 +22,7 @@ Other tasks if there are spare hands:
 * Finish the other Rev bot so it is a clone of the Brian-bot.
 * Keep working on Benny's bot.
 
-The bus leaves the school at 7:45am on Saturday!!!!!
+The bus leaves the school at 7:30am on Saturday!!!!!
 
 #### Things to remember before Saturday:
 * Charge Batteries
