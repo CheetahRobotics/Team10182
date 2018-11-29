@@ -30,7 +30,7 @@ If the build in Android Studio is slow, you might try what is suggested in this 
 #### Computer Vision ####
 Computer Vision (CV) can be very useful, especially in the autonomous phase. There are 3 commonly used CV frameworks in FTC:
 * Vuforia
-* Tensor Flow
+* [Tensor Flow](https://github.com/google/ftc-object-detection)
 * Open CV
 In previous years we have experimented with Vuforia and with Open CV, though we never used either in competition.
 
