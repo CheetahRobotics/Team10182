@@ -40,11 +40,12 @@ FTC recommends using Vuforia with the [navigation targets](https://firstinspires
 
 ##### OpenCV/Grip
 
-Open CV could be very useful this year in identifying the mineral configuration in the autonomous phase.
+Open CV could be very useful this year in identifying the mineral sample configuration in the autonomous phase.
 There is something called GRIP which allows us to experiment with Open CV configuration before you actually have to code it up. 
 * Download [here](https://github.com/WPIRoboticsProjects/GRIP/releases). 
 * Here is a [good introductory video](https://www.youtube.com/watch?v=wkW8puXMoSk).
 * [Documentation](https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/463566-introduction-to-grip)
 * [Github](https://github.com/WPIRoboticsProjects/GRIP)
+Note on page 34 of [Game Manual Part 2](https://firstinspiresst01.blob.core.windows.net/ftc/2019/gemf2.pdf) it says: "Note: The Gold Sample will always be placed such that the hole pattern is facing up."
 
 It is a pain to configure OpenCV on Android Studio. I'll post some links as and when.
