@@ -27,3 +27,21 @@ These are advanced topics in no particular order. I'll organize them later.
 
 If the build in Android Studio is slow, you might try what is suggested in this note: http://stackoverflow.com/a/35813097/2195930, though this is a few years old and the build has gotten better.
 
+#### Computer Vision ####
+Computer Vision (CV) can be very useful, especially in the autonomous phase. There are 3 commonly used CV frameworks in FTC:
+* Vuforia
+* Tensor Flow
+* Open CV
+In previous years we have experimented with Vuforia and with Open CV, though we never used either in competition.
+
+##### Vuforia
+
+FTC recommends using Vuforia with the targets and has examples that demonstrate how to do this.
+Open CV could be very useful this year in identifying the mineral configuration in the autonomous phase.
+
+##### OpenCV/Grip
+
+There is something called GRIP which allows us to experiment with Open CV configuration before you actually have to code it up. 
+* Download [here](https://github.com/WPIRoboticsProjects/GRIP/releases). 
+* Here is a [good introductory video](https://www.youtube.com/watch?v=wkW8puXMoSk).
+* [Documentation](https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/463566-introduction-to-grip)
