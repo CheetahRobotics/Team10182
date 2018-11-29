@@ -45,3 +45,6 @@ There is something called GRIP which allows us to experiment with Open CV config
 * Download [here](https://github.com/WPIRoboticsProjects/GRIP/releases). 
 * Here is a [good introductory video](https://www.youtube.com/watch?v=wkW8puXMoSk).
 * [Documentation](https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/463566-introduction-to-grip)
+* [Github](https://github.com/WPIRoboticsProjects/GRIP)
+
+It is a pain to configure OpenCV on Android Studio. I'll post some links as and when.
