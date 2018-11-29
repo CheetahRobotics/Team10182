@@ -36,11 +36,11 @@ In previous years we have experimented with Vuforia and with Open CV, though we 
 
 ##### Vuforia
 
-FTC recommends using Vuforia with the targets and has examples that demonstrate how to do this.
-Open CV could be very useful this year in identifying the mineral configuration in the autonomous phase.
+FTC recommends using Vuforia with the [navigation targets](https://firstinspiresst01.blob.core.windows.net/ftc/2019/navigation-target-us.pdf) and has [code examples](https://github.com/ftctechnh/ftc_app/blob/master/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples/ConceptVuforiaNavRoverRuckus.java) that demonstrate how to do this. This code allows you to determine your X/Y position on the playing field.
 
 ##### OpenCV/Grip
 
+Open CV could be very useful this year in identifying the mineral configuration in the autonomous phase.
 There is something called GRIP which allows us to experiment with Open CV configuration before you actually have to code it up. 
 * Download [here](https://github.com/WPIRoboticsProjects/GRIP/releases). 
 * Here is a [good introductory video](https://www.youtube.com/watch?v=wkW8puXMoSk).
