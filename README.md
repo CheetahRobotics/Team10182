@@ -89,3 +89,5 @@ For the other Modern Robotics sensors (touch sensor and optical distance sensor)
 
 Teams also have the option of using their existing Modern Robotics Core Device Interface modules in parallel to an Expansion Hub to connect their existing 5V sensors to their Robot Controller.
 
+#### Using the Moto G phones ####
+Android Studio doesn't recognize these right away. You can type: `adb devices` in a `cmd` window and you'll see the phone is not recognized, even when connected. To fix, see instructions here: https://stackoverflow.com/a/21817956/2195930. Once you can see it with `adb devices` it should then be visible in android studio.
