@@ -9,3 +9,6 @@ Notes on pairing phones: https://github.com/FIRST-Tech-Challenge/SkyStone/wiki/C
 
  the pushbot: https://www.firstinspires.org/sites/default/files/uploads/resource_library/ftc/pushbot-build-guide-vertical.pdf
 
+Technical resources for the Rev parts:
+http://www.revrobotics.com/resources/
+
