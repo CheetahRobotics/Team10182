@@ -19,7 +19,7 @@ The Tetrix pushbot guide: https://www.firstinspires.org/sites/default/files/uplo
 
 Technical resources for the Rev parts: http://www.revrobotics.com/resources/
 
-- Some examples of how to build an Arm
+- Some examples of how to build an Arm using Rev parts:
 - https://www.youtube.com/watch?v=fU1GXteByJw (starting at minute 1:02).
 - http://www.revrobotics.com/content/docs/BuildingSystem-Guide.pdf (page 31 - 34).
 
