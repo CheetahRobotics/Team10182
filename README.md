@@ -24,6 +24,6 @@ Technical resources for the Rev parts: http://www.revrobotics.com/resources/
 - http://www.revrobotics.com/content/docs/BuildingSystem-Guide.pdf (page 31 - 34).
 
 #### Building:
-- Assembly Guide: https://andymark-weblinc.netdna-ssl.com/media/W1siZiIsIjIwMTkvMTAvMDMvMTUvMjAvMDcvOGFlODdjZmQtYmYzYS00YmNmLTk3ZWUtY2E3MGZmOThjNTcwLzIwMjBGaWVsZFNldHVwR3VpZGUxLjIucGRmIl1d/2020FieldSetupGuide1.2.pdf?sha=3b2ca42a0e65c849
+- Assembly Guide: https://andymark-weblinc.netdna-ssl.com/media/W1siZiIsIjIwMTkvMDkvMDkvMDkvMTkvNTAvMzIwMjljOWQtYThjZi00ZmU1LWI2ZDMtOWExZjc3YmJlMjc3LzIwMjBGaWVsZEFzc2VtYmx5X1JFVjEuMS5wZGYiXV0/2020FieldAssembly_REV1.1.pdf?sha=07c69d94259ddc25
 
 - Setup Guide: https://andymark-weblinc.netdna-ssl.com/media/W1siZiIsIjIwMTkvMTAvMDMvMTUvMjAvMDcvOGFlODdjZmQtYmYzYS00YmNmLTk3ZWUtY2E3MGZmOThjNTcwLzIwMjBGaWVsZFNldHVwR3VpZGUxLjIucGRmIl1d/2020FieldSetupGuide1.2.pdf?sha=3b2ca42a0e65c849
